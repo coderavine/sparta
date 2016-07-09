@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Sparta</title>
+
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/highlight.dark.css">
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="./">
+                Sparta
+                <small class="hidden-xs hidden-sm">
+                    A PHP Library for Effortless Input Validation.
+                </small>
+            </a>
+
+                            <a href="https://github.com/coderavine/sparta">
+                    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+                </a>
+            
+        </header>
+
+        <main class="container-fluid">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-sm-3 col-lg-2" role="navigation">
+
+                        <ul class="nav nav-pills nav-stacked">
+                                                            <li class="">
+                                    <a href="././index.html">
+                                        Getting Started
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="././reference.html">
+                                        Reference
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="././contributions.html">
+                                        Contributions
+                                    </a>
+                                </li>
+                                                    </ul>
+
+                    </nav>
+
+                
+                <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                    <h1 id="validation-rules">Validation Rules</h1>
+<p><strong>Sparta</strong> has a simple rule's syntax that can be defined in two different ways. Here are the explanations of both:</p>
+<h3 id="option-1">Option 1:</h3>
+<p>The default syntax is to build your rule as string using various delimiters to denote the different parts (i.e., <strong>validator</strong>, <strong>arguments</strong>, and <strong>arguments values</strong>). A single attribute rule can be writting as follows:</p>
+<pre><code>'attribute_name' =&gt; 'rule1 : argument1 = value1 , argument2 = value2 | rule2 | ....' </code></pre>
+<h3><a name="rule-syntax-explaination"></a>Rule's Syntax</h3>
+<p>The following list providers a brief description of each rule segment:</p>
+<ul>
+<li><code>attribute_name</code>: Name of the field to be validated as defined in your input collection </li>
+<li><code>rule1</code>: Rule name in lowercase (e.g. <strong>alpha, email, required,...etc.</strong>)  </li>
+<li><code>:</code>: Default delimiter used to separate a given rule and its arguments</li>
+<li><code>argument1</code>: Argument name to be passed to the validator </li>
+<li><code>=</code>:  Default delimiter used between an argument and its value </li>
+<li><code>value1</code>: Argument's value  </li>
+<li><code>,</code>:Default delimiter used between multiple arguments</li>
+<li><code>|</code>:Default delimiter used between multiple rules</li>
+<li><code>rule2</code>:Other rule name </li>
+</ul>
+<p>A simple example that illustrates the usage of this syntax option is given below:</p>
+<pre><code class="language-php">&lt;?php
+$rules = [
+    'username'      =&gt; 'required|alpha_num|length_min=12,length_max=50',
+    'email_address' =&gt; 'required|email'
+];</code></pre>
+<h3 id="option-2">Option 2:</h3>
+<p>Alternatively, a rule can be built using a simple array syntax as follows:</p>
+<pre><code class="language-php">&lt;?php
+$rules = [
+    'username'      =&gt; [
+        'required',
+        'alpha',
+        'length_min=12',
+        'length_max=50',
+    ]
+    'email_address' =&gt; [
+        'required',
+        'email'
+    ]
+];</code></pre>
+<h1><a name="validators-list"></a>Predefined Validators List</h1>
+<p>Sparta comes with the below out of the box validators:</p>
+<ul>
+<li><a href="./alpha.html"><strong>Alpha</strong></a>: a field must contain only alphabetic characters</li>
+<li><a href="./alpha_num.html"><strong>AlphaNum</strong></a>: a filed must contain only number and alphabetic character</li>
+<li><a href="./between.html"><strong>Between</strong></a>: a number falls within specified range</li>
+<li><a href="./boolean.html"><strong>Boolean</strong></a>: a field must be boolean</li>
+<li><a href="./contains.html"><strong>Contains</strong></a>: a field contains a given value</li>
+<li><a href="./date.html"><strong>Date</strong></a>: a field must be a valid date</li>
+<li><a href="./email.html"><strong>Email</strong></a>: a field must be a valid email address</li>
+<li><a href="./equals.html"><strong>Equals</strong></a>: a field must be equal to the specified value</li>
+<li><a href="./equals.html"><strong>Even</strong></a>: a field must be an even number</li>
+<li><a href="./float_num.html"><strong>FloatNumber</strong></a>: a field must be a float number</li>
+<li><a href="./in_array.html"><strong>InArray</strong></a>: a field is contained in the given array</li>
+<li><a href="./integer.html"><strong>Integer</strong></a>: a field must be a valid integer number</li>
+<li><a href="./ip.html"><strong>Ip</strong></a>: a field must be a valid IP address</li>
+<li><a href="./is_array.html"><strong>IsArray</strong></a>: a field must be a valid array </li>
+<li><a href="./is_instance_of.html"><strong>IsInstanceOf</strong></a>: a field must be an instance of given reference/value</li>
+<li><a href="./json.html"><strong>Json</strong></a>: a field must be a valid JSON </li>
+<li><a href="./length.html"><strong>Length</strong></a>: a field length must be equal to the given length</li>
+<li><a href="./length_max.html"><strong>LengthMax</strong></a>: a field length must not exceed the given length</li>
+<li><a href="./length_min.html"><strong>LengthMin</strong></a>: a field length must not be less than the given length</li>
+<li><a href="./length_min.html"><strong>Negative</strong></a>: a field must be a negative number</li>
+<li><a href="./not_empty.html"><strong>NotEmpty</strong></a>: a field must not be empty</li>
+<li><a href="./numeric.html"><strong>Numeric</strong></a>: a field must contain only numeric characters</li>
+<li><a href="./odd.html"><strong>Odd</strong></a>: a field must be an odd number</li>
+<li><a href="./positive.html"><strong>Positive</strong></a>: a field must a positive number  </li>
+<li><a href="./required.html"><strong>Required</strong></a>: a field must be present and cannot be empty  </li>
+<li><a href="./slug.html"><strong>Slug</strong></a>: a field must be a valid URL slug </li>
+<li><a href="./url.html"><strong>Url</strong></a>: a field must be a valid URL</li>
+</ul>
+<p>However, this does not mean that we are only limited to this list. In fact, adding new validators is a breeze. To learn more about creating new validators, please refer to the <a href="contributions.html"">contributions section</a> </p>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container-fluid">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Sparta</title>
+
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/highlight.dark.css">
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="./">
+                Sparta
+                <small class="hidden-xs hidden-sm">
+                    A PHP Library for Effortless Input Validation.
+                </small>
+            </a>
+
+                            <a href="https://github.com/coderavine/sparta">
+                    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+                </a>
+            
+        </header>
+
+        <main class="container-fluid">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-sm-3 col-lg-2" role="navigation">
+
+                        <ul class="nav nav-pills nav-stacked">
+                                                            <li class="">
+                                    <a href="././index.html">
+                                        Getting Started
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="././reference.html">
+                                        Reference
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="././contributions.html">
+                                        Contributions
+                                    </a>
+                                </li>
+                                                    </ul>
+
+                    </nav>
+
+                
+                <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                    <h1 id="between-validator">Between Validator</h1>
+<p>This validator can be used to ensure that a given value falls within a specified range. </p>
+<p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
+<h2 id="supported-options">Supported Options</h2>
+<p>The <code>Between</code> validator supports the below options:</p>
+<ul>
+<li>
+<p><code>min</code>: determines the minimum value of the range. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</p>
+</li>
+<li>
+<p><code>max</code>: determines the maximum value of the range. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</p>
+</li>
+<li><code>inclusive</code>: determines if both min and max parameters will be included in the range or not. This is optional and the default value is <strong>true</strong>.</li>
+</ul>
+<h2 id="usage">Usage</h2>
+<p>There are two different ways in which all <strong>Sparta</strong> validators can be used. See below examples for more explanations:</p>
+<h3 id="example-1">Example #1</h3>
+<p>let us assume that you want to ensure that only users between the age of 18-100 can proceed with the registration process. To achieve this, you can instantiate the <code>Between</code> validator and as shown below:</p>
+<pre><code class="language-php">&lt;?php
+use Sparta\Validators\Between;
+
+$validator = Between(['min' =&gt; 18, 'max' =&gt; 100]);
+
+// Assuming you have a variable named $age
+if(!$validator-&gt;isValid($age)){ 
+    //handle errors
+}</code></pre>
+<p>You can also both <strong>min</strong> and <strong>max</strong> values using validator setter methods <code>setMin</code> and <code>setMax</code>:</p>
+<pre><code class="language-php">&lt;?php
+use Sparta\Validators\Between;
+
+$validator = Between();
+
+$validator-&gt;setMin(18);
+$validator-&gt;setMax(100);
+
+// $age variable can be from $_POST
+if(!$validator-&gt;isValid($age)){ 
+    //handle errors
+}</code></pre>
+<p>By default, both <strong>min</strong> and <strong>max</strong> values will included in the specified range. If both should be excluded, then you need to set the <code>inclusive</code> parameter to <strong>false</strong>. This can be done either via the validator constructor:</p>
+<pre><code class="language-php">$validator = Between(['min' =&gt; 18, 'max' =&gt; 100, 'inclusive' =&gt; true]);</code></pre>
+<p>Or it can be configured via the validator setter method <code>setInclusive</code>:</p>
+<pre><code class="language-php">$validator-&gt;setInclusive(true);</code></pre>
+<h3 id="example-2">Example #2</h3>
+<p>You can build your validation rules and pass it to the <strong>Validation</strong> object to handle as shown below:</p>
+<pre><code class="language-php">&lt;?php
+use Inspect\Validation;
+
+$rules = [
+    'age' =&gt; 'between:min=18,max=100,inclusive=true',
+];
+//Assuming that your $data has an element with the key "age"
+
+$validation = new Validation($data, $rules);
+if(!$validation-&gt;isValid()){
+    //handle errors
+}</code></pre>
+<p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
+<p><strong>Note</strong>: You can even write the rule in a shorter format as follows:</p>
+<pre><code class="language-php">&lt;?php
+use Inspect\Validation;
+
+$rules = [
+    'age' =&gt; 'between:18,100,true',
+];
+</code></pre>
+<p>However, keep in mind that when using the short format, options should be passed in the above specified order (i.e., min, max, and then inclusive). Failing to do so will result in undesirable behaviors.</p>
+<p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container-fluid">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Sparta</title>
+
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/highlight.dark.css">
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="./">
+                Sparta
+                <small class="hidden-xs hidden-sm">
+                    A PHP Library for Effortless Input Validation.
+                </small>
+            </a>
+
+                            <a href="https://github.com/coderavine/sparta">
+                    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+                </a>
+            
+        </header>
+
+        <main class="container-fluid">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-sm-3 col-lg-2" role="navigation">
+
+                        <ul class="nav nav-pills nav-stacked">
+                                                            <li class="">
+                                    <a href="././index.html">
+                                        Getting Started
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="././reference.html">
+                                        Reference
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="././contributions.html">
+                                        Contributions
+                                    </a>
+                                </li>
+                                                    </ul>
+
+                    </nav>
+
+                
+                <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                    <h1 id="introduction">Introduction</h1>
+<p><strong>Sparta</strong> is a simple, elegant, and easy to use stand-alone PHP library for effortless inputs validation. Sparta uses simple, straightforward validation techniques that attempt to take the pain out of development by easing common validation tasks used in the majority of web projects. If you are looking  for implementing reliable, effective, quick validations and a library that can be extended easily to fit your needs, then <strong>Sparta</strong> is definitely for you.</p>
+<h1 id="installation">Installation</h1>
+<p>You can install and update <strong>Sparta</strong> library using <a href="https://getcomposer.org/" title="Composer">Composer</a>:</p>
+<pre><code>composer require coderavine/sparta</code></pre>
+<h1 id="usage">Usage</h1>
+<p>Sparta validation can be used in two different ways. Below are various examples that explain both:</p>
+<ul>
+<li>You can simply use a validator class to validate a certain type of data. For example, if you have a date and you want to ensure that only a date and nothing else is provided by end users, then you can do something as follows:</li>
+</ul>
+<pre><code class="language-php">&lt;?php
+use Sparta\Date; 
+
+$dateValidator = new Date();  
+if(!$dateValidator-&gt;isValid('2007-01-01')){
+    //Error messages can be simply retrieved using "errors" method
+    $errors = $dateValidator-&gt;errors();
+}</code></pre>
+<ul>
+<li>Another alternative way is to use the <strong>Validation</strong> class that accepts the data to be validated along with a list of defined rules for each attributes and let it do the heavy lifting for you. A simple example that explains this is given below:</li>
+</ul>
+<p>Let us assume that we have an account registration option in our web-based application and we want to enforce the below rules for the <strong>username</strong> field:</p>
+<ol>
+<li>It <strong>must</strong> be a <code>required</code> field </li>
+<li>It <strong>must</strong> only contain <code>alphabetic</code> characters</li>
+<li>It <strong>must</strong> have a <code>minimum</code> and <code>maximum</code> length of 12 and 50 respectively</li>
+</ol>
+<p>To achieve this, we first need to define our validation rules for the <strong>username</strong> as follows:</p>
+<pre><code class="language-php">&lt;?php
+    //We define our rules for the username field as specified above
+    $rules = [
+        'username' =&gt; 'required|alpha|length_min=12,length_max=50',
+    ];</code></pre>
+<p>After that, we need to ensure that the username field content is available in our user's input collection:</p>
+<pre><code class="language-php">&lt;?php
+
+$data = [
+    //This could be coming from $_POST, $_GET,etc.,
+    'username =&gt; 'JohnDoe', 
+];</code></pre>
+<p>Then, we can simply run the validation by passing both data and rules to the <strong>Validation</strong> object to handle the validation for us as follows:</p>
+<pre><code class="language-php">&lt;?php
+use Sparta\Validation;
+
+$validation = new Validation($data,$rules);
+if(!$validation-&gt;isValid()){
+    //Get error messages and manipulate them however you want
+    $validation-&gt;getErrors();
+ }</code></pre>
+<h1 id="contributions">Contributions</h1>
+<p>Contributing your PHP love to <strong>Sparta</strong> is always more than welcome via a <strong>Pull Request</strong>. Please read <a href="contributions.html">Contribution Policy</a> for more details</p>
+<h1 id="license">License</h1>
+<p>The Sparta Validation is open-sourced library licensed under the <a href="https://opensource.org/licenses/MIT"><strong>MIT</strong></a> license</p>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container-fluid">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>

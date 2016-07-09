@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <title>Sparta</title>
+
+        <link rel="stylesheet" href="./css/bootstrap.min.css">
+        <link rel="stylesheet" href="./css/font-awesome.min.css">
+        <link rel="stylesheet" href="./css/highlight.dark.css">
+        <link rel="stylesheet" href="./css/main.css">
+    </head>
+    <body>
+
+        <header class="navbar navbar-default navbar-fixed-top">
+
+            <a class="navbar-brand" href="./">
+                Sparta
+                <small class="hidden-xs hidden-sm">
+                    A PHP Library for Effortless Input Validation.
+                </small>
+            </a>
+
+                            <a href="https://github.com/coderavine/sparta">
+                    <img style="position: absolute; top: 0; right: 0; border: 0;" src="https://camo.githubusercontent.com/38ef81f8aca64bb9a64448d0d70f1308ef5341ab/68747470733a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f6461726b626c75655f3132313632312e706e67" alt="Fork me on GitHub" data-canonical-src="https://s3.amazonaws.com/github/ribbons/forkme_right_darkblue_121621.png">
+                </a>
+            
+        </header>
+
+        <main class="container-fluid">
+            <div class="row">
+
+                
+                    <nav id="sidebar" class="col-sm-3 col-lg-2" role="navigation">
+
+                        <ul class="nav nav-pills nav-stacked">
+                                                            <li class="">
+                                    <a href="././index.html">
+                                        Getting Started
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="././reference.html">
+                                        Reference
+                                    </a>
+                                </li>
+                                                            <li class="">
+                                    <a href="././contributions.html">
+                                        Contributions
+                                    </a>
+                                </li>
+                                                    </ul>
+
+                    </nav>
+
+                
+                <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
+                    <h1 id="contributing-to-sparta">Contributing to Sparta</h1>
+<p>Contributions to the library are always more than welcome. Kindly, do this by creating pull requests. To do so, just follow the below steps:</p>
+<ul>
+<li>Fork the project repository</li>
+<li>Create your feature topic branch (<code>git checkout -b new-feature</code>)</li>
+<li>Make your proposed changes</li>
+<li>Run the tests to make sure that every thing is running smoothly</li>
+<li>Commit your changes (<code>git commit -am 'Added my new feature/fixes'</code>)</li>
+<li>Push to the branch (<code>git push origin new-feature</code>)</li>
+<li>Create new Pull Request</li>
+</ul>
+<p>for more details about contributing to a project on github, kindly refer to <a href="https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project">GitHub - Contributing to a Project</a>.</p>
+<h1 id="creating-a-new-validator">Creating a new Validator</h1>
+<p>As mentioned before, adding a new validator to the library is a breeze. Sparta comes with the <strong>spartan</strong> console command that will extremely ease this process. Note that before using this command, you need to install the symfony <code>Console</code> component. Please refer to the <a href="http://symfony.com/doc/current/components/using_components.html">official documentation </a> for more details.</p>
+<p>Once you are done installing the above dependency, you can generate a new validator using the <code>generate:validator</code> command as shown:</p>
+<p><code>php spartan generate:validator ValidatorName</code></p>
+<p>For example, to generate a new validated named Foo, you can use the below:</p>
+<p><code>php spartan generate:validator Foo</code></p>
+<p>This will generate a validator file named <strong>Foo.php</strong> in the appropriate project directory. This validator class contains all necessary methods that you need implement to complete your task. A sample of the newely created class is given below:</p>
+<pre><code>&lt;?php
+namespace Sparta/Validators;
+
+/**
+ * Foo Class
+ *
+ * @package Sparta
+ * @author  Author Name &lt;author-email&gt;
+ * @link    http://www.coderavine.com/
+ */
+class Foo extends AbstractValidator
+{
+
+    /**
+    * Class error messages
+    *
+    * @var string
+    */
+    protected $classMessage = [
+        'YOUR_MESSAGE_KEY' =&gt; 'your message content',
+    ];
+
+    /**
+     * Foo constructor.
+     *
+     * @param array $options validator options
+     */
+    public function __construct($options = [])
+    {
+        // Handle validator arguments over here
+    }
+
+    /**
+     * Validate given input
+     *
+     * @param mixed $input
+     *
+     * @return bool
+     */
+    public function isValid($input)
+    {
+        //Handle validation logic over here
+    }
+}</code></pre>
+<ul>
+<li><code>$ClassMessages</code>: is used to define the validation error messages</li>
+<li><code>__construct</code>: is used to handle any arguments that the validator accepts.</li>
+<li><code>isValid</code>: is where you define and handle all of your validation logic.</li>
+</ul>
+<h1 id="testing">Testing</h1>
+<p>We believe that test-driven development can speed up your development process, as you can be confident that your code works before moving on and problems can be found early in the development cycle. Without test-driven development, it's common to find bugs later in the process, requiring the team to revisit older blocks of code, slowing down the process. Also, it makes us better programmers, as we have the opportunity to understand other people's code and your own code.</p>
+<p>We use <strong>PHPUnit</strong> testing framework to test our library as it can assist in several areas. First, it can help us find the areas in the application that require refactoring. Second, the mere implementation of unit testing allows team to focus their attention on improving code, by making their code testable.</p>
+<p>So we assume that you have some background about this framework. If not, please refer to the  <a href="https://phpunit.de/getting-started.html">official documentation </a> before proceeding. </p>
+<h2 id="writing-tests">Writing Tests</h2>
+<p>With PHPUnit, the most basic thing you’ll write is a test case. A test case is just a term for a class with several different tests all related to the same functionality. There are a few rules you’ll need to follow when writing your cases so that they’ll work with PHPUnit. Please refer to the above section to read more about PHPUnit.</p>
+<p>We recommend using <strong>Sparta</strong> console command option <code>--with-unit-test</code> that will ease the creation of test case class during creating the validator class as follows:</p>
+<p><code>php spartan generate:validator Foo --with-unit-test</code></p>
+<p>In addition to creating a validator class as explained earlier, it will also create test case file named <strong>FooTest.php</strong> in the appropriate project tests folder. The file will look like the below:</p>
+<pre><code>&lt;?php
+use Sparta\Validators\Foo;
+
+/**
+ * FooTest Class
+ *
+ * @package Sparta
+ * @author  Author Name &lt;author_email&gt;
+ * @link    http://www.coderavine.com/
+ */
+class FooTest extends \PHPUnit_Framework_TestCase
+{
+
+    /**
+     * @var Foo
+     */
+    public $validator;
+
+    /**
+     * Setup testing environment
+     */
+    public function setUp()
+    {
+        $this-&gt;validator = new Foo();
+    }
+
+    /**
+     * Test validator Foo basic behavior
+     *
+     */
+    public function testBasicBehavior()
+    {
+        //Your test code over here
+    }
+}
+</code></pre>
+<p>You can use this as a startup and expand the test as you see fit.</p>
+<h2 id="running-tests">Running Tests</h2>
+<p>Once your are happy with your awesome changes,  you need to ensure that everything can be executed smoothly. You can run the project test using the below commands:</p>
+<pre><code>$ vendor/bin/phpunit</code></pre>
+<p>or</p>
+<pre><code>$ composer test</code></pre>
+<h1 id="documentation">Documentation</h1>
+<p>Our documentation is proudly generated by <a href="http://couscous.io/">Couscous</a> , an awesome tool which turns <a href="https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet">Markdown</a> documentation into beautiful websites. To contribute to the project documentation, please do the following:</p>
+<ul>
+<li>Write your documentation using Markdown and place them inside the repository <code>docs</code> folder.</li>
+<li>Push your changes to the repository by creating a pull request</li>
+</ul>
+                </section>
+
+            </div>
+        </main>
+
+        <footer>
+            <div class="container-fluid">
+                <p class="text-muted">
+                    website generated with <a href="http://couscous.io" title="Markdown website generator">Couscous</a>
+                </p>
+            </div>
+        </footer>
+
+        <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//yastatic.net/highlightjs/8.2/highlight.min.js"></script>
+
+        <script>
+            $(function() {
+                $("section>h1").wrap('<div class="page-header" />');
+                // Syntax highlighting
+                hljs.initHighlightingOnLoad();
+            });
+        </script>
+
+    </body>
+</html>
