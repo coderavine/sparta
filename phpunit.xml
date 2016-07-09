@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="UTF-8"?>
 <phpunit bootstrap="vendor/autoload.php"
          colors="true"
          convertErrorsToExceptions="true"
@@ -13,12 +12,9 @@
     <filter>
         <whitelist processUncoveredFilesFromWhitelist="true">
             <directory suffix=".php">src/</directory>
-<<<<<<< HEAD
             <exclude>
                 <directory suffix=".php">src/lang</directory>
             </exclude>
-=======
->>>>>>> origin/master
         </whitelist>
     </filter>
     <logging>

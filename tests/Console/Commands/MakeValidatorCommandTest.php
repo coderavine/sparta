@@ -12,7 +12,7 @@ use Symfony\Component\Console\Tester\CommandTester;
  */
 class MakeValidatorCommandTest extends PHPUnit_Framework_TestCase
 {
-<<<<<<< HEAD
+
     /**
      * @var string
      */
@@ -21,14 +21,7 @@ class MakeValidatorCommandTest extends PHPUnit_Framework_TestCase
      * @var string
      */
     protected $validatorTestFile = __DIR__ . '/../../Validators/FooTest.php';
-
-    /**
-     *
-     */
-=======
-    protected $validatorFile = __DIR__ . '/../../../src/Validators/Foo.php';
-
->>>>>>> origin/master
+        
     public function testExecuteGenerateValidatorCommand()
     {
         $application = new Application();
@@ -39,49 +32,42 @@ class MakeValidatorCommandTest extends PHPUnit_Framework_TestCase
         $commandTester->execute([
             'command' => $command->getName(),
             'name' => 'Foo',
-<<<<<<< HEAD
+
             '--with-unit-test' => true,
-=======
->>>>>>> origin/master
+
         ]);
         $this->assertRegExp('/Foo/', $commandTester->getDisplay());
     }
 
-<<<<<<< HEAD
+
     /**
      *
      */
-=======
->>>>>>> origin/master
+
     protected function tearDown()
     {
         if (file_exists($this->validatorFile)) {
             unlink($this->validatorFile);
         }
-<<<<<<< HEAD
+
 
         if (file_exists($this->validatorTestFile)) {
             unlink($this->validatorTestFile);
         }
     }
 
-    /**
-     *
-     */
-=======
-    }
 
->>>>>>> origin/master
+
+
     protected function setUp()
     {
         if (file_exists($this->validatorFile)) {
             unlink($this->validatorFile);
         }
-<<<<<<< HEAD
+
         if (file_exists($this->validatorTestFile)) {
             unlink($this->validatorTestFile);
         }
-=======
->>>>>>> origin/master
+
     }
 }
