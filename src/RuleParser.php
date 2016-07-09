@@ -181,7 +181,8 @@ class RuleParser extends RuleParsingSyntaxAware
      */
     public function normalizeName($name)
     {
-        return str_replace('_', '', ucwords($name, '_'));
+        $name = ucwords(str_replace('_', ' ', $name));
+        return str_replace(' ', '', $name);
     }
-    
+
 }
