@@ -1,5 +1,5 @@
 <?php
-
+namespace Sparta\Validators;
 /**
  * Class TestInvalidValidatorClass.php
  *

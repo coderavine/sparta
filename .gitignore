@@ -2,3 +2,4 @@ vendor
 .idea
 docs/.couscous
 composer.lock
+report

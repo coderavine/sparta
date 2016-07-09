@@ -128,7 +128,7 @@ class ArgumentParser
     /**
      * Clear arguments list by setting it to an empty array
      */
-    protected function clearArguments()
+    public function clearArguments()
     {
         $this->arguments = [];
     }

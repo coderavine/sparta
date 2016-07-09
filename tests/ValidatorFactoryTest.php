@@ -1,11 +1,7 @@
 <?php
 use Mockery as m;
 use Sparta\Exceptions\ClassNotFoundException;
-<<<<<<< HEAD
 use Sparta\Exceptions\InvalidValidatorException;
-=======
-use Sparta\Exceptions\MethodNotFoundException;
->>>>>>> origin/master
 use Sparta\ValidatorFactory;
 
 /**
@@ -78,7 +74,6 @@ class ValidatorFactoryTest extends PHPUnit_Framework_TestCase
 
     /**
      * @throws \Sparta\Exceptions\ClassNotFoundException
-<<<<<<< HEAD
      * @throws \Sparta\Exceptions\InvalidValidatorException
      */
     public function testCreatingInvalidValidatorClassThrowsException()
@@ -86,15 +81,5 @@ class ValidatorFactoryTest extends PHPUnit_Framework_TestCase
         $this->expectException(InvalidValidatorException::class);
         $factory = new ValidatorFactory($this->translator);
         $factory->createInstance(TestInvalidValidatorClass::class, []);
-=======
-     * @throws \Sparta\Exceptions\MethodNotFoundException
-     */
-    public function testCreatingInvalidValidatorClassThrowsException()
-    {
-//        $this->expectException(MethodNotFoundException::class);
-//        $factory = new ValidatorFactory($this->translator);
-//        $factory->setNamespace('\\');
-//        $factory->createInstance(TestInvalidValidatorClass::class, []);
->>>>>>> origin/master
     }
 }
