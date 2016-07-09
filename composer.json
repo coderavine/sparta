@@ -1,0 +1,45 @@
+{
+  "name": "coderavine/sparta",
+  "description": "PHP Library for Effortless Input Validation",
+  "type": "library",
+  "keywords": ["input validation","validation"],
+  "homepage": "https://github.com/coderavine/sparta",
+  "repositories": [
+    {
+      "type": "git",
+      "url": "https://github.com/coderavine/sparta"
+    }
+  ],
+  "version": "1.0.0",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Mohammed Ashour",
+      "email": "coderavine@gmail.com",
+      "role": "Developer",
+      "homepage": "https://coderavine.github.io/sparta/index.html"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Sparta\\": "src/"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "Sparta\\": "tests/"
+    }
+  },
+  "require": {
+    "php": ">=5.3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.4.*",
+    "symfony/console": "^3.1",
+    "symfony/var-dumper": "^3.1",
+    "mockery/mockery": "^0.9.5"
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit"
+  }
+}

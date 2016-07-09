@@ -1,0 +1,36 @@
+<?php
+use Sparta\Validators\%DummyValidator%;
+
+/**
+ * %DummyValidator% Class
+ *
+ * @package Sparta
+ * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ * @link    http://www.coderavine.com/
+ */
+class %DummyValidator%Test extends \PHPUnit_Framework_TestCase
+{
+
+    /**
+     * @var %DummyValidator%
+     */
+    public $validator;
+
+    /**
+     * Setup testing environment
+     */
+    public function setUp()
+    {
+        $this->validator = new %DummyValidator%();
+    }
+
+
+    /**
+     * Test validator %DummyValidator% basic behavior
+     *
+     */
+    public function testBasicBehavior()
+    {
+        // Your test code over here
+    }
+}

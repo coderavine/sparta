@@ -1,0 +1,45 @@
+<?php
+namespace %DummyNamespace%;
+
+/**
+ * %DummyValidator% Class
+ *
+ * @package  %DummyNamespace%
+ * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ * @link    http://www.coderavine.com/
+ */
+class %DummyValidator% extends AbstractValidator
+{
+
+    /**
+    * Class error messages
+    *
+    * @var string
+    */
+    protected $classMessage = [
+        'YOUR_MESSAGE_KEY' => 'your message content',
+    ];
+
+    /**
+     * %DummyValidator% constructor.
+     *
+     * @param array $options validator options
+     */
+    public function __construct($options = [])
+    {
+        // Handle validator arguments over here
+    }
+
+
+    /**
+     * Validate given input
+     *
+     * @param mixed $input
+     *
+     * @return bool
+     */
+    public function isValid($input)
+    {
+        // Handle validation logic over here
+    }
+}

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit bootstrap="vendor/autoload.php"
+         colors="true"
+         convertErrorsToExceptions="true"
+         convertNoticesToExceptions="true"
+         convertWarningsToExceptions="true"
+         verbose="false">
+    <testsuites>
+        <testsuite name="unit">
+            <directory suffix="Test.php">tests/</directory>
+        </testsuite>
+    </testsuites>
+    <filter>
+        <whitelist processUncoveredFilesFromWhitelist="true">
+            <directory suffix=".php">src/</directory>
+<<<<<<< HEAD
+            <exclude>
+                <directory suffix=".php">src/lang</directory>
+            </exclude>
+=======
+>>>>>>> origin/master
+        </whitelist>
+    </filter>
+    <logging>
+        <log type="coverage-html" target="report" lowUpperBound="35"
+             highLowerBound="70"/>
+    </logging>
+</phpunit>
