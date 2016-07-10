@@ -1,5 +1,6 @@
 ![Sparta Logo](docs/logo.png)
 
+![Build Status](https://travis-ci.org/coderavine/sparta.svg?branch=master)
 #Introduction
 
 __Sparta__ is a simple, elegant, and easy to use stand-alone PHP library for effortless inputs validation. Sparta uses simple, straightforward validation techniques that attempt to take the pain out of development by easing common validation tasks used in the majority of web projects. If you are looking  for implementing reliable, effective, quick validations and a library that can be extended easily to fit your needs, then __Sparta__ is definitely for you.
@@ -77,7 +78,7 @@ if(!$validation->isValid()){
 
 
 #Documentation
-Please refer to the [usage section](https://coderavine.github.io/sparta/index.html) for more information
+Please refer to the [Library Documentation](https://coderavine.github.io/sparta/index.html) for more information.
 
 #Contributions
 
