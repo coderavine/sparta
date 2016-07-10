@@ -1,6 +1,9 @@
 ![Sparta Logo](docs/logo.png)
 
 ![Build Status](https://travis-ci.org/coderavine/sparta.svg?branch=master)
+[![Latest Stable Version](https://poser.pugx.org/coderavine/sparta/v/stable)](https://packagist.org/packages/coderavine/sparta)
+[![Total Downloads](https://poser.pugx.org/coderavine/sparta/downloads)](https://packagist.org/packages/coderavine/sparta)
+[![License](https://poser.pugx.org/coderavine/sparta/license)](https://packagist.org/packages/coderavine/sparta)
 #Introduction
 
 __Sparta__ is a simple, elegant, and easy to use stand-alone PHP library for effortless inputs validation. Sparta uses simple, straightforward validation techniques that attempt to take the pain out of development by easing common validation tasks used in the majority of web projects. If you are looking  for implementing reliable, effective, quick validations and a library that can be extended easily to fit your needs, then __Sparta__ is definitely for you.
