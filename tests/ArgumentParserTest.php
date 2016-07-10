@@ -37,19 +37,19 @@ class ArgumentParserTest extends PHPUnit_Framework_TestCase
         return [
             [
                 'input' => 'true',
-                'expected' => [0 => "true"]
+                'expected' => [0 => "true"],
             ],
             [
                 'input' => 'enableWhitespace=true',
-                'expected' => ['enableWhitespace' => "true"]
+                'expected' => ['enableWhitespace' => "true"],
             ],
             [
                 'input' => 'enableWhitespace',
-                'expected' => [0 => 'enableWhitespace']
+                'expected' => [0 => 'enableWhitespace'],
             ],
             [
                 'input' => 'min=10,max=100',
-                'expected' => ['min' => 10, 'max' => 100]
+                'expected' => ['min' => 10, 'max' => 100],
             ],
             [
                 'input' => 'length=100',
@@ -57,15 +57,15 @@ class ArgumentParserTest extends PHPUnit_Framework_TestCase
             ],
             [
                 'input' => 'foo=bar,var=value,testing=cool',
-                'expected' => ['foo' => 'bar', 'var' => 'value', 'testing' => 'cool']
+                'expected' => ['foo' => 'bar', 'var' => 'value', 'testing' => 'cool'],
             ],
             [
                 'input' => 'testing,is,cool',
-                'expected' => [0 => 'testing', 1 => 'is', 2 => 'cool']
+                'expected' => [0 => 'testing', 1 => 'is', 2 => 'cool'],
             ],
             [
                 'input' => '10,100',
-                'expected' => [0 => 10, 1 => 100]
+                'expected' => [0 => 10, 1 => 100],
             ],
         ];
     }
@@ -82,8 +82,21 @@ class ArgumentParserTest extends PHPUnit_Framework_TestCase
     public function testBasicBehavior($input, $expected)
     {
         $this->parser->run($input);
-        $this->assertEquals($expected, $this->parser->all(),
-            'failed value is :' . $input);
+        $this->assertEquals(
+            $expected,
+            $this->parser->all(),
+            'failed value is :'.$input
+        );
+    }
+
+    /**
+     * @throws \Sparta\Exceptions\MissingParameterException
+     */
+    public function testKeyOfUserInputCanBeProvidedToParserInOrderToAssignItsValueToArgumentValues()
+    {
+        $this->parser->setData(['passwordConfig' => 12345]);
+        $this->parser->run('passwordConfig');
+        $this->assertEquals(12345, $this->parser->get(0));
     }
 
     /**
@@ -95,7 +108,7 @@ class ArgumentParserTest extends PHPUnit_Framework_TestCase
     public function testRunningParserWithoutInputRaiseException()
     {
         $this->parser->run(null);
-    }// @codeCoverageIgnore
+    }
 
     /**
      * Ensure that GetKeyValueDelimiter retrieve default delimiter
@@ -202,5 +215,42 @@ class ArgumentParserTest extends PHPUnit_Framework_TestCase
 
         $this->parser->run('100,1');
         $this->assertEquals(2, $this->parser->count());
+    }
+
+    /**
+     * @throws \Sparta\Exceptions\MissingParameterException
+     */
+    public function testGettingArgumentsValuesFromUserInputCollection()
+    {
+        // Set field equals to a field from the user input
+        $this->parser->setData(['passwordConfirm' => '12345']);
+        $this->parser->run('to=passwordConfirm');
+        $this->assertEquals(['to' => '12345'], $this->parser->all());
+    }
+
+    /**
+     *
+     */
+    public function testSetAndGetDataToAndFromArgumentParser()
+    {
+        $this->parser->setData(['name' => 'coderavine']);
+        $this->assertEquals(['name' => 'coderavine'], $this->parser->getData());
+    }
+
+    /**
+     *
+     */
+    public function testParserReturnsNullValueForGivenFieldIfItDoesNotExistInUserInputCollection()
+    {
+        $this->parser->setData(['name' => 'coderavine']);
+        $this->assertNull($this->parser->field('foo'));
+    }
+
+    /**
+     *
+     */
+    public function testParserReturnsNullValueForGivenFieldIfUserInputCollectionHasNotBeenProvided()
+    {
+        $this->assertNull($this->parser->field('foo'));
     }
 }

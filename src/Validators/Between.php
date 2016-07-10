@@ -47,8 +47,7 @@ class Between extends AbstractValidator
                 $this->options['max'] = array_shift($options);
             }
         }
-
-        //TODO: fix the issue when passing both min and max with keys
+        
         if (array_key_exists('inclusive', $options)) {
             $this->options['inclusive'] = $options['inclusive'];
         } else {

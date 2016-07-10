@@ -53,7 +53,7 @@ class InArrayTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new InArray();
         $validator->isValid('');
-    } 
+    }
 
     /**
      *
@@ -82,7 +82,7 @@ class InArrayTest extends \PHPUnit_Framework_TestCase
                 true,
             ],
             [
-                [1, 2, 3],
+                [[1, 2, 3]],
                 2,
                 true,
             ],

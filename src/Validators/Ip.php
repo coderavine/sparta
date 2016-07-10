@@ -1,7 +1,6 @@
 <?php
 namespace Sparta\Validators;
 
-//TODO consider adding IP4&6
 /**
  * Validation Class
  *

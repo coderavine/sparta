@@ -23,6 +23,10 @@ class ArgumentParser
     const DEFAULT_KEY_VALUE_DELIMITER = '=';
 
     /**
+     * @var
+     */
+    private $data;
+    /**
      * Arguments list
      *
      * @var array
@@ -42,6 +46,16 @@ class ArgumentParser
      * @var
      */
     private $keyValueDelimiter;
+
+    /**
+     * ArgumentParser constructor.
+     *
+     * @param array $data
+     */
+    public function __construct($data = [])
+    {
+        $this->setData($data);
+    }
 
     /**
      * Run parser on given input
@@ -75,13 +89,24 @@ class ArgumentParser
         $value = null;
         $segments = explode($this->getKeyValueDelimiter(), $input);
         $key = $segments[0];
+
         if (isset($segments[1])) {
-            $value = $segments[1];
+
+            if ($this->hasField($segments[1])) {
+                $value = $this->field($segments[1]);
+            } else {
+                $value = $segments[1];
+            }
         }
+
         if (!is_null($value)) {
             $this->arguments[$key] = $value;
         } else {
-            $this->arguments[] = $key;
+            if ($this->hasField($key)) {
+                $this->arguments[] = $this->field($key);
+            } else {
+                $this->arguments[] = $key;
+            }
         }
     }
 
@@ -177,6 +202,60 @@ class ArgumentParser
     public function count()
     {
         return count($this->arguments);
+    }
+
+    /**
+     * Get the value of a given field from provided user's inputs list
+     *
+     * @param string $key attribute key
+     *
+     * @return mixed
+     */
+    public function field($key)
+    {
+        if (empty($this->data) || !is_array($this->data)) {
+            return null;
+        }
+
+        if (array_key_exists($key, $this->data)) {
+            return $this->data[$key];
+        }
+
+        return null;
+    }
+
+    /**
+     * Get the value of date collection has the required field
+     *
+     * @param string $key attribute key
+     *
+     * @return mixed
+     */
+    public function hasField($key)
+    {
+        if (empty($this->data) || !is_array($this->data)) {
+            return false;
+        }
+
+        if (array_key_exists($key, $this->data)) {
+            return true;
+        }
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param mixed $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
     }
 
 }

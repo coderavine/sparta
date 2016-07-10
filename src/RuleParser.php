@@ -11,6 +11,7 @@ namespace Sparta;
 class RuleParser extends RuleParsingSyntaxAware
 {
 
+    protected $data;
     /**
      * Validators bag
      *
@@ -34,22 +35,25 @@ class RuleParser extends RuleParsingSyntaxAware
 
     /**
      * RuleParser constructor.
+     *
+     * @param array $data
      */
-    public function __construct()
+    public function __construct($data = [])
     {
         $this->rulesBag = new RulesBag();
-        $this->argumentParser = new ArgumentParser();
+        $this->argumentParser = new ArgumentParser($data);
         $this->argumentParser->setArgumentsDelimiter($this->getDefaultArgumentsDelimiter());
         $this->argumentParser->setKeyValueDelimiter($this->getDefaultArgumentKeyValueDelimiter());
+        $this->setData($data);
     }
 
     /**
      * Parser the given validation rules and  generate the proper rules bag
      *
      * @param array $rulesList
-     * @param bool  $getRuleBags if set, an instance of RuleBag will be
+     * @param bool $getRuleBags if set, an instance of RuleBag will be
      *                           returned to caller
-     * @param bool  $getRuleBags if set, an instance of RuleBag will be returned to caller
+     * @param bool $getRuleBags if set, an instance of RuleBag will be returned to caller
      *
      * @return bool|\Sparta\RulesBag
      */
@@ -64,9 +68,12 @@ class RuleParser extends RuleParsingSyntaxAware
                 $this->resolve($rule);
             }
 
-            $this->rulesBag->add($attribute,
-                $this->getAttributeValidatorsBag());
+            $this->rulesBag->add(
+                $attribute,
+                $this->getAttributeValidatorsBag()
+            );
         }
+
         return ($getRuleBags) ? $this->rulesBag : true;
     }
 
@@ -102,6 +109,7 @@ class RuleParser extends RuleParsingSyntaxAware
     public function parseArguments($input)
     {
         $this->argumentParser->run($input);
+
         return $this->argumentParser->all();
     }
 
@@ -117,7 +125,7 @@ class RuleParser extends RuleParsingSyntaxAware
      * Add a validator to validators bag
      *
      * @param string $name
-     * @param mixed  $arguments
+     * @param mixed $arguments
      */
     protected function addValidatorToBag($name, $arguments = null)
     {
@@ -182,7 +190,23 @@ class RuleParser extends RuleParsingSyntaxAware
     public function normalizeName($name)
     {
         $name = ucwords(str_replace('_', ' ', $name));
+
         return str_replace(' ', '', $name);
     }
 
+    /**
+     * @return mixed
+     */
+    public function getData()
+    {
+        return $this->data;
+    }
+
+    /**
+     * @param mixed $data
+     */
+    public function setData($data)
+    {
+        $this->data = $data;
+    }
 }

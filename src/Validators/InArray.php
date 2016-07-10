@@ -39,7 +39,13 @@ class InArray Extends AbstractValidator
         if (array_key_exists('haystack', $options)) {
             $this->setHaystack($options['haystack']);
         } elseif (!empty($options)) {
-            $this->setHaystack($options);
+            $haystack = $options;
+            $options = array_shift($options);
+            if (is_array($options)) {
+                $this->setHaystack($options);
+            } else {
+                $this->setHaystack($haystack);
+            }
         }
     }
 

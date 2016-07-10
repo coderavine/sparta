@@ -63,7 +63,6 @@ class Validation
      * @var
      */
     protected $validatorFactory;
-    
 
 
     /**
@@ -301,7 +300,7 @@ class Validation
      */
     public function getRulesBag()
     {
-        $ruleParser = new RuleParser();
+        $ruleParser = new RuleParser($this->data);
         $ruleParser->run($this->rules);
         return $ruleParser->getRulesBag();
     }

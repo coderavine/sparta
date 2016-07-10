@@ -158,6 +158,12 @@ class RuleParserTest extends PHPUnit_Framework_TestCase
         $this->assertArrayHasKey('length_max', $validators);
     }
 
+    public function testSetAndGetDataToAndFromRuleParser()
+    {
+        $this->ruleParse->setData(['name' => 'coderavine']);
+        $this->assertEquals(['name' => 'coderavine'], $this->ruleParse->getData());
+    }
+
     public function testGetAttributeValidatorsBagReturnAnArrayOfValidators()
     {
         $rules = [
