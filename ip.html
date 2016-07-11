@@ -62,11 +62,11 @@
 <h2 id="supported-options">Supported Options</h2>
 <p>The <code>Ip</code> validator supports the below options:</p>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Inspect validators can be used. See below examples for more explainations:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
 <h3 id="example-1">Example #1:</h3>
 <p>You can simply instantiate the <code>Ip</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
-use Inspect\Validators\Ip;
+use Sparta\Validators\Ip;
 
 $validator = Ip();
 
@@ -76,7 +76,7 @@ if(!$validator-&gt;isValid('127.0.0.1')){
 <h3 id="example-2">Example #2:</h3>
 <p>You can build your validation rules and pass it to the <strong>Validation</strong> object to handle as shown below:</p>
 <pre><code class="language-php">&lt;?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
     'ip_address' =&gt; 'ip',

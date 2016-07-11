@@ -65,11 +65,11 @@
 <li><code>haystack</code>: specifies the array to search in. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Inspect validators can be used. See below examples for more explainations:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
 <h2 id="example-1">Example #1</h2>
 <p>You can simply instantiate the <code>InArray</code> validator and pass to it the data that you want to validate.</p>
 <pre><code class="language-php">&lt;?php
-use Inspect\Validators\InArray;
+use Sparta\Validators\InArray;
 
 $validator = InArray([1,2,3,4]);
 
@@ -78,7 +78,7 @@ if(!$validator-&gt;isValid(3)){
 }</code></pre>
 <p>You can also set <strong>haystack</strong> value using validator setter method <code>setHaystack</code>:</p>
 <pre><code class="language-php">&lt;?php
-use Inspect\Validators\InArray;
+use Sparta\Validators\InArray;
 
 $validator = InArray();
 $validator-&gt;setHaystack([1,2,3,4]);
@@ -88,7 +88,7 @@ if(!$validator-&gt;isValid(3)){
 <h2 id="example-2">Example #2</h2>
 <p>You can build your validation rules and pass it to the <strong>Validation</strong> object to handle as shown below:</p>
 <pre><code class="language-php">&lt;?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
     'needle' =&gt; 'in_array:haystack=validAnswers',

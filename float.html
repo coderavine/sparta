@@ -60,11 +60,11 @@
 <p>This validator can be used to ensure that a given value is a <strong>float</strong> number. </p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Inspect validators can be used. See below examples for more explainations:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
 <h2 id="example-1">Example #1</h2>
 <p>You can simply instantiate the <code>FloatNumber</code> validator and pass to it the data that you want to validate.</p>
 <pre><code class="language-php">&lt;?php
-use Inspect\Validators\FloatNumber;
+use Sparta\Validators\FloatNumber;
 
 $validator = FloatNumber();
 
@@ -74,7 +74,7 @@ if(!$validator-&gt;isValid('9.8')){
 <h2 id="example-2">Example #2</h2>
 <p>You can build your validation rules and pass it to the <strong>Validation</strong> object to handle as shown below:</p>
 <pre><code class="language-php">&lt;?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
     'number' =&gt; 'float_number',
