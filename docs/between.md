@@ -64,7 +64,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'age' => 'between:min=18,max=100,inclusive=true',
@@ -82,7 +82,7 @@ __Note__: You can even write the rule in a shorter format as follows:
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'age' => 'between:18,100,true',

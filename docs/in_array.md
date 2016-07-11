@@ -11,14 +11,14 @@ The `InArray` validator supports the below option:
  
 
 ## Usage
-There are two different ways in which all Inspect validators can be used. See below examples for more explainations:
+There are two different ways in which all Sparta validators can be used. See below examples for more explanation:
 
 ## Example #1
 You can simply instantiate the `InArray` validator and pass to it the data that you want to validate.
 
 ```php
 <?php
-use Inspect\Validators\InArray;
+use Sparta\Validators\InArray;
 
 $validator = InArray([1,2,3,4]);
 
@@ -30,7 +30,7 @@ You can also set __haystack__ value using validator setter method `setHaystack`:
 
 ```php
 <?php
-use Inspect\Validators\InArray;
+use Sparta\Validators\InArray;
 
 $validator = InArray();
 $validator->setHaystack([1,2,3,4]);
@@ -44,7 +44,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'needle' => 'in_array:haystack=validAnswers',

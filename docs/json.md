@@ -5,14 +5,14 @@ This validator can be used to ensure that a given value is valid __Json__ format
 [**Back to Validators List**](./reference.md#validators-list)
 
 ## Usage
-There are two different ways in which all Inspect validators can be used. See below examples for more explainations:
+There are two different ways in which all Sparta validators can be used. See below examples for more explanation:
 
 ### Example #1:
 You can simply instantiate the `Json` validator and pass to it the data that you want to validate.
 
 ```php
 <?php
-use Inspect\Validators\Json;
+use Sparta\Validators\Json;
 
 $validator = Json();
 
@@ -26,7 +26,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'data_load' => 'json',

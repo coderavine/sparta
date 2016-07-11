@@ -10,7 +10,7 @@ The `LengthMin` validator supports the below options:
 
 
 ## Usage
-There are two different ways in which all Inspect validators can be used. See below examples for more explainations:
+There are two different ways in which all Sparta validators can be used. See below examples for more explanation:
 
 ### Example #1:
 You can simply instantiate the `LengthMax` validator and pass to it the data that you want to validate. 
@@ -18,7 +18,7 @@ You can simply instantiate the `LengthMax` validator and pass to it the data tha
 
 ```php
 <?php
-use Inspect\Validators\LengthMax;
+use Sparta\Validators\LengthMax;
 
 $validator = LengthMax(11);
 
@@ -32,7 +32,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'password' => 'length_max:is=10',

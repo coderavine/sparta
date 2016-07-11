@@ -4,7 +4,7 @@ This validator can be used to ensure that a given contains only __odd__ numbers.
 [**Back to Validators List**](./reference.md#validators-list)
 
 ## Usage
-There are two different ways in which all Inspect validators can be used. See below examples for more explainations:
+There are two different ways in which all Sparta validators can be used. See below examples for more explanation:
 
 ### Example #1:
 You can simply instantiate the `Odd` validator and pass to it the data that you want to validate. 

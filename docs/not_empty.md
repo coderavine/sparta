@@ -6,7 +6,7 @@ This validator can be used to ensure that the given value is not empty.
 [**Back to Validators List**](./reference.md#validators-list)
 
 ## Usage
-There are two different ways in which all Inspect validators can be used. See below examples for more explainations:
+There are two different ways in which all Sparta validators can be used. See below examples for more explanation:
 
 ### Example #1:
 You can simply instantiate the `NotEmpty` validator and pass to it the data that you want to validate. 

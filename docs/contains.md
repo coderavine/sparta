@@ -11,14 +11,14 @@ The `Alpha` validator supports the below options:
 
 
 ## Usage
-There are two different ways in which all Inspect validators can be used. See below examples for more explainations:
+There are two different ways in which all Sparta validators can be used. See below examples for more explanation:
 
 ## Example #1
 You can instantiate the `Contains` validator and pass to it the data that you want to validate. 
 
 ```php
 <?php
-use Inspect\Validators\Contains;
+use Sparta\Validators\Contains;
 
 // Searching for a specific string/word example
 $validator = Contains('stupid');
@@ -40,7 +40,7 @@ You can also set the value of the `needle` parameter using the validator setter 
 
 ```php
 <?php
-use Inspect\Validators\Contains;
+use Sparta\Validators\Contains;
 
 $validator = Contains();
 $validator->setNeedle('stupid');
@@ -56,7 +56,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'title' => 'contains:needle=test',
@@ -76,7 +76,7 @@ __Note__: You can even write the rule in a shorter format as follows:
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'title' => 'contains:test',
