@@ -12,7 +12,7 @@ You can simply instantiate the `Boolean ` validator and pass to it the data that
 
 ```php
 <?php
-use Inspect\Validators\Boolean;
+use Sparta\Validators\Boolean;
 
 $validator = Boolean();
 
@@ -27,7 +27,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'isMember' => 'boolean',

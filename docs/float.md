@@ -12,7 +12,7 @@ You can simply instantiate the `FloatNumber` validator and pass to it the data t
 
 ```php
 <?php
-use Inspect\Validators\FloatNumber;
+use Sparta\Validators\FloatNumber;
 
 $validator = FloatNumber();
 
@@ -26,7 +26,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'number' => 'float_number',

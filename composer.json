@@ -2,7 +2,10 @@
   "name": "coderavine/sparta",
   "description": "PHP Library for Effortless Input Validation",
   "type": "library",
-  "keywords": ["input validation","validation"],
+  "keywords": [
+    "input validation",
+    "validation"
+  ],
   "homepage": "https://github.com/coderavine/sparta",
   "repositories": [
     {

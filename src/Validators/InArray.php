@@ -87,8 +87,9 @@ class InArray Extends AbstractValidator
             );
         }
 
-        if (!in_array($input, $this->getHaystack())) {
+        if (!in_array($input, $this->getHaystack(), true)) {
             $this->errors[] = sprintf($this->message, $input, implode($this->getHaystack()));
+
             return false;
         }
 

@@ -17,7 +17,7 @@ You can instantiate the validator directly and pass to it the data that you want
 
 ```php
 <?php
-use Inspect\Validators\Date;
+use Sparta\Validators\Date;
 
 $validator = Date();
 
@@ -45,7 +45,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'birthdate' => 'date',

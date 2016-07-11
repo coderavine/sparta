@@ -12,7 +12,7 @@ You can simply instantiate the `Email` validator and pass to it the data that yo
 
 ```php
 <?php
-use Inspect\Validators\Email;
+use Sparta\Validators\Email;
 
 $validator = Email();
 
@@ -26,7 +26,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'email_address' => 'email',

@@ -18,7 +18,7 @@ You can simply instantiate the `Equals` validator and pass to it the data that y
 
 ```php
 <?php
-use Inspect\Validators\Equals;
+use Sparta\Validators\Equals;
 
 //Assuming that we have two variables called 
 //$password and $passwordConfirm
@@ -34,7 +34,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'password' => 'equals:to=passwordConfirm',
@@ -55,7 +55,7 @@ __Note__: You can even write the rule in a shorter format as follows:
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'password' => 'equals:passwordConfirm',

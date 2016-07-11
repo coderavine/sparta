@@ -12,7 +12,7 @@ You can simply instantiate the `Json` validator and pass to it the data that you
 
 ```php
 <?php
-use Inspect\Validators\Json;
+use Sparta\Validators\Json;
 
 $validator = Json();
 
@@ -26,7 +26,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'data_load' => 'json',

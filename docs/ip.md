@@ -18,7 +18,7 @@ You can simply instantiate the `Ip` validator and pass to it the data that you w
 
 ```php
 <?php
-use Inspect\Validators\Ip;
+use Sparta\Validators\Ip;
 
 $validator = Ip();
 
@@ -32,7 +32,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'ip_address' => 'ip',
