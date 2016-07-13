@@ -12,6 +12,7 @@ The `LengthMin` validator supports the below options:
 ## Usage
 There are two different ways in which all Sparta validators can be used. See below examples for more explanations:
 
+
 ### Example #1:
 You can simply instantiate the `LengthMax` validator and pass to it the data that you want to validate. 
 
