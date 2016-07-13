@@ -4,8 +4,8 @@ namespace Sparta\Validators;
 /**
  * Timezone Class
  *
- * The field under validation must be a valid timezone identifier according
- * to the timezone_identifiers_list PHP function.
+ * This class will validate if the given field  is  a valid timezone
+ * identifier according to the timezone_identifiers_list PHP function.
  *
  * @package  Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
@@ -20,18 +20,8 @@ class Timezone extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'YOUR_MESSAGE_KEY' => 'your message content',
+        'invalid_timezone' => '%s is not a valid timezone',
     ];
-
-    /**
-     * Timezone constructor.
-     *
-     * @param array $options validator options
-     */
-    public function __construct($options = [])
-    {
-        // Handle validator arguments over here
-    }
 
 
     /**
@@ -43,9 +33,12 @@ class Timezone extends AbstractValidator
      */
     public function isValid($input)
     {
+        //This throws Exception if the timezone supplied is not recognised
+        // as a valid timezone
         try {
             new \DateTimeZone($input);
         } catch (\Exception $e) {
+            $this->errors[] = sprintf($this->message('invalid_timezone'), $input);
             return false;
         }
 

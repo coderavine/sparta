@@ -1,12 +1,23 @@
 <?php
 include "vendor/autoload.php";
 
-$validation = new \Sparta\Validators\Callback(
-    function ($value) {
-        return is_string($value);
+
+class TestCallable
+{
+    public function isValid($input)
+    {
+        throw new Exception('ewew');
+        return ($input == 1) ? true : false;
     }
+}
+
+
+$value2 = 1;
+$validator = new \Sparta\Validators\Callback(
+    [new TestCallable(), 'isValid']
 );
-if ($validation->isValid(22)) {
+
+if ($validator->isValid(1)) {
     echo 'valid';
 } else {
     echo 'invalid';

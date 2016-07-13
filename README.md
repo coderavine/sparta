@@ -51,7 +51,7 @@ To achieve this, we first need to define our validation rules for the __username
 <?php
 	//We define our rules for the username field as specified above
 	$rules = [
-		'username' => 'required|alpha|length_min=12,length_max=50',
+		'username' => 'required|alpha|min=12|max=50',
 	];
 ```
     

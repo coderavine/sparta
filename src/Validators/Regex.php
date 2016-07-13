@@ -1,13 +1,13 @@
 <?php
 namespace Sparta\Validators;
 
-/**
- * Regex Class
- *
- * @package  Sparta\Validators
- * @author  Mohammed Ashour <ashoms0a@gmail.com>
- * @link    http://www.coderavine.com/
- */
+    /**
+     * Regex Class
+     *
+     * @package  Sparta\Validators
+     * @author  Mohammed Ashour <ashoms0a@gmail.com>
+     * @link    http://www.coderavine.com/
+     */
 /**
  * Class Regex
  * @package Sparta\Validators
@@ -21,7 +21,7 @@ class Regex extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'YOUR_MESSAGE_KEY' => 'your message content',
+        'invalid_data' => '%s does not match the given pattern',
     ];
 
     /**
@@ -55,6 +55,10 @@ class Regex extends AbstractValidator
         }
 
         if (!preg_match($this->getPattern(), $input)) {
+            $this->errors[] = sprintf(
+                $this->message('invalid_data'), is_numeric($input) ? (string)$input : $input
+            );
+
             return false;
         }
 
@@ -62,7 +66,9 @@ class Regex extends AbstractValidator
     }
 
     /**
-     * @return null
+     * Get regular expression pattern
+     *
+     * @return string
      */
     public function getPattern()
     {
@@ -70,7 +76,9 @@ class Regex extends AbstractValidator
     }
 
     /**
-     * @param $pattern
+     * Set regular expression pattern
+     *
+     * @param string $pattern
      */
     Public function setPattern($pattern)
     {

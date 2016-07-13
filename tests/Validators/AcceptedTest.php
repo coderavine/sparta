@@ -24,13 +24,35 @@ class AcceptedTest extends \PHPUnit_Framework_TestCase
         $this->validator = new Accepted();
     }
 
-
     /**
      * Test validator Accepted basic behavior
      *
+     * @dataProvider getAcceptedDataProvider
      */
-    public function testBasicBehavior()
+    public function testBasicBehavior($input, $expected)
     {
-        // Your test code over here
+        $this->assertEquals($expected, $this->validator->isValid($input));
+    }
+
+    /**
+     * Setup accepted data test samples for testing basic behavior
+     */
+    public function getAcceptedDataProvider()
+    {
+        return [
+            ['1', true],
+            [1, true],
+            ['yes', true],
+            ['on', true],
+            ['true', true],
+            [true, true],
+            ['0', false],
+            [0, false],
+            ['no', false],
+            ['off', false],
+            ['false', false],
+            [false, false],
+
+        ];
     }
 }

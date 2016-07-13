@@ -1,5 +1,5 @@
 #LengthMin Validator
-This validator can be used to ensure that the length of a given value does not exceed specified maximum length. 
+This validator can be used to ensure that the length of a given value does not exceed specified maximum length. This validator has an alias called `Min` which can be used instead
 
 [**Back to Validators List**](./reference.md#validators-list)
 
@@ -10,7 +10,7 @@ The `LengthMin` validator supports the below options:
 
 
 ## Usage
-There are two different ways in which all Inspect validators can be used. See below examples for more explainations:
+There are two different ways in which all Sparta validators can be used. See below examples for more explanations:
 
 ### Example #1:
 You can simply instantiate the `LengthMax` validator and pass to it the data that you want to validate. 
@@ -49,7 +49,7 @@ if(!$validation->isValid()){
 
 In case of validation failure, error messages can be retrieved using the `getErrors` method.
 
-__Note__: You can even write the rule in a shorter format as follows:
+> __Note__: You can even write the rule in a shorter format as follows:
 
 ```php
 <?php

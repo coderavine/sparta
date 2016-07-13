@@ -4,13 +4,12 @@ namespace Sparta\Validators;
 /**
  * Different Class
  *
+ * This validator will make sure that the given field is different from
+ * another provider field
+ *
  * @package  Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
  * @link    http://www.coderavine.com/
- */
-/**
- * Class Different
- * @package Sparta\Validators
  */
 class Different extends AbstractValidator
 {
@@ -21,7 +20,7 @@ class Different extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'INVALID_DATA' => 'The two fields are not different',
+        'invalid_data' => 'The two fields are not different',
     ];
 
     /**
@@ -50,8 +49,8 @@ class Different extends AbstractValidator
      */
     public function isValid($input)
     {
-        if ($input <> $this->getFom()) {
-            $this->errors[] = $this->message('INVALID_DATA');
+        if ($input == $this->getFom()) {
+            $this->errors[] = $this->message('invalid_data');
 
             return false;
         }
@@ -60,6 +59,8 @@ class Different extends AbstractValidator
     }
 
     /**
+     * Set the field to be compared with the input
+     *
      * @param $from
      */
     public function setFrom($from)
@@ -68,6 +69,8 @@ class Different extends AbstractValidator
     }
 
     /**
+     * Get the field to be compared with the main input
+     *
      * @return null
      */
     public function getFom()

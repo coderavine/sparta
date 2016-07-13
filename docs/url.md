@@ -5,14 +5,14 @@
 This validator can be used to ensure that the given value is a valid __URL__. 
 
 ## Usage
-There are two different ways in which all Inspect validators can be used. See below examples for more explainations:
+There are two different ways in which all Sparta validators can be used. See below examples for more explanations:
 
 ### Example #1:
 You can simply instantiate the `Url` validator and pass to it the data that you want to validate. 
 
 ```php
 <?php
-use Inspect\Validators\Url;
+use Sparta\Validators\Url;
 
 $validator = Url();
 
@@ -26,7 +26,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 
 ```php
 <?php
-use Inspect\Validation;
+use Sparta\Validation;
 
 $rules = [
 	'avatarLink' => 'url',

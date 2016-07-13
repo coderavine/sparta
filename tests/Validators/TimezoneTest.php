@@ -24,13 +24,31 @@ class TimezoneTest extends \PHPUnit_Framework_TestCase
         $this->validator = new Timezone();
     }
 
-
     /**
      * Test validator Timezone basic behavior
      *
+     * @dataProvider getTimezomeDataProvider
+     * @param $timezone
+     * @param $expected
      */
-    public function testBasicBehavior()
+    public function testBasicBehavior($timezone, $expected)
     {
-        // Your test code over here
+        $this->assertEquals($expected, $this->validator->isValid($timezone));
+    }
+
+    /**
+     * Setup basic behavior test data
+     */
+    public function getTimezomeDataProvider()
+    {
+        return [
+            ['Africa/Abidjan', true],
+            ['America/Creston', true],
+            ['Arctic/Longyearbyen', true],
+            ['Asia/Colombo', true],
+            ['2', false],
+            ['normalString', false],
+            [null, false],
+        ];
     }
 }

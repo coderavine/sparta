@@ -12,25 +12,37 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
-     * @var Callback
-     */
-    public $validator;
-
-    /**
-     * Setup testing environment
-     */
-    public function setUp()
-    {
-        $this->validator = new Callback();
-    }
-
-
-    /**
      * Test validator Callback basic behavior
      *
      */
     public function testBasicBehavior()
     {
-        // Your test code over here
+        $validator = new Callback(function ($input) {
+            return ($input == 1) ? true : false;
+        });
+        $this->assertTrue($validator->isValid(1));
+        $this->assertFalse($validator->isValid(2));
+    }
+
+    public function testValidatorReturnsFalseWhenCallbackThrowExceptionForAnyReason()
+    {
+        $validator = new Callback([new TestCallable(), 'isValid']);
+        $this->assertFalse($validator->isValid(1));
+    }
+
+    /**
+     * @expectedException Sparta\Exceptions\InvalidValidatorArguments
+     */
+    public function testValidatorThrowsExceptionWhenNoValidCallbackIsProvided()
+    {
+        $validator = new Callback();
+    }
+}
+
+class TestCallable
+{
+    public function isValid($input)
+    {
+        throw new Exception('callback exception occurred');
     }
 }

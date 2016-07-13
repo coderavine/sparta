@@ -1,6 +1,8 @@
 <?php
 namespace Sparta\Validators;
 
+use Sparta\Exceptions\InvalidValidatorArguments;
+
 /**
  * Callback Class
  *
@@ -17,37 +19,36 @@ class Callback extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'YOUR_MESSAGE_KEY' => 'your message content',
+        'invalid_data' => 'given data is not valid',
     ];
 
     /**
      * Callback constructor.
      *
      * @param array $options validator options
+     *
+     * @throws InvalidValidatorArguments
      */
-    public function __construct($options = [])
+    public function __construct($options = null)
     {
         if (is_callable($options)) {
             $this->options = ['callback' => $options];
+        } else {
+            throw new InvalidValidatorArguments('No callback given');
         }
     }
-
 
     /**
      * Validate given input
      *
      * @param mixed $input
+     *
      * @return bool
-     * @throws \Exception
      */
     public function isValid($input)
     {
         $callback = $this->options['callback'];
-        if (empty($callback)) {
-            throw new \Exception('No callback given');
-        }
-        $args = [$input];
-
+        $args = $this->normalizeArguments($input);
         try {
             if (!call_user_func_array($callback, $args)) {
                 return false;

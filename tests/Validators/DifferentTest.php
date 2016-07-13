@@ -28,9 +28,38 @@ class DifferentTest extends \PHPUnit_Framework_TestCase
     /**
      * Test validator Different basic behavior
      *
+     * @dataProvider getDifferentDataProvider
+     * @param $compareTo
+     * @param $input
+     * @param $expected
      */
-    public function testBasicBehavior()
+    public function testBasicBehavior($compareTo, $input, $expected)
     {
-        // Your test code over here
+        $validator = new Different($compareTo);
+        $this->assertEquals($expected, $validator->isValid($input));
+    }
+
+    /**
+     * Ensure that we can set and get field to compare with
+     * using validator setter/getter methods
+     */
+    public function testGetComparedToField()
+    {
+        $this->assertNull($this->validator->getFom());
+        $this->validator->setFrom('value1');
+        $this->assertEquals('value1', $this->validator->getFom());
+    }
+
+    /**
+     * Setup some test data for basic behavior test
+     */
+    public function getDifferentDataProvider()
+    {
+        return [
+            ['test', 'test', false],
+            [1, 1, false],
+            ['value1', 'value2', true],
+            [['from' => 'value1'], 'value2', true]
+        ];
     }
 }

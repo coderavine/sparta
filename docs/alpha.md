@@ -9,7 +9,7 @@ The `Alpha` validator supports the below option:
 * `allow_whitespace`: determines if whitespace characters are allowed or not. This is an _optional_ parameter and the default value is __false__. 
 
 ## Usage
-There are two different ways in which all __Sparta__ validators can be used. See below examples for more explainations:
+There are two different ways in which all __Sparta__ validators can be used. See below examples for more explanations:
 
 ### Example #1:
 You can simply instantiate the `Alpha` validator and pass to it the data that you want to validate. 

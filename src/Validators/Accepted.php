@@ -8,14 +8,12 @@ namespace Sparta\Validators;
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
  * @link    http://www.coderavine.com/
  */
-/**
- * Class Accepted
- * @package Sparta\Validators
- */
 class Accepted extends AbstractValidator
 {
 
     /**
+     * List of allowed values
+     *
      * @var array
      */
     protected $allowedValues = ['yes', 'on', '1', 1, true, 'true'];
@@ -26,7 +24,7 @@ class Accepted extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'INVALID_DATA' => '%s is not a valid value',
+        'invalid_data' => '%s is not a valid value',
     ];
 
     /**
@@ -39,7 +37,9 @@ class Accepted extends AbstractValidator
     public function isValid($input)
     {
         if (!in_array($input, $this->allowedValues, true)) {
-            $this->errors[] = sprintf($this->message('INVALID_DATA'), $input);
+            $this->errors[] = sprintf(
+                $this->message('invalid_data'), is_numeric($input) ? (string)$input : $input
+            );
 
             return false;
         }

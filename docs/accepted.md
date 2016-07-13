@@ -1,6 +1,6 @@
-#Email Validator
+#Accepted Validator
 
-This validator can be used to ensure that a given value is a valid email. 
+This validator can be used to ensure that the given value must be yes, on, 1, or true.
 
 [**Back to Validators List**](./reference.md#validators-list)
 
@@ -8,15 +8,15 @@ This validator can be used to ensure that a given value is a valid email.
 There are two different ways in which all Sparta validators can be used. See below examples for more explanations:
 
 ## option #1
-You can simply instantiate the `Email` validator and pass to it the data that you want to validate. 
+You can simply instantiate the `Accepted` validator and pass to it the data that you want to validate. 
 
 ```php
 <?php
-use Sparta\Validators\Email;
+use Sparta\Validators\Accepted;
 
-$validator = Email();
+$validator = Accepted();
 
-if(!$validator->isValid('foo@bar.com')){ 
+if(!$validator->isValid('off')){ 
 	//handle errors
 }
 ```
@@ -29,10 +29,10 @@ You can build your validation rules and pass it to the __Validation__ object to 
 use Sparta\Validation;
 
 $rules = [
-	'email_address' => 'email',
+	'term_of_service' => 'accepted',
 ];
 
-//Assuming that your $data has an element with the key "email_address"
+//Assuming that your $data has an element with the key "term_of_service"
 
 $validation = new Validation($data, $rules);
 if(!$validation->isValid()){
