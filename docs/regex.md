@@ -1,7 +1,6 @@
-#Url Validator
+#Regex Validator
 
-This validator can be used to ensure that the given value is a valid __URL__. 
-
+This validator can be used to ensure that the given field under validation must match the given regular expression.
 
 [**Back to Validators List**](./reference.md#validators-list)
 
@@ -9,15 +8,15 @@ This validator can be used to ensure that the given value is a valid __URL__.
 There are two different ways in which all Sparta validators can be used. See below examples for more explanations:
 
 ### Example #1:
-You can simply instantiate the `Url` validator and pass to it the data that you want to validate. 
+You can simply instantiate the `Regex` validator and pass to it the data that you want to validate. 
 
 ```php
 <?php
-use Sparta\Validators\Url;
+use Sparta\Validators\Regex;
 
-$validator = Url();
+$validator = Regex(['pattern' => '/\w{4}/']);
 
-if(!$validator->isValid('http://www.google.com')){ 
+if(!$validator->isValid('cool')){ 
 	//handle errors
 }
 ```
@@ -28,12 +27,11 @@ You can build your validation rules and pass it to the __Validation__ object to 
 ```php
 <?php
 use Sparta\Validation;
+$data = ['word' => 'nice'];
 
 $rules = [
-	'avatarLink' => 'url',
+	'word' => 'regex:format=/\w{4}/',
 ];
-
-//Assuming that your $data has an element with the key "link"
 
 $validation = new Validation($data, $rules);
 if(!$validation->isValid()){
@@ -41,7 +39,6 @@ if(!$validation->isValid()){
 }
 
 ```
-
 
 In case of validation failure, error messages can be retrieved using the `getErrors` method.
 

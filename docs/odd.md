@@ -14,7 +14,7 @@ You can simply instantiate the `Odd` validator and pass to it the data that you 
 use Sparta\Validators\Odd;
 
 $validator = Odd();
-if(!$validator->isValid('provideyoursimpletext')){
+if(!$validator->isValid(1)){
 	foreach($validator->errors as $error){
 		echo $error;
 	}
@@ -30,8 +30,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 use Sparta\Validation;
 
 $rules = [
-	'total' => 'odd',
-	//other rules if any
+	'odd_number' => 'odd',
 ];
 
 $validation = new Validation($data, $rules);

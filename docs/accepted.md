@@ -1,6 +1,6 @@
 #Accepted Validator
 
-This validator can be used to ensure that the given value must be yes, on, 1, or true.
+This validator can be used to ensure that the field under validation must be yes, on, 1, or true. For example, this is useful for validating "Terms of Agreement" acceptance filed.
 
 [**Back to Validators List**](./reference.md#validators-list)
 
@@ -16,7 +16,8 @@ use Sparta\Validators\Accepted;
 
 $validator = Accepted();
 
-if(!$validator->isValid('off')){ 
+//Assuming that we have a field named $term_of_acceptance
+if(!$validator->isValid($term_of_service)){ 
 	//handle errors
 }
 ```
@@ -33,7 +34,6 @@ $rules = [
 ];
 
 //Assuming that your $data has an element with the key "term_of_service"
-
 $validation = new Validation($data, $rules);
 if(!$validation->isValid()){
 	//handle errors

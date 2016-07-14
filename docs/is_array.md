@@ -1,6 +1,6 @@
 #IsArray Validator 
 
-This validator can be used to ensure that a given value is a valid __array__. 
+This validator can be used to ensure that the given value is a valid __array__. 
 
 [**Back to Validators List**](./reference.md#validators-list)
 

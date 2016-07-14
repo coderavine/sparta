@@ -51,7 +51,7 @@ To achieve this, we first need to define our validation rules for the __username
 <?php
 	//We define our rules for the username field as specified above
 	$rules = [
-		'username' => 'required|alpha|min=12|max=50',
+		'username' => 'required|alpha|min:12|max:50',
 	];
 ```
     
@@ -85,11 +85,8 @@ Please refer to the [Library Documentation](https://coderavine.github.io/sparta/
 
 #Contributions
 
-Contributing your PHP love to __Sparta__ is always more than welcome via a __Pull Request__. Please refer to [Contribution Policy](docs/contributions.md)
+Contributing your PHP love to __Sparta__ is always more than welcome via a __Pull Request__. Please refer to [Contribution Section](docs/contributions.md)
 
 
 #License
 The Sparta Validation is open-sourced library licensed under the [**MIT**](https://opensource.org/licenses/MIT) license
-
-
-

@@ -5,7 +5,7 @@ This validator can be used to determine whether a given object is an instance of
 [**Back to Validators List**](./reference.md#validators-list)
 
 ## Supported Options
-The `IsInstanceOf` validator supports the below options:
+The `IsInstanceOf` validator supports the below option:
 
 * `class`: Defines the fully-qualified class name which objects must be an instance of.
 
@@ -59,14 +59,14 @@ if(!$validation->isValid()){
 ```
 In case of validation failure, error messages can be retrieved using the `getErrors` method.
 
-__Note__: You can even write the rule in a shorter format as follows:
-
-```php
-<?php
-
-$rules = [
-	'password' => 'is_instance_of:Sparta\Validators\Alpha',
-];
-
-```
+>__Note__: You can even write the rule in a shorter format as follows:
+>
+>```php
+><?php
+>
+>$rules = [
+>	'password' => 'is_instance_of:Sparta\Validators\Alpha',
+>];
+>
+>```
 [**Back to Validators List**](./reference.md#validators-list)

@@ -1,5 +1,5 @@
 # Positive Validator 
-This validator can be used to ensure that a given contains only __positive__ numbers.
+This validator can be used to ensure that the given field is a __positive__ number.
 
 [**Back to Validators List**](./reference.md#validators-list)
 
@@ -16,10 +16,8 @@ You can simply instantiate the `Positive` validator and pass to it the data that
 use Sparta\Validators\Positive;
 
 $validator = Positive();
-if(!$validator->isValid('provideyoursimpletext')){
-	foreach($validator->errors as $error){
-		echo $error;
-	}
+if(!$validator->isValid('total')){
+//Handle errors
 }
 ```
 

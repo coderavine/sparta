@@ -33,7 +33,6 @@ $rules = [
 ];
 
 //Assuming that your $data has an element with the key "data_load"
-
 $validation = new Validation($data, $rules);
 if(!$validation->isValid()){
 	//handle errors

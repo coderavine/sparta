@@ -5,9 +5,9 @@ This validator can be used to check if a given value is contained in another one
 [**Back to Validators List**](./reference.md#validators-list)
 
 ## Supported Options
-The `Alpha` validator supports the below options:
+The `Alpha` validator supports the below option:
 
-* `needle`: specifies the value to look for. It is a required parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
+* `needle`: determines the __field__/__value__ to look for. It is a __required__ parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
 
 
 ## Usage
@@ -20,23 +20,21 @@ You can instantiate the `Contains` validator and pass to it the data that you wa
 <?php
 use Sparta\Validators\Contains;
 
-// Searching for a specific string/word example
+//Searching for a specific sub string/word example
 $validator = Contains('stupid');
-
 if(!$validator->isValid('This is a stupid person')){ 
 	//handle errors
 }
 
-// Searching for an element in a given array example
+//Searching for an element in a given array example
 $arrayValidator = Contains('foo');
 if(!$validator->isValid(['foo','bar'])){ 
 	//handle errors
 }
 
 
-
 ```
-You can also set the value of the `needle` parameter using the validator setter methods `setNeedle`:
+You can also set the value of the `needle` option using the validator setter method `setNeedle`:
 
 ```php
 <?php
@@ -45,7 +43,7 @@ use Sparta\Validators\Contains;
 $validator = Contains();
 $validator->setNeedle('stupid');
 
-// $sentence variable can be from $_POST
+//$sentence variable can be from $_POST
 if(!$validator->isValid($sentence)){ 
 	//handle errors
 }
@@ -72,16 +70,16 @@ if(!$validation->isValid()){
 ```
 In case of validation failure, error messages can be retrieved using the `getErrors` method.
 
-__Note__: You can even write the rule in a shorter format as follows:
-
-```php
-<?php
-use Sparta\Validation;
-
-$rules = [
-	'title' => 'contains:test',
-];
-
-```
+>__Note__: You can write the rule in a shorter format by dropping the argument key as follows:
+>
+>```php
+><?php
+>use Sparta\Validation;
+>
+>$rules = [
+>	'title' => 'contains:test',
+>];
+>
+>```
 
 [**Back to Validators List**](./reference.md#validators-list)

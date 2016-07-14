@@ -5,9 +5,9 @@ This validator can be used to ensure that two values are matching (e.g. __passwo
 [**Back to Validators List**](./reference.md#validators-list)
 
 ## Supported Options
-The `Equals` validator supports the below options:
+The `Equals` validator supports the below option:
 
-* `to`: determines the element that our check value should be matching. It is a required parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
+* `to`: determines the element that the field under validation should be matching. It is a __required__ parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
  
 
 ## Usage
@@ -51,16 +51,16 @@ if(!$validation->isValid()){
 ```
 In case of validation failure, error messages can be retrieved using the `getErrors` method.
 
-__Note__: You can even write the rule in a shorter format as follows:
-
-```php
-<?php
-use Sparta\Validation;
-
-$rules = [
-	'password' => 'equals:passwordConfirm',
-];
-
-```
+>__Note__: You can even write the rule in a shorter format as follows:
+>
+>```php
+><?php
+>use Sparta\Validation;
+>
+>$rules = [
+>	'password' => 'equals:passwordConfirm',
+>];
+>
+>```
 
 [**Back to Validators List**](./reference.md#validators-list)

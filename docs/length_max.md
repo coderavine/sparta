@@ -1,12 +1,12 @@
 #LengthMax Validator
-This validator can be used to ensure that the length of a given value does not exceed specified maximum length. This validator has an alias called `Max` which can be used instead
+This validator can be used to ensure that the length of the given field does not exceed a specified maximum length.
 
 [**Back to Validators List**](./reference.md#validators-list)
 
 ## Supported Options
-The `LengthMax` validator supports the below options:
+The `LengthMax` validator supports the below option:
 
-* `is`: specifies the required maximum length. It is a required parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
+* `is`: specifies the required maximum length. It is a __required__ parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
 
 
 ## Usage
@@ -25,6 +25,16 @@ $validator = LengthMax(11);
 if(!$validator->isValid('this is ten')){ 
 	//handle errors
 }
+```
+
+You can also specify the maximum value using the class setter method `setLength` as shown below:
+
+```php
+<?php
+use Sparta\Validators\LengthMax;
+
+$validator = LengthMax();
+$validator->setLength(11);
 ```
 
 ### Example #2:
@@ -49,14 +59,15 @@ if(!$validation->isValid()){
 
 In case of validation failure, error messages can be retrieved using the `getErrors` method.
 
-__Note__: You can even write the rule in a shorter format as follows:
+>__Note__: You can even write the rule in a shorter format as follows:
+>
+>```php
+><?php
+>
+>$rules = [
+>	'password' => 'length:10',
+>];
+>
+>```
 
-```php
-<?php
-
-$rules = [
-	'password' => 'length:10',
-];
-
-```
 [**Back to Validators List**](./reference.md#validators-list)

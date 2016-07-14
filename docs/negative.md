@@ -1,5 +1,5 @@
 # Negative Validator 
-This validator can be used to ensure that a given contains only __negative__ numbers.
+This validator can be used to ensure that the given field is a __negative__ number.
 
 [**Back to Validators List**](./reference.md#validators-list)
 
@@ -14,7 +14,8 @@ You can simply instantiate the `Negative` validator and pass to it the data that
 use Sparta\Validators\Negative;
 
 $validator = Negative();
-if(!$validator->isValid('provideyoursimpletext')){
+
+if(!$validator->isValid(-100)){
 	foreach($validator->errors as $error){
 		echo $error;
 	}
@@ -30,8 +31,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 use Sparta\Validation;
 
 $rules = [
-	'total' => 'negative',
-	//other rules if any
+	'negative_field' => 'negative',
 ];
 
 $validation = new Validation($data, $rules);

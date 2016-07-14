@@ -1,13 +1,13 @@
 #Length
 
-This validator can be used to ensure that the length of a given value equals to the specified one including whitespace. 
+This validator can be used to ensure that the length of a given field equals to the specified length. 
 
 [**Back to Validators List**](./reference.md#validators-list)
 
 ## Supported Options
-The `Length` validator supports the below options:
+The `Length` validator supports the below option:
 
-* `is`: specifies the required string length. It is a required parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
+* `is`: specifies the required string length. It is a __required__ parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
 
 
 ## Usage
@@ -27,7 +27,7 @@ if(!$validator->isValid('this is ten')){
 	//handle errors
 }
 ```
-You can also set the __is__ value using validator setter methods `setLength`:
+You can also set the required __length__ value using the validator setter methods `setLength`:
  
 ```php
 <?php
@@ -59,14 +59,15 @@ if(!$validation->isValid()){
 ```
 In case of validation failure, error messages can be retrieved using the `getErrors` method.
 
-__Note__: You can even write the rule in a shorter format as follows:
+>__Note__: You can write the rule in a shorter format as follows:
+>
+>```php
+><?php
+>
+>$rules = [
+>	'password' => 'length:10',
+>];
+>
+>```
 
-```php
-<?php
-
-$rules = [
-	'password' => 'length:10',
-];
-
-```
 [**Back to Validators List**](./reference.md#validators-list)

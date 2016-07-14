@@ -1,7 +1,6 @@
-#Url Validator
+#Different Validator
 
-This validator can be used to ensure that the given value is a valid __URL__. 
-
+This validator can be used to ensure that the given field under validation must have a different value than another specified field.
 
 [**Back to Validators List**](./reference.md#validators-list)
 
@@ -9,15 +8,15 @@ This validator can be used to ensure that the given value is a valid __URL__.
 There are two different ways in which all Sparta validators can be used. See below examples for more explanations:
 
 ### Example #1:
-You can simply instantiate the `Url` validator and pass to it the data that you want to validate. 
+You can simply instantiate the `Different` validator and pass to it the data that you want to validate. 
 
 ```php
 <?php
-use Sparta\Validators\Url;
+use Sparta\Validators\Different;
 
-$validator = Url();
+$validator = Different(['from' => 'coderavine@gmail.com']);
 
-if(!$validator->isValid('http://www.google.com')){ 
+if(!$validator->isValid('myemail@gmail.com')){ 
 	//handle errors
 }
 ```
@@ -28,12 +27,11 @@ You can build your validation rules and pass it to the __Validation__ object to 
 ```php
 <?php
 use Sparta\Validation;
+$data = ['blockedEmail' => 'coderavine@gmail.com'];
 
 $rules = [
-	'avatarLink' => 'url',
+	'email' => 'different:from=blockedEmail',
 ];
-
-//Assuming that your $data has an element with the key "link"
 
 $validation = new Validation($data, $rules);
 if(!$validation->isValid()){
@@ -41,7 +39,6 @@ if(!$validation->isValid()){
 }
 
 ```
-
 
 In case of validation failure, error messages can be retrieved using the `getErrors` method.
 

@@ -14,13 +14,10 @@ You can simply instantiate the `Even` validator and pass to it the data that you
 use Sparta\Validators\Even;
 
 $validator = Even();
-if(!$validator->isValid('provideyoursimpletext')){
-	foreach($validator->errors as $error){
-		echo $error;
-	}
+if(!$validator->isValid(2)){
+//Handle errors
 }
 ```
-
 
 ### Example #2:
 You can build your validation rules and pass it to the __Validation__ object to handle as shown below:
@@ -30,8 +27,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 use Sparta\Validation;
 
 $rules = [
-	'total' => 'even',
-	//other rules if any
+	'field' => 'even',
 ];
 
 $validation = new Validation($data, $rules);

@@ -38,8 +38,7 @@ $rules = [
 	'ip_address' => 'ip',
 ];
 
-//Assuming that your $data has an element with the eye "ip_address"
-
+//Assuming that your $data has an element with a key named "ip_address"
 $validation = new Validation($data, $rules);
 if(!$validation->isValid()){
 	//handle errors

@@ -1,12 +1,12 @@
 # AlphaNum Validator 
-This validator can be used to ensure that a given value contains only __numeric__ and __alphabetical__ characters.
+This validator can be used to ensure that a given value contains only __numeric__ and __alphabetical__ characters. For example, this can be used to validate a username.
 
 [**Back to Validators List**](./reference.md#validators-list)
 
 ## Supported Options
 The `AlphaNum` validator supports the below option:
 
-* `allow_whitespace`: determines if whitespace characters are allowed or not. The default value is __false__.
+* `allow_whitespace`: determines if whitespace characters are allowed or not. This is an __optional__ parameter and the default value is __false__.
 
 
 ## Usage
@@ -21,7 +21,8 @@ use Sparta\Validators\AlphaNum;
 
 $validator = AlphaNum();
 
-if(!$validator->isValid('test123')){
+//Assuming that we have a field named $username
+if(!$validator->isValid($username)){
 	foreach($validator->errors as $error){
 		echo $error;
 	}
@@ -51,9 +52,10 @@ $rules = [
 	'username' => 'alpha_num:allow_whitespace',
 ];
 
+//Assuming that $data has a field with a key that is equals to `username`
 $validation = new Validation($data, $rules);
 if(!$validation->isValid()){
-	// Get errors by using the method $validation->getErrors(); 
+	//Get errors by using the method $validation->getErrors(); 
 }
 
 ```

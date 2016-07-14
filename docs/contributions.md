@@ -1,5 +1,5 @@
 #Contributing to Sparta
-Contributions to the library are always more than welcome. Kindly, do this by creating pull requests. To do so, just follow the below steps:
+Contributing your great ideas to the library are always more than welcome. Kindly, do this by creating pull requests. To do so, just follow the below steps:
 
 * Fork the project repository
 * Create your feature topic branch (`git checkout -b new-feature`)
@@ -12,8 +12,10 @@ Contributions to the library are always more than welcome. Kindly, do this by cr
 for more details about contributing to a project on github, kindly refer to [GitHub - Contributing to a Project](https://git-scm.com/book/en/v2/GitHub-Contributing-to-a-Project).
 
 #Creating a new Validator
-As mentioned before, adding a new validator to the library is a breeze. Sparta comes with the __spartan__ console command that will extremely ease this process. Note that before using this command, you need to install the symfony `Console` component. Please refer to the [official documentation ](http://symfony.com/doc/current/components/using_components.html) for more details.
+As mentioned before, adding a new validator to the library is a breeze. Sparta comes with the __spartan__ console command that will extremely ease this process. 
 
+>Note: before using this command, you need to install the symfony `Console` component. 
+>Please refer to the [official documentation ](http://symfony.com/doc/current/components/using_components.html) for more details.
 
 Once you are done installing the above dependency, you can generate a new validator using the `generate:validator` command as shown:
 
@@ -23,7 +25,7 @@ For example, to generate a new validated named Foo, you can use the below:
 
 `php spartan generate:validator Foo`
 
-This will generate a validator file named __Foo.php__ in the appropriate project directory. This validator class contains all necessary methods that you need implement to complete your task. A sample of the newely created class is given below:
+This will generate a validator file named __Foo.php__ in the appropriate project directory. This validator class contains all necessary methods that you need to implement in order to have a very basic validator. A sample code of the newly created class is given below:
 
 ```
 <?php
@@ -55,7 +57,7 @@ class Foo extends AbstractValidator
      */
     public function __construct($options = [])
     {
-        // Handle validator arguments over here
+        //Handle validator arguments over here
     }
 
 
@@ -83,20 +85,20 @@ class Foo extends AbstractValidator
 
 
 #Testing
-We believe that test-driven development can speed up your development process, as you can be confident that your code works before moving on and problems can be found early in the development cycle. Without test-driven development, it's common to find bugs later in the process, requiring the team to revisit older blocks of code, slowing down the process. Also, it makes us better programmers, as we have the opportunity to understand other people's code and your own code.
+We believe that test-driven development can speed up your development process, as you can be confident that your code works before moving on and problems can be found early in the development cycle. Without test-driven development, it's common to find bugs later in the process, requiring the team to revisit blocks of code, slowing down the process. Also, it makes us better programmers, as we have the opportunity to understand other people's code and your own code.
 
 We use __PHPUnit__ testing framework to test our library as it can assist in several areas. First, it can help us find the areas in the application that require refactoring. Second, the mere implementation of unit testing allows team to focus their attention on improving code, by making their code testable.
 
-So we assume that you have some background about this framework. If not, please refer to the  [official documentation ](https://phpunit.de/getting-started.html) before proceeding. 
+>Note: we assume that you have a basic knowledge of this framework. Kindly refer to the  [official documentation ](https://phpunit.de/getting->started.html) before proceeding. 
 
 ##Writing Tests
-With PHPUnit, the most basic thing you’ll write is a test case. A test case is just a term for a class with several different tests all related to the same functionality. There are a few rules you’ll need to follow when writing your cases so that they’ll work with PHPUnit. Please refer to the above section to read more about PHPUnit.
+With PHPUnit, the most basic thing you’ll write is a test case. A test case is just a term for a class with several different tests all related to the same functionality. There are a few rules you’ll need to follow when writing your cases so that they’ll work with PHPUnit. Please refer to the [PHPUnit Documentation ](https://phpunit.de/manual/current/en/index.html) to familiarize your self with the framework.
 
 We recommend using __Sparta__ console command option `--with-unit-test` that will ease the creation of test case class during creating the validator class as follows:
 
 `php spartan generate:validator Foo --with-unit-test`
 
-In addition to creating a validator class as explained earlier, it will also create test case file named __FooTest.php__ in the appropriate project tests folder. The file will look like the below:
+In addition to creating a validator class as explained earlier, this command will also create test case file named __FooTest.php__ in the appropriate project tests folder. The file will look like the below:
 
 ```
 <?php
@@ -154,14 +156,15 @@ or
 $ composer test
 ```
 
-
+#Issues
+If you find any issue, please feel free to report it in [here](https://github.com/coderavine/sparta/issues)
 
 #Documentation
 
 Our documentation is proudly generated by [Couscous](http://couscous.io/) , an awesome tool which turns [Markdown](https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet) documentation into beautiful websites. To contribute to the project documentation, please do the following:
 
 * Write your documentation using Markdown and place them inside the repository `docs` folder.
-* Push your changes to the repository by creating a pull request
+* Create a pull request to submit your changes.
 
 
 

@@ -6,7 +6,7 @@ This validator can be used to ensure that a given value contains only __alphabet
 ## Supported Options
 The `Alpha` validator supports the below option:
 
-* `allow_whitespace`: determines if whitespace characters are allowed or not. This is an _optional_ parameter and the default value is __false__. 
+* `allow_whitespace`: determines if whitespace characters are allowed or not. This is an __optional__ parameter and the default value is __false__. 
 
 ## Usage
 
@@ -21,10 +21,9 @@ You can simply instantiate the `Alpha` validator and pass to it the data that yo
 use Sparta\Validators\Alpha;
 
 $validator = Alpha();
+
 if(!$validator->isValid('coderavine')){
-	foreach($validator->errors as $error){
-		echo $error;
-	}
+	//handle errors
 }
 ```
 
@@ -53,7 +52,7 @@ $rules = [
 
 $validation = new Validation($data, $rules);
 if(!$validation->isValid()){
-	// Get errors by using the method $validation->getErrors(); 
+	//Get errors by using the method $validation->getErrors(); 
 }
 
 ```

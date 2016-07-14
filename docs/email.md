@@ -33,12 +33,10 @@ $rules = [
 ];
 
 //Assuming that your $data has an element with the key "email_address"
-
 $validation = new Validation($data, $rules);
 if(!$validation->isValid()){
 	//handle errors
 }
-
 ```
 
 In case of validation failure, error messages can be retrieved using the `getErrors` method.

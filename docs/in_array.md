@@ -7,7 +7,7 @@ This validator can be used to ensure that a given value is contained in the prov
 ## Supported Options
 The `InArray` validator supports the below option:
 
-* `haystack`: specifies the array to search in. It is a required parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
+* `haystack`: determine the array that will be used to search for the field under validation. It is a __required__ parameter and failing to provide this will result in an `InvalidValidatorArguments` exception.
  
 
 ## Usage
@@ -62,14 +62,14 @@ if(!$validation->isValid()){
 In case of validation failure, error messages can be retrieved using the `getErrors` method.
 
 
-__Note__: You can even write the rule in a shorter format as follows:
-
-```php
-<?php
-
-$rules = [
-	'needle' => 'in_array:validAnswers',
-];
-
-```
+>__Note__: You can write the rule in a shorter format by dropping the argument key as follows:
+>
+>```php
+><?php
+>
+>$rules = [
+>	'needle' => 'in_array:validAnswers',
+>];
+>
+>```
 [**Back to Validators List**](./reference.md#validators-list)
