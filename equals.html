@@ -60,12 +60,12 @@
 <p>This validator can be used to ensure that two values are matching (e.g. <strong>password</strong> and __confirm_password__). </p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="supported-options">Supported Options</h2>
-<p>The <code>Equals</code> validator supports the below options:</p>
+<p>The <code>Equals</code> validator supports the below option:</p>
 <ul>
-<li><code>to</code>: determines the element that our check value should be matching. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
+<li><code>to</code>: determines the element that the field under validation should be matching. It is a <strong>required</strong> parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h2 id="example-1">Example #1</h2>
 <p>You can simply instantiate the <code>Equals</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
@@ -96,14 +96,16 @@ if(!$validation-&gt;isValid()){
 }
 </code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
+<blockquote>
 <p><strong>Note</strong>: You can even write the rule in a shorter format as follows:</p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validation;
 
 $rules = [
-    'password' =&gt; 'equals:passwordConfirm',
+  'password' =&gt; 'equals:passwordConfirm',
 ];
 </code></pre>
+</blockquote>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
                 </section>
 

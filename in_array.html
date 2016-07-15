@@ -62,10 +62,10 @@
 <h2 id="supported-options">Supported Options</h2>
 <p>The <code>InArray</code> validator supports the below option:</p>
 <ul>
-<li><code>haystack</code>: specifies the array to search in. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
+<li><code>haystack</code>: determine the array that will be used to search for the field under validation. It is a <strong>required</strong> parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h2 id="example-1">Example #1</h2>
 <p>You can simply instantiate the <code>InArray</code> validator and pass to it the data that you want to validate.</p>
 <pre><code class="language-php">&lt;?php
@@ -102,14 +102,16 @@ if(!$validation-&gt;isValid()){
 }
 </code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
-<p><strong>Note</strong>: You can even write the rule in a shorter format as follows:</p>
+<blockquote>
+<p><strong>Note</strong>: You can write the rule in a shorter format by dropping the argument key as follows:</p>
 <pre><code class="language-php">&lt;?php
 
 $rules = [
-    'needle' =&gt; 'in_array:validAnswers',
+  'needle' =&gt; 'in_array:validAnswers',
 ];
 </code></pre>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
+</blockquote>
                 </section>
 
             </div>

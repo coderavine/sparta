@@ -57,33 +57,33 @@
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
                     <h1 id="between-validator">Between Validator</h1>
-<p>This validator can be used to ensure that a given value falls within a specified range. </p>
+<p>This validator can be used to ensure that a given value falls within a specified range. For example, we can use this to validate that a number must be between  10 and 100.</p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="supported-options">Supported Options</h2>
 <p>The <code>Between</code> validator supports the below options:</p>
 <ul>
 <li>
-<p><code>min</code>: determines the minimum value of the range. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</p>
+<p><code>min</code>: determines the minimum value of the range. It is a <strong>required</strong> parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</p>
 </li>
 <li>
-<p><code>max</code>: determines the maximum value of the range. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</p>
+<p><code>max</code>: determines the maximum value of the range. It is a <strong>required</strong> parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</p>
 </li>
-<li><code>inclusive</code>: determines if both min and max parameters will be included in the range or not. This is optional and the default value is <strong>true</strong>.</li>
+<li><code>inclusive</code>: determines if both min and max parameters will be included in the range or not. This is <strong>optional</strong> and the default value is <strong>true</strong>.</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <p>There are two different ways in which all <strong>Sparta</strong> validators can be used. See below examples for more explanations:</p>
 <h3 id="example-1">Example #1</h3>
-<p>let us assume that you want to ensure that only users between the age of 18-100 can proceed with the registration process. To achieve this, you can instantiate the <code>Between</code> validator and as shown below:</p>
+<p>Let us assume that you want to ensure that only users between the age of 18-100 can proceed with the registration process in your web application. To achieve this, you can instantiate the <code>Between</code> validator as shown below:</p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validators\Between;
 
 $validator = Between(['min' =&gt; 18, 'max' =&gt; 100]);
 
-// Assuming you have a variable named $age
+//Assuming you have a variable named $age
 if(!$validator-&gt;isValid($age)){ 
     //handle errors
 }</code></pre>
-<p>You can also both <strong>min</strong> and <strong>max</strong> values using validator setter methods <code>setMin</code> and <code>setMax</code>:</p>
+<p>You can also set the value of both <strong>min</strong> and <strong>max</strong> using validator setter methods <code>setMin</code> and <code>setMax</code>:</p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validators\Between;
 
@@ -92,11 +92,11 @@ $validator = Between();
 $validator-&gt;setMin(18);
 $validator-&gt;setMax(100);
 
-// $age variable can be from $_POST
+//$age variable can be from $_POST
 if(!$validator-&gt;isValid($age)){ 
     //handle errors
 }</code></pre>
-<p>By default, both <strong>min</strong> and <strong>max</strong> values will included in the specified range. If both should be excluded, then you need to set the <code>inclusive</code> parameter to <strong>false</strong>. This can be done either via the validator constructor:</p>
+<p>By default, both <strong>min</strong> and <strong>max</strong> values will be included in the specified range. If both should be excluded, then you need to set the <code>inclusive</code> parameter to <strong>false</strong>. This can be done either via the validator constructor:</p>
 <pre><code class="language-php">$validator = Between(['min' =&gt; 18, 'max' =&gt; 100, 'inclusive' =&gt; true]);</code></pre>
 <p>Or it can be configured via the validator setter method <code>setInclusive</code>:</p>
 <pre><code class="language-php">$validator-&gt;setInclusive(true);</code></pre>
@@ -115,15 +115,18 @@ if(!$validation-&gt;isValid()){
     //handle errors
 }</code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
-<p><strong>Note</strong>: You can even write the rule in a shorter format as follows:</p>
+<blockquote>
+<p><strong>Note</strong>: you can write the rule in a shorter format by dropping the arguments keys as follows:</p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validation;
 
 $rules = [
-    'age' =&gt; 'between:18,100,true',
+  'age' =&gt; 'between:18,100,true',
 ];
 </code></pre>
-<p>However, keep in mind that when using the short format, options should be passed in the above specified order (i.e., min, max, and then inclusive). Failing to do so will result in undesirable behaviors.</p>
+<p>However, keep in mind that when you do so, options should be passed in the above specified order (i.e., min, max, and then inclusive). Failing
+to do so will result in undesirable behaviors.</p>
+</blockquote>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
                 </section>
 

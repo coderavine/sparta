@@ -62,7 +62,7 @@
 <h2 id="supported-options">Supported Options</h2>
 <p>The <code>Ip</code> validator supports the below options:</p>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h3 id="example-1">Example #1:</h3>
 <p>You can simply instantiate the <code>Ip</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
@@ -82,8 +82,7 @@ $rules = [
     'ip_address' =&gt; 'ip',
 ];
 
-//Assuming that your $data has an element with the eye "ip_address"
-
+//Assuming that your $data has an element with a key named "ip_address"
 $validation = new Validation($data, $rules);
 if(!$validation-&gt;isValid()){
     //handle errors

@@ -60,7 +60,7 @@
 <p>This validator can be used to ensure that a given value is a valid email. </p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h2 id="option-1">option #1</h2>
 <p>You can simply instantiate the <code>Email</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
@@ -81,12 +81,10 @@ $rules = [
 ];
 
 //Assuming that your $data has an element with the key "email_address"
-
 $validation = new Validation($data, $rules);
 if(!$validation-&gt;isValid()){
     //handle errors
-}
-</code></pre>
+}</code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
                 </section>

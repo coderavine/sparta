@@ -57,15 +57,15 @@
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
                     <h1 id="lengthmax-validator">LengthMax Validator</h1>
-<p>This validator can be used to ensure that the length of a given value does not exceed specified maximum length. </p>
+<p>This validator can be used to ensure that the length of the given field does not exceed a specified maximum length.</p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="supported-options">Supported Options</h2>
-<p>The <code>LengthMax</code> validator supports the below options:</p>
+<p>The <code>LengthMax</code> validator supports the below option:</p>
 <ul>
-<li><code>is</code>: specifies the required maximum length. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
+<li><code>is</code>: specifies the required maximum length. It is a <strong>required</strong> parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h3 id="example-1">Example #1:</h3>
 <p>You can simply instantiate the <code>LengthMax</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
@@ -76,6 +76,12 @@ $validator = LengthMax(11);
 if(!$validator-&gt;isValid('this is ten')){ 
     //handle errors
 }</code></pre>
+<p>You can also specify the maximum value using the class setter method <code>setLength</code> as shown below:</p>
+<pre><code class="language-php">&lt;?php
+use Sparta\Validators\LengthMax;
+
+$validator = LengthMax();
+$validator-&gt;setLength(11);</code></pre>
 <h3 id="example-2">Example #2:</h3>
 <p>You can build your validation rules and pass it to the <strong>Validation</strong> object to handle as shown below:</p>
 <pre><code class="language-php">&lt;?php
@@ -93,13 +99,15 @@ if(!$validation-&gt;isValid()){
 }
 </code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
+<blockquote>
 <p><strong>Note</strong>: You can even write the rule in a shorter format as follows:</p>
 <pre><code class="language-php">&lt;?php
 
 $rules = [
-    'password' =&gt; 'length:10',
+  'password' =&gt; 'length:10',
 ];
 </code></pre>
+</blockquote>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
                 </section>
 

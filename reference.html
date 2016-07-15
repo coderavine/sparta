@@ -59,7 +59,7 @@
                     <h1 id="validation-rules">Validation Rules</h1>
 <p><strong>Sparta</strong> has a simple rule's syntax that can be defined in two different ways. Here are the explanations of both:</p>
 <h3 id="option-1">Option 1:</h3>
-<p>The default syntax is to build your rule as string using various delimiters to denote the different parts (i.e., <strong>validator</strong>, <strong>arguments</strong>, and <strong>arguments values</strong>). A single attribute rule can be writting as follows:</p>
+<p>The default syntax is to build your rule as string using various delimiters to denote the different parts (i.e., <strong>validator</strong>, <strong>arguments</strong>, and <strong>arguments values</strong>). A single attribute rule can be written as follows:</p>
 <pre><code>'attribute_name' =&gt; 'rule1 : argument1 = value1 , argument2 = value2 | rule2 | ....' </code></pre>
 <h3><a name="rule-syntax-explaination"></a>Rule's Syntax</h3>
 <p>The following list providers a brief description of each rule segment:</p>
@@ -77,7 +77,7 @@
 <p>A simple example that illustrates the usage of this syntax option is given below:</p>
 <pre><code class="language-php">&lt;?php
 $rules = [
-    'username'      =&gt; 'required|alpha_num|length_min=12,length_max=50',
+    'username'      =&gt; 'required|alpha_num|min:12|max:50',
     'email_address' =&gt; 'required|email'
 ];</code></pre>
 <h3 id="option-2">Option 2:</h3>
@@ -87,8 +87,8 @@ $rules = [
     'username'      =&gt; [
         'required',
         'alpha',
-        'length_min=12',
-        'length_max=50',
+        'length_min:12',
+        'length_max:50',
     ]
     'email_address' =&gt; [
         'required',
@@ -98,35 +98,43 @@ $rules = [
 <h1><a name="validators-list"></a>Predefined Validators List</h1>
 <p>Sparta comes with the below out of the box validators:</p>
 <ul>
-<li><a href="./alpha.html"><strong>Alpha</strong></a>: a field must contain only alphabetic characters</li>
-<li><a href="./alpha_num.html"><strong>AlphaNum</strong></a>: a filed must contain only number and alphabetic character</li>
-<li><a href="./between.html"><strong>Between</strong></a>: a number falls within specified range</li>
-<li><a href="./boolean.html"><strong>Boolean</strong></a>: a field must be boolean</li>
-<li><a href="./contains.html"><strong>Contains</strong></a>: a field contains a given value</li>
-<li><a href="./date.html"><strong>Date</strong></a>: a field must be a valid date</li>
-<li><a href="./email.html"><strong>Email</strong></a>: a field must be a valid email address</li>
-<li><a href="./equals.html"><strong>Equals</strong></a>: a field must be equal to the specified value</li>
-<li><a href="./equals.html"><strong>Even</strong></a>: a field must be an even number</li>
-<li><a href="./float_num.html"><strong>FloatNumber</strong></a>: a field must be a float number</li>
-<li><a href="./in_array.html"><strong>InArray</strong></a>: a field is contained in the given array</li>
-<li><a href="./integer.html"><strong>Integer</strong></a>: a field must be a valid integer number</li>
-<li><a href="./ip.html"><strong>Ip</strong></a>: a field must be a valid IP address</li>
-<li><a href="./is_array.html"><strong>IsArray</strong></a>: a field must be a valid array </li>
+<li><a href="./accepted.html"><strong>Accepted</strong></a>: a field must be <code>yes</code>, <code>on</code>, <code>1</code>, or <code>true</code>.</li>
+<li><a href="./alpha.html"><strong>Alpha</strong></a>: a field must contain only <code>alphabetic</code> characters.</li>
+<li><a href="./alpha_num.html"><strong>AlphaNum</strong></a>: a field must contain only <code>numerical</code> and <code>alphabetic</code> characters.</li>
+<li><a href="./between.html"><strong>Between</strong></a>: a field must be a number that falls within the <code>specified range</code>.</li>
+<li><a href="./boolean.html"><strong>Boolean</strong></a>: a field must be <code>boolean</code>.</li>
+<li><a href="./callback.html"><strong>Callback</strong></a>: use this to add your custom validations using a valid <code>callback</code>.</li>
+<li><a href="./contains.html"><strong>Contains</strong></a>: a field must contain another given value.</li>
+<li><a href="./date.html"><strong>Date</strong></a>: a field must be a valid <code>date</code>.</li>
+<li><a href="./different.html"><strong>Different</strong></a>: a field must have a different value than the other given field.</li>
+<li><a href="./email.html"><strong>Email</strong></a>: a field must be a valid <code>email</code> address.</li>
+<li><a href="./equals.html"><strong>Equals</strong></a>: a field must be <code>equal</code> to the specified other specified value.</li>
+<li><a href="./equals.html"><strong>Even</strong></a>: a field must be an <code>even</code> number.</li>
+<li><a href="./float_num.html"><strong>FloatNumber</strong></a>: a field must be a <code>float</code> number.</li>
+<li><a href="./in_array.html"><strong>In</strong></a>: an alias of the validator <code>InArray</code></li>
+<li><a href="./in_array.html"><strong>InArray</strong></a>: a field must be contained in the given <code>array</code></li>
+<li><a href="./integer.html"><strong>Integer</strong></a>: a field must be a valid <code>integer</code> number</li>
+<li><a href="./ip.html"><strong>Ip</strong></a>: a field must be a valid <code>IP</code> address</li>
+<li><a href="./is_array.html"><strong>IsArray</strong></a>: a field must be a valid <code>array</code> </li>
 <li><a href="./is_instance_of.html"><strong>IsInstanceOf</strong></a>: a field must be an instance of given reference/value</li>
-<li><a href="./json.html"><strong>Json</strong></a>: a field must be a valid JSON </li>
-<li><a href="./length.html"><strong>Length</strong></a>: a field length must be equal to the given length</li>
+<li><a href="./json.html"><strong>Json</strong></a>: a field must be a valid <code>JSON</code> </li>
+<li><a href="./length.html"><strong>Length</strong></a>: a field length must be equal to the specified length</li>
 <li><a href="./length_max.html"><strong>LengthMax</strong></a>: a field length must not exceed the given length</li>
 <li><a href="./length_min.html"><strong>LengthMin</strong></a>: a field length must not be less than the given length</li>
-<li><a href="./length_min.html"><strong>Negative</strong></a>: a field must be a negative number</li>
-<li><a href="./not_empty.html"><strong>NotEmpty</strong></a>: a field must not be empty</li>
-<li><a href="./numeric.html"><strong>Numeric</strong></a>: a field must contain only numeric characters</li>
-<li><a href="./odd.html"><strong>Odd</strong></a>: a field must be an odd number</li>
-<li><a href="./positive.html"><strong>Positive</strong></a>: a field must a positive number  </li>
+<li><a href="./length_max.html"><strong>Max</strong></a>: an alias of <code>LengthMax</code></li>
+<li><a href="./length_min.html"><strong>Min</strong></a>: an alias of <code>LengthMix</code></li>
+<li><a href="./length_min.html"><strong>Negative</strong></a>: a field must be a <code>negative</code> number</li>
+<li><a href="./not_empty.html"><strong>NotEmpty</strong></a>: a field must not be <code>empty</code></li>
+<li><a href="./numeric.html"><strong>Numeric</strong></a>: a field must contain <code>numerical</code> characters</li>
+<li><a href="./odd.html"><strong>Odd</strong></a>: a field must be an <code>odd</code> number</li>
+<li><a href="./positive.html"><strong>Positive</strong></a>: a field must be a <code>positive</code> number  </li>
+<li><a href="./regex.html"><strong>Regex</strong></a>: a field must match the given regular expression. </li>
 <li><a href="./required.html"><strong>Required</strong></a>: a field must be present and cannot be empty  </li>
-<li><a href="./slug.html"><strong>Slug</strong></a>: a field must be a valid URL slug </li>
-<li><a href="./url.html"><strong>Url</strong></a>: a field must be a valid URL</li>
+<li><a href="./slug.html"><strong>Slug</strong></a>: a field must be a valid <code>slug</code> </li>
+<li><a href="./timezone.html"><strong>Timezone</strong></a>: a field must be a valid <code>timezone</code> identifier according to the <code>timezone_identifiers_list</code> PHP function.</li>
+<li><a href="./url.html"><strong>Url</strong></a>: a field must be a valid <code>URL</code></li>
 </ul>
-<p>However, this does not mean that we are only limited to this list. In fact, adding new validators is a breeze. To learn more about creating new validators, please refer to the <a href="contributions.html"">contributions section</a> </p>
+<p>However, this does not mean that we are only limited to this list. In fact, adding new validators is a breeze. To learn more about creating new validators, please refer to the <a href="contributions.html"">contribution section</a> </p>
                 </section>
 
             </div>

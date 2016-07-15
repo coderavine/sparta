@@ -56,36 +56,30 @@
 
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h1 id="lengthmin-validator">LengthMin Validator</h1>
-<p>This validator can be used to ensure that the length of a given value does not exceed specified maximum length. </p>
+                    <h1 id="different-validator">Different Validator</h1>
+<p>This validator can be used to ensure that the given field under validation must have a different value than another specified field.</p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
-<h2 id="supported-options">Supported Options</h2>
-<p>The <code>LengthMin</code> validator supports the below options:</p>
-<ul>
-<li><code>is</code>: specifies the required maximum length. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
-</ul>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h3 id="example-1">Example #1:</h3>
-<p>You can simply instantiate the <code>LengthMax</code> validator and pass to it the data that you want to validate. </p>
+<p>You can simply instantiate the <code>Different</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
-use Sparta\Validators\LengthMax;
+use Sparta\Validators\Different;
 
-$validator = LengthMax(11);
+$validator = Different(['from' =&gt; 'coderavine@gmail.com']);
 
-if(!$validator-&gt;isValid('this is ten')){ 
+if(!$validator-&gt;isValid('myemail@gmail.com')){ 
     //handle errors
 }</code></pre>
 <h3 id="example-2">Example #2:</h3>
 <p>You can build your validation rules and pass it to the <strong>Validation</strong> object to handle as shown below:</p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validation;
+$data = ['blockedEmail' =&gt; 'coderavine@gmail.com'];
 
 $rules = [
-    'password' =&gt; 'length_max:is=10',
+    'email' =&gt; 'different:from=blockedEmail',
 ];
-
-//Assuming that your $data has an element with the key "password"
 
 $validation = new Validation($data, $rules);
 if(!$validation-&gt;isValid()){
@@ -93,13 +87,6 @@ if(!$validation-&gt;isValid()){
 }
 </code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
-<p><strong>Note</strong>: You can even write the rule in a shorter format as follows:</p>
-<pre><code class="language-php">&lt;?php
-
-$rules = [
-    'password' =&gt; 'length:10',
-];
-</code></pre>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
                 </section>
 

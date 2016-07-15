@@ -57,12 +57,12 @@
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
                     <h1 id="alphanum-validator">AlphaNum Validator</h1>
-<p>This validator can be used to ensure that a given value contains only <strong>numeric</strong> and <strong>alphabetical</strong> characters.</p>
+<p>This validator can be used to ensure that a given value contains only <strong>numeric</strong> and <strong>alphabetical</strong> characters. For example, this can be used to validate a username.</p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="supported-options">Supported Options</h2>
 <p>The <code>AlphaNum</code> validator supports the below option:</p>
 <ul>
-<li><code>allow_whitespace</code>: determines if whitespace characters are allowed or not. The default value is <strong>false</strong>.</li>
+<li><code>allow_whitespace</code>: determines if whitespace characters are allowed or not. This is an <strong>optional</strong> parameter and the default value is <strong>false</strong>.</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <p>There are two different ways in which all <strong>Sparta</strong> validators can be used. See below examples for more explanations:</p>
@@ -73,7 +73,8 @@ use Sparta\Validators\AlphaNum;
 
 $validator = AlphaNum();
 
-if(!$validator-&gt;isValid('test123')){
+//Assuming that we have a field named $username
+if(!$validator-&gt;isValid($username)){
     foreach($validator-&gt;errors as $error){
         echo $error;
     }
@@ -91,9 +92,10 @@ $rules = [
     'username' =&gt; 'alpha_num:allow_whitespace',
 ];
 
+//Assuming that $data has a field with a key that is equals to `username`
 $validation = new Validation($data, $rules);
 if(!$validation-&gt;isValid()){
-    // Get errors by using the method $validation-&gt;getErrors(); 
+    //Get errors by using the method $validation-&gt;getErrors(); 
 }
 </code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>

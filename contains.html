@@ -60,38 +60,37 @@
 <p>This validator can be used to check if a given value is contained in another one. In addition, it can be also used to determine if a given array has the specified element.</p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="supported-options">Supported Options</h2>
-<p>The <code>Alpha</code> validator supports the below options:</p>
+<p>The <code>Alpha</code> validator supports the below option:</p>
 <ul>
-<li><code>needle</code>: specifies the value to look for. It is a required parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
+<li><code>needle</code>: determines the <strong>field</strong>/<strong>value</strong> to look for. It is a <strong>required</strong> parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h2 id="example-1">Example #1</h2>
 <p>You can instantiate the <code>Contains</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validators\Contains;
 
-// Searching for a specific string/word example
+//Searching for a specific sub string/word example
 $validator = Contains('stupid');
-
 if(!$validator-&gt;isValid('This is a stupid person')){ 
     //handle errors
 }
 
-// Searching for an element in a given array example
+//Searching for an element in a given array example
 $arrayValidator = Contains('foo');
 if(!$validator-&gt;isValid(['foo','bar'])){ 
     //handle errors
 }
 </code></pre>
-<p>You can also set the value of the <code>needle</code> parameter using the validator setter methods <code>setNeedle</code>:</p>
+<p>You can also set the value of the <code>needle</code> option using the validator setter method <code>setNeedle</code>:</p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validators\Contains;
 
 $validator = Contains();
 $validator-&gt;setNeedle('stupid');
 
-// $sentence variable can be from $_POST
+//$sentence variable can be from $_POST
 if(!$validator-&gt;isValid($sentence)){ 
     //handle errors
 }</code></pre>
@@ -101,7 +100,7 @@ if(!$validator-&gt;isValid($sentence)){
 use Sparta\Validation;
 
 $rules = [
-    'title' =&gt; 'contains:needle=test',
+    'title' =&gt; '.php_cs',
 ];
 
 //Assuming that your $data has an element with the key "title"
@@ -112,14 +111,16 @@ if(!$validation-&gt;isValid()){
 }
 </code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
-<p><strong>Note</strong>: You can even write the rule in a shorter format as follows:</p>
+<blockquote>
+<p><strong>Note</strong>: You can write the rule in a shorter format by dropping the argument key as follows:</p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validation;
 
 $rules = [
-    'title' =&gt; 'contains:test',
+  'title' =&gt; '.php_cs',
 ];
 </code></pre>
+</blockquote>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
                 </section>
 

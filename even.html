@@ -60,17 +60,15 @@
 <p>This validator can be used to ensure that a given contains only <strong>Even</strong> numbers.</p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h3 id="example-1">Example #1:</h3>
 <p>You can simply instantiate the <code>Even</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validators\Even;
 
 $validator = Even();
-if(!$validator-&gt;isValid('provideyoursimpletext')){
-    foreach($validator-&gt;errors as $error){
-        echo $error;
-    }
+if(!$validator-&gt;isValid(2)){
+//Handle errors
 }</code></pre>
 <h3 id="example-2">Example #2:</h3>
 <p>You can build your validation rules and pass it to the <strong>Validation</strong> object to handle as shown below:</p>
@@ -78,8 +76,7 @@ if(!$validator-&gt;isValid('provideyoursimpletext')){
 use Sparta\Validation;
 
 $rules = [
-    'total' =&gt; 'even',
-    //other rules if any
+    'field' =&gt; 'even',
 ];
 
 $validation = new Validation($data, $rules);

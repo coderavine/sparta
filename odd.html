@@ -60,14 +60,14 @@
 <p>This validator can be used to ensure that a given contains only <strong>odd</strong> numbers.</p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h3 id="example-1">Example #1:</h3>
 <p>You can simply instantiate the <code>Odd</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validators\Odd;
 
 $validator = Odd();
-if(!$validator-&gt;isValid('provideyoursimpletext')){
+if(!$validator-&gt;isValid(1)){
     foreach($validator-&gt;errors as $error){
         echo $error;
     }
@@ -78,8 +78,7 @@ if(!$validator-&gt;isValid('provideyoursimpletext')){
 use Sparta\Validation;
 
 $rules = [
-    'total' =&gt; 'odd',
-    //other rules if any
+    'odd_number' =&gt; 'odd',
 ];
 
 $validation = new Validation($data, $rules);

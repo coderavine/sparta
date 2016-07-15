@@ -56,45 +56,57 @@
 
                 
                 <section id="content" class="col-sm-offset-3 col-lg-offset-2 col-sm-9 col-lg-10">
-                    <h2 id="alpha-validator">Alpha Validator</h2>
-<p>This validator can be used to ensure that a given value contains only <strong>alphabetical</strong> characters.</p>
+                    <h1 id="lengthmin-validator">LengthMin Validator</h1>
+<p>This validator can be used to ensure that the length of a given field is not less than the specified minimum length. </p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="supported-options">Supported Options</h2>
-<p>The <code>Alpha</code> validator supports the below option:</p>
+<p>The <code>LengthMin</code> validator supports the below option:</p>
 <ul>
-<li><code>allow_whitespace</code>: determines if whitespace characters are allowed or not. This is an <strong>optional</strong> parameter and the default value is <strong>false</strong>. </li>
+<li><code>is</code>: specifies the required minimum length. It is a <strong>required</strong> parameter and failing to provide this will result in an <code>InvalidValidatorArguments</code> exception.</li>
 </ul>
 <h2 id="usage">Usage</h2>
 <p>There are two different ways in which all <strong>Sparta</strong> validators can be used. See below examples for more explanations:</p>
 <h3 id="example-1">Example #1:</h3>
-<p>You can simply instantiate the <code>Alpha</code> validator and pass to it the data that you want to validate. </p>
+<p>You can simply instantiate the <code>LengthMin</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
-use Sparta\Validators\Alpha;
+use Sparta\Validators\LengthMin;
 
-$validator = Alpha();
+$validator = LengthMin(11);
 
-if(!$validator-&gt;isValid('coderavine')){
+if(!$validator-&gt;isValid('this is ten characters long')){ 
     //handle errors
 }</code></pre>
-<p>By default, <strong>whitespace</strong> characters are not accepted as they are not part of the alphabet. However, this can be enabled by passing the <code>allow_whitespace</code> option either through the validator constructor:</p>
-<pre><code class="language-php">$validator = Alpha(['allow_whitespace' =&gt; true]);</code></pre>
-<p>Or it can be configured via the validator setter method <code>enableWhitespace</code>:</p>
-<pre><code class="language-php">$validator-&gt;enableWhitespace();</code></pre>
+<p>You can also specify the minimum value using the class setter method <code>setLength</code> as shown below:</p>
+<pre><code class="language-php">&lt;?php
+use Sparta\Validators\LengthMin;
+
+$validator = LengthMin();
+$validator-&gt;setLength(11);</code></pre>
 <h3 id="example-2">Example #2:</h3>
 <p>You can build your validation rules and pass it to the <strong>Validation</strong> object to handle as shown below:</p>
 <pre><code class="language-php">&lt;?php
 use Sparta\Validation;
 
 $rules = [
-    'username' =&gt; 'alpha:allow_whitespace',
+    'password' =&gt; 'length_min:is=10',
 ];
 
+//Assuming that your $data has an element with the key "password"
 $validation = new Validation($data, $rules);
 if(!$validation-&gt;isValid()){
-    //Get errors by using the method $validation-&gt;getErrors(); 
+    //handle errors
 }
 </code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
+<blockquote>
+<p><strong>Note</strong>: You can write the rule in a shorter format as follows:</p>
+<pre><code class="language-php">&lt;?php
+
+$rules = [
+  'password' =&gt; 'length:10',
+];
+</code></pre>
+</blockquote>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
                 </section>
 

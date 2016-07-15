@@ -60,12 +60,12 @@
 <p>This validator can be used to determine whether a given object is an instance of a specific class or interface. </p>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
 <h2 id="supported-options">Supported Options</h2>
-<p>The <code>IsInstanceOf</code> validator supports the below options:</p>
+<p>The <code>IsInstanceOf</code> validator supports the below option:</p>
 <ul>
 <li><code>class</code>: Defines the fully-qualified class name which objects must be an instance of.</li>
 </ul>
 <h2 id="usage">Usage</h2>
-<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanation:</p>
+<p>There are two different ways in which all Sparta validators can be used. See below examples for more explanations:</p>
 <h3 id="example-1">Example #1:</h3>
 <p>You can simply instantiate the <code>IsInstanceOf</code> validator and pass to it the data that you want to validate. </p>
 <pre><code class="language-php">&lt;?php
@@ -100,14 +100,16 @@ if(!$validation-&gt;isValid()){
 }
 </code></pre>
 <p>In case of validation failure, error messages can be retrieved using the <code>getErrors</code> method.</p>
+<blockquote>
 <p><strong>Note</strong>: You can even write the rule in a shorter format as follows:</p>
 <pre><code class="language-php">&lt;?php
 
 $rules = [
-    'password' =&gt; 'is_instance_of:Sparta\Validators\Alpha',
+  'password' =&gt; 'is_instance_of:Sparta\Validators\Alpha',
 ];
 </code></pre>
 <p><a href="./reference.html#validators-list"><strong>Back to Validators List</strong></a></p>
+</blockquote>
                 </section>
 
             </div>
