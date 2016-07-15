@@ -1,20 +1,21 @@
 <?php
+
 namespace Sparta\Validators;
 
 use DateTime;
 
 /**
- * Validation Class
+ * Validation Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Date extends AbstractValidator
 {
     /**
      * Default format that will be used when nothing has
-     * been specified yet
+     * been specified yet.
      *
      * @var string
      */
@@ -24,7 +25,7 @@ class Date extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'INVALID_DATE_FORMAT' => '%s does not seem to be a valid date',
+        'invalid_data' => '%s does not seem to be a valid date',
     ];
 
     /**
@@ -44,7 +45,7 @@ class Date extends AbstractValidator
     }
 
     /**
-     * Set date format
+     * Set date format.
      *
      * @param string $format
      */
@@ -54,7 +55,7 @@ class Date extends AbstractValidator
     }
 
     /**
-     * Get date format
+     * Get date format.
      *
      * @return string
      */
@@ -68,7 +69,7 @@ class Date extends AbstractValidator
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      */
     public function isValid($input)
     {
@@ -79,7 +80,8 @@ class Date extends AbstractValidator
         $date = DateTime::createFromFormat($this->getFormat(), $input);
         $errors = DateTime::getLastErrors();
         if ($errors['warning_count'] > 0 || $errors['error_count'] > 0) {
-            $this->errors[] = sprintf($this->message('INVALID_DATE_FORMAT'), $input, $this->getFormat());
+            $this->errors[] = sprintf($this->message('invalid_data'), $input, $this->getFormat());
+
             return false;
         }
 

@@ -4,7 +4,7 @@ use Sparta\AttributeBag;
 /**
  * Class AttributeBagTest.php
  *
- * @package ${NAMESPACE}
+ * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
  * @link    http://www.coderavine.com/
  */

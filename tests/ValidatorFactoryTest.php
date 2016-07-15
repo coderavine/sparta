@@ -7,14 +7,22 @@ use Sparta\ValidatorFactory;
 /**
  * Class ValidatorFactoryTest.php
  *
- * @package ${NAMESPACE}
+ * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
  * @link    http://www.coderavine.com/
  */
 class ValidatorFactoryTest extends PHPUnit_Framework_TestCase
 {
+    /**
+     * Translator instance
+     *
+     * @var \Sparta\Translator
+     */
     protected $translator;
 
+    /**
+     * Setup test environment
+     */
     public function setUp()
     {
         $this->translator = m::mock('Sparta\\Translator');
@@ -23,8 +31,7 @@ class ValidatorFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @throws ClassNotFoundException
-     * @throws \Sparta\MethodNotFoundException
+     * Test basic behavior
      */
     public function testCreateValidatorInstance()
     {
@@ -33,7 +40,7 @@ class ValidatorFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * Ensure that factory can get default namespace
      */
     public function testGetDefaultNamespace()
     {
@@ -42,7 +49,7 @@ class ValidatorFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * Ensure that factory can set namespace
      */
     public function testSetGetNamespace()
     {
@@ -53,7 +60,7 @@ class ValidatorFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     *
+     * Ensure that we can get an instance of translator
      */
     public function testSetGetTranslatorInstance()
     {
@@ -63,6 +70,9 @@ class ValidatorFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
+     * Ensure that factory will throw an exception if we try to create an instance
+     * of invalid validator
+     *
      * @expectedException Sparta\Exceptions\ClassNotFoundException
      */
     public function testInvalidValidatorClassThrowException()
@@ -73,10 +83,10 @@ class ValidatorFactoryTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * @throws \Sparta\Exceptions\ClassNotFoundException
-     * @throws \Sparta\Exceptions\InvalidValidatorException
+     * Ensure that factory throws exception when the passed class is not
+     * an instance of the validator interface
      */
-    public function testCreatingInvalidValidatorClassThrowsException()
+    public function testCreatingAnObjectFromClassThatIsNotValidValidatorThrowsException()
     {
         $this->expectException(InvalidValidatorException::class);
         $factory = new ValidatorFactory($this->translator);

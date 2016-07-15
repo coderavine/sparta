@@ -57,7 +57,7 @@ You can build your validation rules and pass it to the __Validation__ object to 
 use Sparta\Validation;
 
 $rules = [
-	'title' => 'contains:needle=test',
+	'title' => '.php_cs',
 ];
 
 //Assuming that your $data has an element with the key "title"
@@ -77,7 +77,7 @@ In case of validation failure, error messages can be retrieved using the `getErr
 >use Sparta\Validation;
 >
 >$rules = [
->	'title' => 'contains:test',
+>	'title' => '.php_cs',
 >];
 >
 >```

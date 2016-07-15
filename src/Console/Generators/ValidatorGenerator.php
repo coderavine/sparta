@@ -1,35 +1,36 @@
 <?php
+
 namespace Sparta\Console\Generators;
 
 use RuntimeException;
 
 /**
- * Class ValidatorGenerator
+ * Class ValidatorGenerator.
  *
- * @package Sparta\Generators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class ValidatorGenerator
 {
     /**
-     * Validators namespace
+     * Validators namespace.
      */
     const VALIDATORS_NAMESPACE = 'Sparta\\Validators';
 
     /**
-     * Generate the new validator class
+     * Generate the new validator class.
      *
      * @param $validatorName
      * @param $option
      */
     public function generate($validatorName, $option)
     {
-        $validatorFileName = 'src/Validators/' . $validatorName . '.php';
+        $validatorFileName = 'src/Validators/'.$validatorName.'.php';
         $templateFile = 'src/Console/Generators/templates/validator.template';
 
         if (null != $option) {
-            $testValidatorFileName = 'tests/Validators/' . $validatorName . 'Test.php';
+            $testValidatorFileName = 'tests/Validators/'.$validatorName.'Test.php';
             $testTemplateFile = 'src/Console/Generators/templates/testValidator.template';
         }
 
@@ -50,11 +51,10 @@ class ValidatorGenerator
         if (null != $option) {
             $this->renderFile($testTemplateFile, $testValidatorFileName, $parameters);
         }
-
     }
 
     /**
-     * Render validator/validator test template
+     * Render validator/validator test template.
      *
      * @param $template
      * @param $target
@@ -72,7 +72,7 @@ class ValidatorGenerator
     }
 
     /**
-     * Generate the new validator class and its test class
+     * Generate the new validator class and its test class.
      *
      * @param $template
      * @param $parameters
@@ -86,6 +86,7 @@ class ValidatorGenerator
             $fileContent = str_ireplace('%DummyNamespace%', $parameters['namespace'], $fileContent);
             $fileContent = str_ireplace('%DummyValidator%', $parameters['validator'], $fileContent);
         }
+
         return $fileContent;
     }
 }

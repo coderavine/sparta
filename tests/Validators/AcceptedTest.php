@@ -35,6 +35,25 @@ class AcceptedTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesBeforeRunningValidation()
+    {
+        $validator = new Accepted();
+        $this->assertEquals([], $validator->errors());
+    }
+
+    /**
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesAfterValidationFailure()
+    {
+        $validator = new Accepted();
+        $validator->isValid(false);
+        $this->assertCount(1, $validator->errors());
+    }
+
+    /**
      * Setup accepted data test samples for testing basic behavior
      */
     public function getAcceptedDataProvider()

@@ -1,22 +1,16 @@
 <?php
+
 namespace Sparta\Validators;
 
-    /**
-     * Regex Class
-     *
-     * @package  Sparta\Validators
-     * @author  Mohammed Ashour <ashoms0a@gmail.com>
-     * @link    http://www.coderavine.com/
-     */
+use Sparta\Exceptions\InvalidValidatorArguments;
+
 /**
- * Class Regex
- * @package Sparta\Validators
+ * Class Regex.
  */
 class Regex extends AbstractValidator
 {
-
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
@@ -40,23 +34,30 @@ class Regex extends AbstractValidator
         }
     }
 
-
     /**
-     * Validate given input
+     * Validate given input.
      *
      * @param mixed $input
      *
      * @return bool
+     *
+     * @throws InvalidValidatorArguments
      */
     public function isValid($input)
     {
+        if (empty($this->getPattern())) {
+            throw new InvalidValidatorArguments(
+                $this->message('missing_arguments')
+            );
+        }
+
         if (!is_string($input) && !is_numeric($input)) {
             return false;
         }
 
         if (!preg_match($this->getPattern(), $input)) {
             $this->errors[] = sprintf(
-                $this->message('invalid_data'), is_numeric($input) ? (string)$input : $input
+                $this->message('invalid_data'), is_numeric($input) ? (string) $input : $input
             );
 
             return false;
@@ -66,7 +67,7 @@ class Regex extends AbstractValidator
     }
 
     /**
-     * Get regular expression pattern
+     * Get regular expression pattern.
      *
      * @return string
      */
@@ -76,11 +77,11 @@ class Regex extends AbstractValidator
     }
 
     /**
-     * Set regular expression pattern
+     * Set regular expression pattern.
      *
      * @param string $pattern
      */
-    Public function setPattern($pattern)
+    public function setPattern($pattern)
     {
         $this->options['pattern'] = $pattern;
     }

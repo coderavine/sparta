@@ -37,7 +37,7 @@ class RulesBagTest extends TestCase
     {
         $this->populateBag();
         $this->assertEquals(3, $this->bag->count());
-        
+
     }
 
     /**

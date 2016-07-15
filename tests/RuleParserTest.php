@@ -1,6 +1,13 @@
 <?php
 use Sparta\RuleParser;
 
+/**
+ * Class AttributeBagTest.php
+ *
+ * @package Sparta
+ * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ * @link    http://www.coderavine.com/
+ */
 class RuleParserTest extends PHPUnit_Framework_TestCase
 {
     /**
@@ -21,7 +28,7 @@ class RuleParserTest extends PHPUnit_Framework_TestCase
      */
     public function testSetDefaultRulesSeparator()
     {
-        $this->assertEquals('|', $this->ruleParse->getDefaultRulesDelimiter());
+        $this->assertEquals('|', $this->ruleParse->getRulesDelimiter());
     }
 
     /**
@@ -31,8 +38,8 @@ class RuleParserTest extends PHPUnit_Framework_TestCase
      */
     public function testGetSetRulesSeparator()
     {
-        $this->ruleParse->setDefaultRulesDelimiter('||');
-        $this->assertEquals('||', $this->ruleParse->getDefaultRulesDelimiter());
+        $this->ruleParse->setRulesDelimiter('||');
+        $this->assertEquals('||', $this->ruleParse->getRulesDelimiter());
     }
 
     /**
@@ -42,7 +49,7 @@ class RuleParserTest extends PHPUnit_Framework_TestCase
      */
     public function testGetDefaultArgumentsSeparator()
     {
-        $this->assertEquals(',', $this->ruleParse->getDefaultArgumentsDelimiter());
+        $this->assertEquals(',', $this->ruleParse->getArgumentsDelimiter());
     }
 
     /**
@@ -52,8 +59,8 @@ class RuleParserTest extends PHPUnit_Framework_TestCase
      */
     public function testGetSetArgumentsSeparator()
     {
-        $this->ruleParse->setDefaultArgumentsDelimiter(',,');
-        $this->assertEquals(',,', $this->ruleParse->getDefaultArgumentsDelimiter());
+        $this->ruleParse->setArgumentsDelimiter(',,');
+        $this->assertEquals(',,', $this->ruleParse->getArgumentsDelimiter());
     }
 
     /**
@@ -61,7 +68,7 @@ class RuleParserTest extends PHPUnit_Framework_TestCase
      */
     public function testGetDefaultValidatorArgumentsSeparator()
     {
-        $this->assertEquals(':', $this->ruleParse->getDefaultValidatorArgumentsDelimiter());
+        $this->assertEquals(':', $this->ruleParse->getValidatorArgumentsDelimiter());
     }
 
     /**
@@ -69,8 +76,8 @@ class RuleParserTest extends PHPUnit_Framework_TestCase
      */
     public function testSetGetValidatorArgumentsSeparator()
     {
-        $this->ruleParse->setDefaultValidatorArgumentsDelimiter('::');
-        $this->assertEquals('::', $this->ruleParse->getDefaultValidatorArgumentsDelimiter());
+        $this->ruleParse->setValidatorArgumentsDelimiter('::');
+        $this->assertEquals('::', $this->ruleParse->getValidatorArgumentsDelimiter());
     }
 
     /**
@@ -78,7 +85,7 @@ class RuleParserTest extends PHPUnit_Framework_TestCase
      */
     public function testGetDefaultArgumentKeyValueSeparator()
     {
-        $this->assertEquals('=', $this->ruleParse->getDefaultArgumentKeyValueDelimiter());
+        $this->assertEquals('=', $this->ruleParse->getArgumentKeyValueDelimiter());
     }
 
     /**
@@ -86,8 +93,8 @@ class RuleParserTest extends PHPUnit_Framework_TestCase
      */
     public function testSetGetArgumentKeyValueSeparator()
     {
-        $this->ruleParse->setDefaultArgumentKeyValueDelimiter('==');
-        $this->assertEquals('==', $this->ruleParse->getDefaultArgumentKeyValueDelimiter());
+        $this->ruleParse->setArgumentKeyValueDelimiter('==');
+        $this->assertEquals('==', $this->ruleParse->getArgumentKeyValueDelimiter());
     }
 
     /**

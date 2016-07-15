@@ -1,47 +1,51 @@
 <?php
+
 namespace Sparta;
 
 use Sparta\Exceptions\MissingParameterException;
 
 /**
- * Class Argument
+ *  ArgumentParser Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class ArgumentParser
 {
     /**
-     * Default arguments delimiter
+     * Default arguments delimiter.
      */
     const DEFAULT_ARGUMENTS_DELIMITER = ',';
 
     /**
-     * Default argument Key/Value delimiter
+     * Default argument Key/Value delimiter.
      */
     const DEFAULT_KEY_VALUE_DELIMITER = '=';
 
     /**
-     * @var
+     * User Input.
+     *
+     * @var array
      */
     private $data;
+
     /**
-     * Arguments list
+     * Arguments list.
      *
      * @var array
      */
     private $arguments = [];
 
     /**
-     * Arguments delimiter
+     * Arguments delimiter.
      *
      * @var string
      */
     private $argumentsDelimiter;
 
     /**
-     * Argument Key/Value delimiter
+     * Argument Key/Value delimiter.
      *
      * @var
      */
@@ -58,7 +62,7 @@ class ArgumentParser
     }
 
     /**
-     * Run parser on given input
+     * Run parser on given input.
      *
      * @param mixed $input
      *
@@ -79,7 +83,7 @@ class ArgumentParser
     }
 
     /**
-     * Add argument key/value to the arguments list
+     * Add argument key/value to the arguments list.
      *
      * @param $input
      */
@@ -91,7 +95,6 @@ class ArgumentParser
         $key = $segments[0];
 
         if (isset($segments[1])) {
-
             if ($this->hasField($segments[1])) {
                 $value = $this->field($segments[1]);
             } else {
@@ -111,7 +114,7 @@ class ArgumentParser
     }
 
     /**
-     * Set argument key/value delimiter
+     * Set argument key/value delimiter.
      *
      * @param string $delimiter
      */
@@ -121,7 +124,7 @@ class ArgumentParser
     }
 
     /**
-     * Get argument key/value delimiter
+     * Get argument key/value delimiter.
      *
      * @return string
      */
@@ -131,7 +134,7 @@ class ArgumentParser
     }
 
     /**
-     * Set arguments delimiter
+     * Set arguments delimiter.
      *
      * @param string $delimiter
      */
@@ -141,7 +144,7 @@ class ArgumentParser
     }
 
     /**
-     * Get arguments delimiter
+     * Get arguments delimiter.
      *
      * @return mixed
      */
@@ -151,7 +154,7 @@ class ArgumentParser
     }
 
     /**
-     * Clear arguments list by setting it to an empty array
+     * Clear arguments list by setting it to an empty array.
      */
     public function clearArguments()
     {
@@ -159,7 +162,7 @@ class ArgumentParser
     }
 
     /**
-     * Get all arguments
+     * Get all arguments.
      *
      * @return array
      */
@@ -178,7 +181,8 @@ class ArgumentParser
         if ($this->has($key)) {
             return $this->arguments[$key];
         }
-        return null;
+
+        return;
     }
 
     /**
@@ -191,11 +195,12 @@ class ArgumentParser
         if (array_key_exists($key, $this->arguments)) {
             return true;
         }
+
         return false;
     }
 
     /**
-     * Get total number of arguments
+     * Get total number of arguments.
      *
      * @return int
      */
@@ -205,7 +210,7 @@ class ArgumentParser
     }
 
     /**
-     * Get the value of a given field from provided user's inputs list
+     * Get the value of a given field from provided user's inputs list.
      *
      * @param string $key attribute key
      *
@@ -214,18 +219,18 @@ class ArgumentParser
     public function field($key)
     {
         if (empty($this->data) || !is_array($this->data)) {
-            return null;
+            return;
         }
 
         if (array_key_exists($key, $this->data)) {
             return $this->data[$key];
         }
 
-        return null;
+        return;
     }
 
     /**
-     * Get the value of date collection has the required field
+     * Get the value of date collection has the required field.
      *
      * @param string $key attribute key
      *
@@ -257,5 +262,4 @@ class ArgumentParser
     {
         $this->data = $data;
     }
-
 }

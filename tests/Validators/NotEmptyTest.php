@@ -40,6 +40,7 @@ class NotEmptyTest extends \PHPUnit_Framework_TestCase
         $validator->isValid([]);
         $this->assertCount(1, $validator->errors());
     }
+
     /**
      * Test data provider
      *

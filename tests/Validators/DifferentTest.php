@@ -29,6 +29,7 @@ class DifferentTest extends \PHPUnit_Framework_TestCase
      * Test validator Different basic behavior
      *
      * @dataProvider getDifferentDataProvider
+     *
      * @param $compareTo
      * @param $input
      * @param $expected
@@ -51,7 +52,38 @@ class DifferentTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Setup some test data for basic behavior test
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesBeforeRunningValidation()
+    {
+        $validator = new Different();
+        $this->assertEquals([], $validator->errors());
+    }
+
+    /**
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesAfterValidationFailure()
+    {
+        $validator = new Different(1);
+        $validator->isValid(1);
+        $this->assertCount(1, $validator->errors());
+    }
+
+    /**
+     * Ensure that validator throws exception when we have missing arguments
+     *
+     * @expectedException \Sparta\Exceptions\InvalidValidatorArguments
+     */
+    public function testThatValidatorThrowsExceptionWhenRequiredArgumentsAreMissing()
+    {
+        $validator = new Different();
+        $validator->isValid(1);
+    }
+
+
+    /**
+     * Setup some .php_cs data for basic behavior .php_cs
      */
     public function getDifferentDataProvider()
     {

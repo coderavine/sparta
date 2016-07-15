@@ -1,11 +1,12 @@
 <?php
+
 namespace Sparta\Validators;
 
 /**
- * Class AlphaNum
+ * Class AlphaNum.
  *
- * @package Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class AlphaNum extends AbstractValidator
@@ -14,7 +15,7 @@ class AlphaNum extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'INVALID_ALPHA_NUM' => '%s should only contain numbers and alphabetic characters.',
+        'invalid_data' => '%s should only contain numbers and alphabetic characters.',
     ];
 
     /**
@@ -40,20 +41,21 @@ class AlphaNum extends AbstractValidator
      *
      * @param $input
      *
-     * @return boolean
+     * @return bool
      */
     public function isValid($input)
     {
         if (!preg_match($this->getPattern(), $input)) {
-            $this->errors[] = sprintf($this->message('INVALID_ALPHA_NUM'), $input);
+            $this->errors[] = sprintf($this->message('invalid_data'), $input);
+
             return false;
         }
+
         return true;
     }
 
-
     /**
-     * Enable whitespace
+     * Enable whitespace.
      */
     public function enableWhitespace()
     {
@@ -61,7 +63,7 @@ class AlphaNum extends AbstractValidator
     }
 
     /**
-     * Is whitespace enabled
+     * Is whitespace enabled.
      *
      * @return bool
      */
@@ -71,7 +73,7 @@ class AlphaNum extends AbstractValidator
     }
 
     /**
-     * Get validation pattern
+     * Get validation pattern.
      *
      * @return string
      */

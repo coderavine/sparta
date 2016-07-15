@@ -1,11 +1,12 @@
 <?php
+
 namespace Sparta\Validators;
 
 /**
- * Validation Class
+ * Validation Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Ip extends AbstractValidator
@@ -14,11 +15,11 @@ class Ip extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'INVALID_IP' => '%s is not considered as a valid IP address.',
+        'invalid_data' => '%s is not considered as a valid IP address.',
     ];
 
     /**
-     * Validate if the given input is a valid IP address
+     * Validate if the given input is a valid IP address.
      *
      * @param mixed $input
      *
@@ -27,10 +28,11 @@ class Ip extends AbstractValidator
     public function isValid($input)
     {
         if (!filter_var($input, FILTER_VALIDATE_IP)) {
-            $this->errors[] = sprintf($this->message('INVALID_IP'), $input);
+            $this->errors[] = sprintf($this->message('invalid_data'), $input);
+
             return false;
         }
+
         return true;
     }
-
 }

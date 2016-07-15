@@ -17,7 +17,7 @@ use Sparta\Validators\NotEmpty;
 
 $validator = NotEmpty();
 
-if(!$validator->isValid('test')){ 
+if(!$validator->isValid('.php_cs')){ 
 	//handle errors
 }
 ```

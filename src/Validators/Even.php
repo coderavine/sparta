@@ -1,31 +1,20 @@
 <?php
+
 namespace Sparta\Validators;
 
 class Even extends AbstractValidator
 {
-
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
     protected $classMessage = [
-        'INVALID_EVEN' => 'The given value is not an even number.',
+        'invalid_data' => 'The given value is not an even number.',
     ];
 
     /**
-     * Even constructor.
-     *
-     * @param array $options validator options
-     */
-    public function __construct($options = [])
-    {
-        // Handle validator arguments over here
-    }
-
-
-    /**
-     * Validate given input
+     * Validate given input.
      *
      * @param mixed $input
      *
@@ -34,7 +23,8 @@ class Even extends AbstractValidator
     public function isValid($input)
     {
         if (!is_integer($input) || empty($input) || ($input % 2) != 0) {
-            $this->errors[] = $this->message('INVALID_EVEN');
+            $this->errors[] = $this->message('invalid_data');
+
             return false;
         }
 

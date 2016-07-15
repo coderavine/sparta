@@ -1,21 +1,21 @@
 <?php
+
 namespace Sparta\Validators;
 
 /**
- * Validation Class
+ * Validation Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Numeric extends AbstractValidator
 {
-
     /**
      * @var string
      */
     protected $classMessage = [
-        'INVALID_NUMERIC' => 'Input is not considered as a valid numeric.',
+        'invalid_data' => 'Input is not considered as a valid numeric.',
     ];
 
     /**
@@ -23,14 +23,16 @@ class Numeric extends AbstractValidator
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      */
     public function isValid($input)
     {
         if (!is_numeric($input)) {
-            $this->errors[] = sprintf($this->message('INVALID_NUMERIC'));
+            $this->errors[] = sprintf($this->message('invalid_data'));
+
             return false;
         }
+
         return true;
     }
 }

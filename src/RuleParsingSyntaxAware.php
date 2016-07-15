@@ -1,151 +1,142 @@
 <?php
+
 namespace Sparta;
 
-    /**
-     * Class RuleParsingTrait.php
-     *
-     * @package Sparta
-     * @author  Mohammed Ashour <ashoms0a@gmail.com>
-     * @link    http://www.coderavine.com/
-     */
 /**
- * Class RuleParsingSyntaxAware
+ * RuleParsingSyntaxAware Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
-Class RuleParsingSyntaxAware
+class RuleParsingSyntaxAware
 {
-
+    /**
+     * Default rules delimiter.
+     */
     const DEFAULT_RULES_DELIMITER = '|';
+
+    /**
+     * Default rule and arguments delimiter.
+     */
     const DEFAULT_VALIDATOR_ARGUMENTS_DELIMITER = ':';
+
+    /**
+     * Default arguments delimiter.
+     */
     const DEFAULT_ARGUMENTS_DELIMITER = ',';
+
+    /**
+     * Default argument key/value delimiter.
+     */
     const DEFAULT_ARGUMENT_KEYVALUE_DELIMITER = '=';
 
     /**
-     * @var
-     */
-    protected $delimitersOverrideFile;
-    /**
-     * @var
-     */
-    protected $overrides;
-    /**
-     * Default rule separator
+     * Rule delimiter.
      *
      * @var string
      */
-    protected $defaultRulesDelimiter;
+    protected $rulesDelimiter;
 
     /**
-     * Default separator between validator and arguments list
+     *  Rule and Arguments delimiter.
      *
      * @var string
      */
-    protected $defaultValidatorArgumentsDelimiter;
+    protected $validatorArgumentsDelimiter;
 
     /**
-     * Default arguments separator
+     *  Arguments delimiter.
      *
      * @var string
      */
-    protected $defaultArgumentsDelimiter;
+    protected $argumentsDelimiter;
 
     /**
-     * Default arguments key/value separator
+     * Arguments key/value separator.
      *
      * @var string
      */
-    protected $defaultArgumentKeyValueDelimiter;
-
+    protected $argumentKeyValueDelimiter;
 
     /**
-     * Get arguments delimiter
+     * Get arguments delimiter.
      *
      * @return string
      */
-    public function getDefaultArgumentsDelimiter()
+    public function getArgumentsDelimiter()
     {
-        return (empty($this->defaultArgumentsDelimiter)) ? self::DEFAULT_ARGUMENTS_DELIMITER : $this->defaultArgumentsDelimiter;
+        return (empty($this->argumentsDelimiter)) ? self::DEFAULT_ARGUMENTS_DELIMITER : $this->argumentsDelimiter;
     }
 
     /**
-     * Set arguments delimiter
+     * Set arguments delimiter.
      *
-     * @param string $defaultArgumentsDelimiter
-     *
-     * @return void
+     * @param string $argumentsDelimiter
      */
-    public function setDefaultArgumentsDelimiter($defaultArgumentsDelimiter)
+    public function setArgumentsDelimiter($argumentsDelimiter)
     {
-        $this->defaultArgumentsDelimiter = $defaultArgumentsDelimiter;
+        $this->argumentsDelimiter = $argumentsDelimiter;
     }
 
     /**
-     * Get argument ke/value delimiter
+     * Get argument ke/value delimiter.
      *
      * @return string
      */
-    public function getDefaultArgumentKeyValueDelimiter()
+    public function getArgumentKeyValueDelimiter()
     {
-        return (empty($this->defaultArgumentKeyValueDelimiter)) ? self::DEFAULT_ARGUMENT_KEYVALUE_DELIMITER : $this->defaultArgumentKeyValueDelimiter;
+        return (empty($this->argumentKeyValueDelimiter)) ? self::DEFAULT_ARGUMENT_KEYVALUE_DELIMITER : $this->argumentKeyValueDelimiter;
     }
 
     /**
-     * Set argument ke/value delimiter
+     * Set argument ke/value delimiter.
      *
-     * @param string $defaultArgumentKeyValueDelimiter
-     *
-     * @return void
+     * @param string $argumentKeyValueDelimiter
      */
-    public function setDefaultArgumentKeyValueDelimiter(
-        $defaultArgumentKeyValueDelimiter
+    public function setArgumentKeyValueDelimiter(
+        $argumentKeyValueDelimiter
     ) {
-        $this->defaultArgumentKeyValueDelimiter = $defaultArgumentKeyValueDelimiter;
+        $this->argumentKeyValueDelimiter = $argumentKeyValueDelimiter;
     }
 
     /**
-     * Get rules delimiter
+     * Get rules delimiter.
      *
      * @return string
      */
-    public function getDefaultRulesDelimiter()
+    public function getRulesDelimiter()
     {
-        return (empty($this->defaultRulesDelimiter)) ? self::DEFAULT_RULES_DELIMITER : $this->defaultRulesDelimiter;
+        return (empty($this->rulesDelimiter)) ? self::DEFAULT_RULES_DELIMITER : $this->rulesDelimiter;
     }
 
     /**
-     * Set rule delimiter
+     * Set rule delimiter.
      *
-     * @param string $defaultRulesDelimiter
-     *
-     * @return void
+     * @param string $rulesDelimiter
      */
-    public function setDefaultRulesDelimiter($defaultRulesDelimiter)
+    public function setRulesDelimiter($rulesDelimiter)
     {
-        $this->defaultRulesDelimiter = $defaultRulesDelimiter;
+        $this->rulesDelimiter = $rulesDelimiter;
     }
 
     /**
-     * Get validator arguments delimiter
+     * Get validator arguments delimiter.
      *
      * @return string
      */
-    public function getDefaultValidatorArgumentsDelimiter()
+    public function getValidatorArgumentsDelimiter()
     {
-        return (empty($this->defaultValidatorArgumentsDelimiter)) ? self::DEFAULT_VALIDATOR_ARGUMENTS_DELIMITER : $this->defaultValidatorArgumentsDelimiter;
+        return (empty($this->validatorArgumentsDelimiter)) ? self::DEFAULT_VALIDATOR_ARGUMENTS_DELIMITER : $this->validatorArgumentsDelimiter;
     }
 
     /**
-     * Set validator arguments delimiter
+     * Set validator arguments delimiter.
      *
-     * @param string $defaultValidatorArgumentsDelimiter
-     *
-     * @return void
+     * @param string $validatorArgumentsDelimiter
      */
-    public function setDefaultValidatorArgumentsDelimiter($defaultValidatorArgumentsDelimiter)
+    public function setValidatorArgumentsDelimiter($validatorArgumentsDelimiter)
     {
-        $this->defaultValidatorArgumentsDelimiter = $defaultValidatorArgumentsDelimiter;
+        $this->validatorArgumentsDelimiter = $validatorArgumentsDelimiter;
     }
 }

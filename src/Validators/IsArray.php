@@ -1,23 +1,23 @@
 <?php
+
 namespace Sparta\Validators;
 
-
 /**
- * Class IsArray
+ * Class IsArray.
  *
- * @package Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class IsArray extends AbstractValidator
 {
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
     protected $classMessage = [
-        'INVALID_ARRAY' => '%s is not a valid array.',
+        'invalid_data' => '%s is not a valid array.',
     ];
 
     /**
@@ -25,12 +25,13 @@ class IsArray extends AbstractValidator
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      */
     public function isValid($input)
     {
         if (!is_array($input)) {
-            $this->errors[] = sprintf($this->message('INVALID_ARRAY'), $input);
+            $this->errors[] = sprintf($this->message('invalid_data'), $input);
+
             return false;
         }
 

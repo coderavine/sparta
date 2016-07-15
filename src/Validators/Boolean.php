@@ -1,11 +1,12 @@
 <?php
+
 namespace Sparta\Validators;
 
 /**
- * Validation Class
+ * Validation Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Boolean extends AbstractValidator
@@ -14,7 +15,7 @@ class Boolean extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'INVALID_BOOLEAN' => '%s is not a valid boolean.',
+        'invalid_data' => '%s is not a valid boolean.',
     ];
 
     /**
@@ -22,14 +23,15 @@ class Boolean extends AbstractValidator
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      */
     public function isValid($input)
     {
         $isBoolean = (is_bool($input)) ? true : false;
         if ($isBoolean == false) {
-            $this->errors[] = sprintf($this->message('INVALID_BOOLEAN'), $input);
+            $this->errors[] = sprintf($this->message('invalid_data'), $input);
         }
+
         return $isBoolean;
     }
 }

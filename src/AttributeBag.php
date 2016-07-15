@@ -1,4 +1,5 @@
 <?php
+
 namespace Sparta;
 
 use ArrayIterator;
@@ -6,10 +7,10 @@ use Countable;
 use IteratorAggregate;
 
 /**
- * Class AttributeBag
+ * AttributeBag Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class AttributeBag implements IteratorAggregate, Countable
@@ -74,11 +75,12 @@ class AttributeBag implements IteratorAggregate, Countable
         if (array_key_exists($key, $this->items)) {
             return $this->items[$key];
         }
-        return null;
+
+        return;
     }
 
     /**
-     * Get all items from the bag
+     * Get all items from the bag.
      *
      * @return array
      */
@@ -88,7 +90,7 @@ class AttributeBag implements IteratorAggregate, Countable
     }
 
     /**
-     * Retrieve an external iterator
+     * Retrieve an external iterator.
      *
      * @return ArrayIterator
      */
@@ -98,13 +100,12 @@ class AttributeBag implements IteratorAggregate, Countable
     }
 
     /**
-     * Count number of attributes in the bag
+     * Count number of attributes in the bag.
      *
-     * @return integer
+     * @return int
      */
     public function count()
     {
         return count($this->items);
     }
-
 }

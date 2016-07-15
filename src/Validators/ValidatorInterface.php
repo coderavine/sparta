@@ -1,11 +1,12 @@
 <?php
+
 namespace Sparta\Validators;
 
 /**
- * Validation Class
+ * Validation Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 interface ValidatorInterface

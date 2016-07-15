@@ -1,32 +1,31 @@
 <?php
+
 namespace Sparta\Validators;
 
 use Sparta\Exceptions\InvalidValidatorArguments;
 
 /**
- * Class IsInstanceOf
+ * Class IsInstanceOf.
  *
- * @package Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class IsInstanceOf extends AbstractValidator
 {
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
     protected $classMessage = [
-        'INVALID_INSTANCE' => '%s in not an instance of %s',
-        'MISSING_ARGUMENTS' => 'No options have been provided and validation cannot be run.',
+        'invalid_data' => '%s in not an instance of %s',
     ];
 
     /**
      * IsInstanceOf constructor.
      *
      * @param array $options
-     *
      */
     public function __construct($options = [])
     {
@@ -44,26 +43,27 @@ class IsInstanceOf extends AbstractValidator
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      *
      * @throws \Sparta\Exceptions\InvalidValidatorArguments
      */
     public function isValid($input)
     {
         if (empty($this->getClass())) {
-            throw new InvalidValidatorArguments($this->message('MISSING_ARGUMENTS'));
+            throw new InvalidValidatorArguments($this->message('missing_arguments'));
         }
 
         if ($input instanceof $this->options['class']) {
             return true;
         }
 
-        $this->errors[] = $this->message('INVALID_INSTANCE');
+        $this->errors[] = $this->message('invalid_data');
+
         return false;
     }
 
     /**
-     * Get class name
+     * Get class name.
      *
      * @return mixed
      */
@@ -73,7 +73,7 @@ class IsInstanceOf extends AbstractValidator
     }
 
     /**
-     * Set class name
+     * Set class name.
      *
      * @param mixed $class
      */

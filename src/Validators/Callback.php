@@ -1,20 +1,20 @@
 <?php
+
 namespace Sparta\Validators;
 
 use Sparta\Exceptions\InvalidValidatorArguments;
 
 /**
- * Callback Class
+ * Callback Class.
  *
- * @package  Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Callback extends AbstractValidator
 {
-
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
@@ -39,7 +39,7 @@ class Callback extends AbstractValidator
     }
 
     /**
-     * Validate given input
+     * Validate given input.
      *
      * @param mixed $input
      *
@@ -51,9 +51,13 @@ class Callback extends AbstractValidator
         $args = $this->normalizeArguments($input);
         try {
             if (!call_user_func_array($callback, $args)) {
+                $this->errors[] = $this->message('invalid_data');
+
                 return false;
             }
         } catch (\Exception $e) {
+            $this->errors[] = $this->message('invalid_data');
+
             return false;
         }
 

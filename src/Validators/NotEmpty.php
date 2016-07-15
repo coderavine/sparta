@@ -1,11 +1,12 @@
 <?php
+
 namespace Sparta\Validators;
 
 /**
- * Validation Class
+ * Validation Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class NotEmpty extends AbstractValidator
@@ -14,11 +15,11 @@ class NotEmpty extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'INVALID_NOT_EMPTY' => 'Input is required and cannot be empty',
+        'invalid_data' => 'Input is required and cannot be empty',
     ];
 
     /**
-     * Return true of the given input is not empty, otherwise false
+     * Return true of the given input is not empty, otherwise false.
      *
      * @param $input
      *
@@ -27,9 +28,11 @@ class NotEmpty extends AbstractValidator
     public function isValid($input)
     {
         if (empty($input)) {
-            $this->errors[] = $this->message('INVALID_NOT_EMPTY');
+            $this->errors[] = $this->message('invalid_data');
+
             return false;
         }
+
         return true;
     }
 }

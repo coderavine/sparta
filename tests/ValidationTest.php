@@ -7,7 +7,7 @@ use Sparta\Validation;
 /**
  * Class ValidationTest.php
  *
- * @package ${NAMESPACE}
+ * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
  * @link    http://www.coderavine.com/
  */
@@ -116,7 +116,7 @@ class ValidationTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Prepare some test data for basic behavior test case
+     * Prepare some .php_cs data for basic behavior .php_cs case
      *
      * @return array
      *

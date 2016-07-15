@@ -1,33 +1,31 @@
 <?php
+
 namespace Sparta\Validators;
 
 use Sparta\Exceptions\InvalidValidatorArguments;
 
 /**
- * Contains Class
+ * Contains Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Contains extends AbstractValidator
 {
-
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
     protected $classMessage = [
-        'MISSING_NEEDLE' => 'Please provide the data to look for.',
-        'NEEDLE_NOT_FOUND' => '%s does not contain %s'
+        'invalid_data' => '%s does not contain %s',
     ];
 
     /**
      * Contains constructor.
      *
      * @param array $options
-     *
      */
     public function __construct($options = [])
     {
@@ -41,7 +39,7 @@ class Contains extends AbstractValidator
     }
 
     /**
-     * Set the value to look for in provided input
+     * Set the value to look for in provided input.
      *
      * @param $containValue
      */
@@ -51,7 +49,7 @@ class Contains extends AbstractValidator
     }
 
     /**
-     * Get needle
+     * Get needle.
      *
      * @return mixed
      */
@@ -65,7 +63,7 @@ class Contains extends AbstractValidator
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      *
      * @throws \Sparta\Exceptions\InvalidValidatorArguments
      */
@@ -73,19 +71,28 @@ class Contains extends AbstractValidator
     {
         if (!isset($this->options['needle'])) {
             throw new InvalidValidatorArguments(
-                $this->message('MISSING_ARGUMENTS')
+                $this->message('missing_arguments')
             );
         }
 
+        $valid = false;
         if (is_array($input)) {
-            return in_array($this->getNeedle(), $input);
+            if (in_array($this->getNeedle(), $input)) {
+                $valid = true;
+            }
+        } else {
+            if (mb_stripos($input, $this->getNeedle(), 0, mb_detect_encoding($input, null, true))) {
+                $valid = true;
+            }
         }
 
-        if (mb_stripos($input, $this->getNeedle(), 0, mb_detect_encoding($input, null, true))) {
-            return true;
+        if ($valid == false) {
+            $this->errors[] = sprintf($this->message('invalid_data'),
+                is_array($input) ? implode(',', $input) : $input,
+                $this->getNeedle()
+            );
         }
 
-        $this->errors[] = sprintf($this->message('NEEDLE_NOT_FOUND'), $input, $this->getNeedle());
-        return false;
+        return $valid;
     }
 }

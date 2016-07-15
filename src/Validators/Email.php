@@ -1,11 +1,12 @@
 <?php
+
 namespace Sparta\Validators;
 
 /**
- * Validation Class
+ * Validation Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Email extends AbstractValidator
@@ -14,11 +15,11 @@ class Email extends AbstractValidator
      * @var string
      */
     protected $classMessage = [
-        'INVALID_EMAIL' => '%s is not a valid email.',
+        'invalid_data' => '%s is not a valid email.',
     ];
 
     /**
-     * Validate if the given input is a valid email address
+     * Validate if the given input is a valid email address.
      *
      * @param $input
      *
@@ -27,9 +28,11 @@ class Email extends AbstractValidator
     public function isValid($input)
     {
         if (!filter_var($input, FILTER_VALIDATE_EMAIL)) {
-            $this->errors[] = sprintf($this->message('INVALID_EMAIL'), $input);
+            $this->errors[] = sprintf($this->message('invalid_data'), $input);
+
             return false;
         }
+
         return true;
     }
 }

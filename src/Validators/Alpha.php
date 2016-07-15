@@ -1,29 +1,30 @@
 <?php
+
 namespace Sparta\Validators;
 
 /**
- * Class Alpha
+ * Class Alpha.
  *
- * @package Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Alpha extends AbstractValidator
 {
     /**
-     * Allow whitespace
+     * Allow whitespace.
      *
      * @var bool
      */
     protected $allowWhitespace = false;
 
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
     protected $classMessage = [
-        'INVALID_ALPHA' => '%s is not a valid alphabetic string',
+        'invalid_data' => '%s is not a valid alphabetic string',
     ];
 
     /**
@@ -45,16 +46,17 @@ class Alpha extends AbstractValidator
     }
 
     /**
-     * Check if the given value is valid Alpha
+     * Check if the given value is valid Alpha.
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      */
     public function isValid($input)
     {
         if (!preg_match($this->getPattern(), $input)) {
-            $this->errors[] = sprintf($this->message('INVALID_ALPHA'), $input);
+            $this->errors[] = sprintf($this->message('invalid_data'), $input);
+
             return false;
         }
 
@@ -62,9 +64,7 @@ class Alpha extends AbstractValidator
     }
 
     /**
-     * Enable whitespace
-     *
-     * @return void
+     * Enable whitespace.
      */
     public function enableWhitespace()
     {
@@ -72,7 +72,7 @@ class Alpha extends AbstractValidator
     }
 
     /**
-     * Is whitespace enabled
+     * Is whitespace enabled.
      *
      * @return bool
      */
@@ -82,7 +82,7 @@ class Alpha extends AbstractValidator
     }
 
     /**
-     * Get validation pattern
+     * Get validation pattern.
      *
      * @return string
      */

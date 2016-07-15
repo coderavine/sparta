@@ -1,25 +1,25 @@
 <?php
+
 namespace Sparta\Validators;
 
 /**
- * Accepted Class
+ * Accepted Class.
  *
- * @package  Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Accepted extends AbstractValidator
 {
-
     /**
-     * List of allowed values
+     * List of allowed values.
      *
      * @var array
      */
     protected $allowedValues = ['yes', 'on', '1', 1, true, 'true'];
 
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
@@ -28,7 +28,7 @@ class Accepted extends AbstractValidator
     ];
 
     /**
-     * Validate given input
+     * Validate given input.
      *
      * @param mixed $input
      *
@@ -38,7 +38,7 @@ class Accepted extends AbstractValidator
     {
         if (!in_array($input, $this->allowedValues, true)) {
             $this->errors[] = sprintf(
-                $this->message('invalid_data'), is_numeric($input) ? (string)$input : $input
+                $this->message('invalid_data'), is_numeric($input) ? (string) $input : $input
             );
 
             return false;

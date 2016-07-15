@@ -37,6 +37,25 @@ class TimezoneTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesBeforeRunningValidation()
+    {
+        $validator = new Timezone();
+        $this->assertEquals([], $validator->errors());
+    }
+
+    /**
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesAfterValidationFailure()
+    {
+        $validator = new Timezone();
+        $validator->isValid('ewwewe');
+        $this->assertCount(1, $validator->errors());
+    }
+
+    /**
      * Setup basic behavior test data
      */
     public function getTimezomeDataProvider()

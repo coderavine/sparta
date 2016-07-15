@@ -1,48 +1,49 @@
 <?php
+
 namespace Sparta;
 
 use Sparta\Exceptions\LanguageFileNotFound;
 
 /**
- * Class Translator
+ * Class Translator.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Translator
 {
     /**
      * Default language file to be loaded if no user's locale has
-     * been defined
+     * been defined.
      *
      * @var string
      */
     const DEFAULT_LOCALE = 'en';
 
     /**
-     * Languages folder path
+     * Languages folder path.
      *
      * @var
      */
     private $langFilesPath;
 
     /**
-     * Error messages list
+     * Error messages list.
      *
      * @var
      */
     private $messages = [];
 
     /**
-     * Language locale code
+     * Language locale code.
      *
      * @var
      */
     protected $locale;
 
     /**
-     * Loaded files list
+     * Loaded files list.
      *
      * @var array
      */
@@ -61,9 +62,10 @@ class Translator
     }
 
     /**
-     * Load default error messages for the provided language locale code
+     * Load default error messages for the provided language locale code.
      *
      * @return mixed
+     *
      * @throws \Sparta\Exceptions\LanguageFileNotFound
      */
     public function load()
@@ -73,10 +75,10 @@ class Translator
             return true;
         }
 
-        $languageFile = $this->getLangFilesPath() . $locale . '.php';
+        $languageFile = $this->getLangFilesPath().$locale.'.php';
 
         if (!$this->exists($languageFile)) {
-            throw  new LanguageFileNotFound('Language file ' . $this->getLocale() . '.php does not exist');
+            throw  new LanguageFileNotFound('Language file '.$this->getLocale().'.php does not exist');
         }
 
         $this->messages = include "$languageFile";
@@ -84,7 +86,7 @@ class Translator
     }
 
     /**
-     * Determine if translator messages have been loaded for the given locale code
+     * Determine if translator messages have been loaded for the given locale code.
      *
      * @param $locale
      *
@@ -95,11 +97,12 @@ class Translator
         if (array_key_exists($locale, $this->loaded)) {
             return true;
         }
+
         return false;
     }
 
     /**
-     * Determine if the given file exists
+     * Determine if the given file exists.
      *
      * @param $file
      *
@@ -110,12 +113,10 @@ class Translator
         return (file_exists($file)) ? true : false;
     }
 
-
     /**
-     * Get a translator message by its key
+     * Get a translator message by its key.
      *
-     * @param string $key message key
-     *
+     * @param string $key     message key
      * @param string $default
      *
      * @return mixed
@@ -125,11 +126,12 @@ class Translator
         if (array_key_exists($key, $this->messages)) {
             return $this->messages[$key];
         }
+
         return $default;
     }
 
     /**
-     * Get all translator messages
+     * Get all translator messages.
      *
      * @return array
      */
@@ -139,11 +141,9 @@ class Translator
     }
 
     /**
-     * Set language locale code
+     * Set language locale code.
      *
      * @param $locale
-     *
-     * @return void
      */
     public function setLocale($locale)
     {
@@ -151,7 +151,7 @@ class Translator
     }
 
     /**
-     * Get language locale code
+     * Get language locale code.
      *
      * @return string
      */
@@ -161,7 +161,7 @@ class Translator
     }
 
     /**
-     * Get language files directory path
+     * Get language files directory path.
      *
      * @return mixed
      */
@@ -171,7 +171,7 @@ class Translator
     }
 
     /**
-     * Get language files directory path
+     * Get language files directory path.
      *
      * @param mixed $langFilesPath
      */
@@ -181,5 +181,4 @@ class Translator
             $this->langFilesPath = $langFilesPath;
         }
     }
-
 }

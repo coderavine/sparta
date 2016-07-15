@@ -1,19 +1,19 @@
 <?php
+
 namespace Sparta\Validators;
 
 use Sparta\Exceptions\InvalidValidatorArguments;
 use Sparta\Utility;
 
 /**
- * Validation Class
+ * Validation Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Length extends AbstractValidator
 {
-
     /**
      *
      */
@@ -25,13 +25,12 @@ class Length extends AbstractValidator
     protected $encoding;
 
     /**
-     * Error messages
+     * Error messages.
      *
      * @var string
      */
     protected $classMessage = [
-        'INVALID_LENGTH' => 'The length of the provided input %d does not equal specified length %d.',
-        'MISSING_ARGUMENTS' => 'Length value has not been provided',
+        'invalid_data' => 'The length of the provided input %d does not equal specified length %d.',
     ];
 
     /**
@@ -55,7 +54,7 @@ class Length extends AbstractValidator
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      *
      * @throws \Sparta\Exceptions\InvalidValidatorArguments
      */
@@ -63,15 +62,16 @@ class Length extends AbstractValidator
     {
         if (empty($this->getLength())) {
             throw new InvalidValidatorArguments(
-                $this->message('MISSING_ARGUMENTS')
+                $this->message('missing_arguments')
             );
         }
 
         $length = Utility::stringLength($input, $this->getEncoding());
-        if ($length == false || $length <> $this->getLength()) {
+        if ($length == false || $length != $this->getLength()) {
             $this->errors[] = sprintf(
-                $this->message('INVALID_LENGTH'), $length, $this->getLength()
+                $this->message('invalid_data'), $length, $this->getLength()
             );
+
             return false;
         }
 
@@ -95,7 +95,7 @@ class Length extends AbstractValidator
     }
 
     /**
-     * Get character set encoding
+     * Get character set encoding.
      *
      * @return string
      */
@@ -105,7 +105,7 @@ class Length extends AbstractValidator
     }
 
     /**
-     * Set character set encoding
+     * Set character set encoding.
      *
      * @param string $encoding
      */

@@ -32,7 +32,7 @@ class UrlTest extends \PHPUnit_Framework_TestCase
         $validator = new Url();
         $this->assertEquals([], $validator->errors());
     }
-    
+
     /**
      *
      */

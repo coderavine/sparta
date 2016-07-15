@@ -44,7 +44,7 @@ class ContainsTest extends PHPUnit_Framework_TestCase
     {
         $validator = new Contains();
         $validator->isValid(34);
-    }// @codeCoverageIgnore
+    }
 
     /**
      * Test Setting/Getting needle
@@ -55,8 +55,8 @@ class ContainsTest extends PHPUnit_Framework_TestCase
     {
         $validator = new Contains('123');
         $this->assertEquals(123, $validator->getNeedle());
-        $validator->setNeedle('test');
-        $this->assertEquals('test', $validator->getNeedle());
+        $validator->setNeedle('.php_cs');
+        $this->assertEquals('.php_cs', $validator->getNeedle());
     }
 
     /**
@@ -79,7 +79,7 @@ class ContainsTest extends PHPUnit_Framework_TestCase
     }
 
     /**
-     * Basic Behavior test Data provider
+     * Basic Behavior .php_cs Data provider
      *
      * @return array
      *

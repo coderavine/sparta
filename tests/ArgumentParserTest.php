@@ -85,7 +85,7 @@ class ArgumentParserTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             $expected,
             $this->parser->all(),
-            'failed value is :'.$input
+            'failed value is :' . $input
         );
     }
 

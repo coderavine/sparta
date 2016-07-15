@@ -37,6 +37,30 @@ class CallbackTest extends \PHPUnit_Framework_TestCase
     {
         $validator = new Callback();
     }
+
+    /**
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesBeforeRunningValidation()
+    {
+        $validator = new Callback(function ($input) {
+            return ($input == 1) ? true : false;
+        });
+        $this->assertEquals([], $validator->errors());
+    }
+
+    /**
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesAfterValidationFailure()
+    {
+        $validator = new Callback(function ($input) {
+            return ($input == 1) ? true : false;
+        });
+
+        $this->assertFalse($validator->isValid(2));
+        $this->assertCount(1, $validator->errors());
+    }
 }
 
 class TestCallable

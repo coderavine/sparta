@@ -1,25 +1,25 @@
 <?php
+
 namespace Sparta;
 
 /**
- * Class Rule
+ * Class Rule.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class ValidationElement
 {
-
     /**
-     * Validator name
+     * Validator name.
      *
      * @var string
      */
     protected $name;
 
     /**
-     * Validator's arguments list
+     * Validator's arguments list.
      *
      * @var array
      */
@@ -38,7 +38,7 @@ class ValidationElement
     }
 
     /**
-     * Get validator's arguments
+     * Get validator's arguments.
      *
      * @return mixed
      */
@@ -48,11 +48,9 @@ class ValidationElement
     }
 
     /**
-     * Set the validator's arguments
+     * Set the validator's arguments.
      *
      * @param mixed $arguments
-     *
-     * @return void
      */
     public function setArguments($arguments)
     {
@@ -60,7 +58,7 @@ class ValidationElement
     }
 
     /**
-     * Get validator's name
+     * Get validator's name.
      *
      * @return mixed
      */
@@ -70,11 +68,9 @@ class ValidationElement
     }
 
     /**
-     * Set the validator name
+     * Set the validator name.
      *
      * @param mixed $name
-     *
-     * @return void
      */
     public function setName($name)
     {
@@ -82,7 +78,7 @@ class ValidationElement
     }
 
     /**
-     * Check if the current validator has arguments
+     * Check if the current validator has arguments.
      *
      * @return bool
      */

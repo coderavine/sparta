@@ -1,32 +1,31 @@
 <?php
+
 namespace Sparta\Validators;
 
 use Sparta\Exceptions\InvalidValidatorArguments;
 
 /**
- * Class Equals
+ * Class Equals.
  *
- * @package Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Equals extends AbstractValidator
 {
     /**
-     * Error messages
+     * Error messages.
      *
      * @var string
      */
     protected $classMessage = [
-        'NOT_EQUAL' => '%s does not equal to %s',
-        'MISSING_COMPARE_VALUE' => 'Value to compare with is missing',
+        'invalid_data' => '%s does not equal to %s',
     ];
 
     /**
      * Equals constructor.
      *
      * @param array $options
-     *
      */
     public function __construct($options = [])
     {
@@ -49,13 +48,14 @@ class Equals extends AbstractValidator
     public function isValid($input)
     {
         if (empty($this->getTo())) {
-            throw new InvalidValidatorArguments($this->message('MISSING_COMPARE_VALUE'));
+            throw new InvalidValidatorArguments($this->message('missing_arguments'));
         }
 
-        if ($input <> $this->getTo()) {
+        if ($input != $this->getTo()) {
             $this->errors[] = sprintf(
-                $this->message('NOT_EQUAL'), $input, $this->getTo()
+                $this->message('invalid_data'), $input, $this->getTo()
             );
+
             return false;
         }
 
@@ -63,7 +63,7 @@ class Equals extends AbstractValidator
     }
 
     /**
-     * Set the value to compare input to
+     * Set the value to compare input to.
      *
      * @return mixed
      */
@@ -73,7 +73,7 @@ class Equals extends AbstractValidator
     }
 
     /**
-     * Get the value used in the comparison
+     * Get the value used in the comparison.
      *
      * @param mixed $to
      */
@@ -81,6 +81,4 @@ class Equals extends AbstractValidator
     {
         $this->options['to'] = $to;
     }
-
-
 }

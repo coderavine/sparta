@@ -1,14 +1,14 @@
 <?php
+
 namespace Sparta\Exceptions;
 
 /**
- * Class InvalidValidatorArguments
+ * InvalidValidatorArguments Class.
  *
- * @package Sparta\Exceptions
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class InvalidValidatorArguments extends \Exception
 {
-
 }

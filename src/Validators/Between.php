@@ -1,13 +1,14 @@
 <?php
+
 namespace Sparta\Validators;
 
 use Sparta\Exceptions\InvalidValidatorArguments;
 
 /**
- * Class Between
+ * Class Between.
  *
- * @package Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Between extends AbstractValidator
@@ -15,20 +16,18 @@ class Between extends AbstractValidator
     const INCLUSIVE = true;
 
     /**
-     * Error messages
+     * Error messages.
      *
      * @var string
      */
     protected $classMessage = [
-        'MISSING_ARGUMENTS' => 'Both min & max have to be provided.',
-        'OUT_OF_RANGE' => '%s does not fall between %d and %d.',
+        'invalid_data' => '%s does not fall between %d and %d.',
     ];
 
     /**
      * Between constructor.
      *
      * @param array $options
-     *
      */
     public function __construct($options = [])
     {
@@ -47,7 +46,7 @@ class Between extends AbstractValidator
                 $this->options['max'] = array_shift($options);
             }
         }
-        
+
         if (array_key_exists('inclusive', $options)) {
             $this->options['inclusive'] = $options['inclusive'];
         } else {
@@ -55,7 +54,6 @@ class Between extends AbstractValidator
                 $this->options['inclusive'] = array_shift($options);
             }
         }
-
     }
 
     /**
@@ -63,7 +61,7 @@ class Between extends AbstractValidator
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      *
      * @throws \Sparta\Exceptions\InvalidValidatorArguments
      */
@@ -71,22 +69,24 @@ class Between extends AbstractValidator
     {
         if (!isset($this->options['min']) || !isset($this->options['max'])) {
             throw new InvalidValidatorArguments(
-                $this->message('MISSING_ARGUMENTS')
+                $this->message('missing_arguments')
             );
         }
 
         if ($this->getInclusive() == true) {
             if ($input < $this->getMin() || $input > $this->getMax()) {
                 $this->errors[] = sprintf(
-                    $this->message('OUT_OF_RANGE'), $input, $this->getMin(), $this->getMax()
+                    $this->message('invalid_data'), $input, $this->getMin(), $this->getMax()
                 );
+
                 return false;
             }
         } else {
             if ($input <= $this->getMin() || $input >= $this->getMax()) {
                 $this->errors[] = sprintf(
-                    $this->message('OUT_OF_RANGE'), $input, $this->getMin(), $this->getMax()
+                    $this->message('invalid_data'), $input, $this->getMin(), $this->getMax()
                 );
+
                 return false;
             }
         }
@@ -111,7 +111,7 @@ class Between extends AbstractValidator
     }
 
     /**
-     * Get minimum value
+     * Get minimum value.
      *
      * @return int
      */
@@ -121,7 +121,7 @@ class Between extends AbstractValidator
     }
 
     /**
-     * Get maximum value
+     * Get maximum value.
      *
      * @return int
      */
@@ -145,5 +145,4 @@ class Between extends AbstractValidator
     {
         $this->options['inclusive'] = $inclusive;
     }
-
 }

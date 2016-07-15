@@ -31,6 +31,7 @@ class RegexTest extends \PHPUnit_Framework_TestCase
      * @param $pattern
      * @param $input
      * @param $expected
+     *
      * @dataProvider getRegexDataProvider
      */
     public function testBasicBehavior($pattern, $input, $expected)
@@ -40,12 +41,24 @@ class RegexTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Ensure that regex format can be passed via validator constructor method
      *
      */
     public function testCanPassPatternToClassConstructor()
     {
         $validator = new Regex(['pattern' => '/\w{4}/']);
         $this->assertTrue($validator->isValid('nice'));
+    }
+
+    /**
+     * Ensure that validator throws exception when regex pattern is missing
+     *
+     * @expectedException Sparta\Exceptions\InvalidValidatorArguments
+     */
+    public function testThatValidatorThrowsErrorWhenRegexPatternIsMissing()
+    {
+        $validator = new Regex();
+        $validator->isValid('nice');
     }
 
     /**
@@ -57,6 +70,25 @@ class RegexTest extends \PHPUnit_Framework_TestCase
         $this->assertNull($this->validator->getPattern());
         $this->validator->setPattern('/^[a-z]$/');
         $this->assertEquals('/^[a-z]$/', $this->validator->getPattern());
+    }
+
+    /**
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesBeforeRunningValidation()
+    {
+        $validator = new Regex();
+        $this->assertEquals([], $validator->errors());
+    }
+
+    /**
+     * Ensure that we get no error messages before running validation
+     */
+    public function testGetErrorMessagesAfterValidationFailure()
+    {
+        $validator = new Regex('/[0-9]/');
+        $this->assertFalse($validator->isValid('string'));
+        $this->assertCount(1, $validator->errors());
     }
 
     /**

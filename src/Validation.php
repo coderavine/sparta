@@ -1,4 +1,5 @@
 <?php
+
 namespace Sparta;
 
 use Sparta\Exceptions\ClassNotFoundException;
@@ -6,70 +7,68 @@ use Sparta\Exceptions\InvalidValidatorException;
 use Sparta\Exceptions\MissingParameterException;
 
 /**
- * Validation Class
+ * Validation Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Validation
 {
-
     /**
-     * Validation rules
+     * Validation rules.
      *
      * @var array
      */
     protected $rules = [];
 
     /**
-     * List of validators object for each attribute
+     * List of validators object for each attribute.
      *
      * @var
      */
     protected $ruleObjects;
 
     /**
-     * Validation error messages
+     * Validation error messages.
      *
      * @var array
      */
     protected $errors = [];
 
     /**
-     * List of data to be validated
+     * List of data to be validated.
      *
      * @var array
      */
     protected $data = [];
 
     /**
-     * Flag to indicate if validation has failed
+     * Flag to indicate if validation has failed.
      *
-     * @var boolean
+     * @var bool
      */
     protected $failedValidation;
 
     /**
-     * Translator instance
+     * Translator instance.
      *
      * @var Translator
      */
     protected $translator = [];
 
     /**
-     * Validator Factory
+     * Validator Factory.
      *
      * @var
      */
     protected $validatorFactory;
 
-
     /**
      * Validator constructor.
      *
-     * @param array      $data  data to be validated
-     * @param array      $rules validation rules to be applied on the provided data
+     * @param array      $data       data to be validated
+     * @param array      $rules      validation rules to be applied on the provided data
      * @param Translator $translator
      */
     public function __construct($data = [], $rules = [], $translator = null)
@@ -81,7 +80,7 @@ class Validation
     }
 
     /**
-     * Run validation rules and determine if we have valid data
+     * Run validation rules and determine if we have valid data.
      *
      * @return bool validation result
      *
@@ -95,7 +94,7 @@ class Validation
         // We must have both data and rules to proceed with validation
         if (empty($this->getData()) || empty($this->getRules())) {
             throw new MissingParameterException(
-                $this->translator->get('RULE_PARSER_MISSING_PARAMETER')
+                $this->translator->get('rule_parser_missing_parameter')
             );
         }
 
@@ -113,7 +112,7 @@ class Validation
     }
 
     /**
-     * Run validators list for a given attribute
+     * Run validators list for a given attribute.
      *
      * @param string $attribute
      * @param array  $rules
@@ -136,11 +135,11 @@ class Validation
                 );
             } catch (ClassNotFoundException $e) {
                 throw new InvalidValidatorException(
-                    sprintf($this->translator->get('INVALID_VALIDATOR'), $validator->getName())
+                    sprintf($this->translator->get('invalid_validator'), $validator->getName())
                 );
             } catch (InvalidValidatorException $e) {
                 throw new InvalidValidatorException(
-                    sprintf($this->translator->get('INVALID_VALIDATOR'), $validator->getName())
+                    sprintf($this->translator->get('invalid_validator'), $validator->getName())
                 );
             }
 
@@ -148,12 +147,11 @@ class Validation
                 $this->collectAttributeErrors($attribute, $validatorInstance->errors());
                 $this->failedValidation = true;
             }
-
         }
     }
 
     /**
-     * Check if validation has failed or not
+     * Check if validation has failed or not.
      *
      * @return bool
      */
@@ -163,7 +161,7 @@ class Validation
     }
 
     /**
-     * Check if the given attribute has value in the provided user's inputs
+     * Check if the given attribute has value in the provided user's inputs.
      *
      * @param string $attribute
      *
@@ -174,12 +172,12 @@ class Validation
         if (!array_key_exists($attribute, $this->data)) {
             return false;
         }
+
         return true;
     }
 
-
     /**
-     * Get the value of a given field from provided user's inputs list
+     * Get the value of a given field from provided user's inputs list.
      *
      * @param string $key     attribute key
      * @param mixed  $default default value to be returned if no value has been found
@@ -189,7 +187,7 @@ class Validation
     public function field($key, $default = null)
     {
         if (empty($this->data) || !is_array($this->data)) {
-            return null;
+            return;
         }
 
         if (array_key_exists($key, $this->data)) {
@@ -200,7 +198,7 @@ class Validation
     }
 
     /**
-     * Set rules list
+     * Set rules list.
      *
      * @param array $rules
      */
@@ -210,7 +208,7 @@ class Validation
     }
 
     /**
-     * Get rules list
+     * Get rules list.
      *
      * @return array
      */
@@ -220,7 +218,7 @@ class Validation
     }
 
     /**
-     * Get a list of validation error messages
+     * Get a list of validation error messages.
      *
      * @return mixed
      */
@@ -230,7 +228,7 @@ class Validation
     }
 
     /**
-     * Get rules list
+     * Get rules list.
      *
      * @return array
      */
@@ -240,7 +238,7 @@ class Validation
     }
 
     /**
-     * Get a list of validation error messages
+     * Get a list of validation error messages.
      *
      * @param $data
      *
@@ -252,7 +250,7 @@ class Validation
     }
 
     /**
-     * Collect attribute errors
+     * Collect attribute errors.
      *
      * @param string $attribute attribute key/name
      * @param array  $errors
@@ -271,14 +269,14 @@ class Validation
     }
 
     /**
-     * Set the application translation instance
+     * Set the application translation instance.
      *
      * @param $translator
      */
     public function setTranslationInstance($translator)
     {
         if (is_null($translator)) {
-            $this->translator = new Translator(__DIR__ . '/lang/');
+            $this->translator = new Translator(__DIR__.'/lang/');
         } else {
             $this->translator = $translator;
         }
@@ -286,6 +284,8 @@ class Validation
     }
 
     /**
+     * Get translator.
+     *
      * @return \Sparta\Translator
      */
     public function getTranslator()
@@ -294,7 +294,7 @@ class Validation
     }
 
     /**
-     * Get an instance of our rules bag which has all validation information
+     * Get an instance of our rules bag which has all validation information.
      *
      * @return RulesBag
      */
@@ -302,6 +302,7 @@ class Validation
     {
         $ruleParser = new RuleParser($this->data);
         $ruleParser->run($this->rules);
+
         return $ruleParser->getRulesBag();
     }
 }

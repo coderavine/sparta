@@ -1,21 +1,23 @@
 <?php
+
 namespace Sparta\Validators;
 
+use Sparta\Exceptions\InvalidValidatorArguments;
+
 /**
- * Different Class
+ * Different Class.
  *
  * This validator will make sure that the given field is different from
  * another provider field
  *
- * @package  Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Different extends AbstractValidator
 {
-
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
@@ -39,9 +41,8 @@ class Different extends AbstractValidator
         }
     }
 
-
     /**
-     * Validate given input
+     * Validate given input.
      *
      * @param mixed $input
      *
@@ -49,6 +50,12 @@ class Different extends AbstractValidator
      */
     public function isValid($input)
     {
+        if (!isset($this->options['from'])) {
+            throw new InvalidValidatorArguments(
+                $this->message('missing_arguments')
+            );
+        }
+
         if ($input == $this->getFom()) {
             $this->errors[] = $this->message('invalid_data');
 
@@ -59,7 +66,7 @@ class Different extends AbstractValidator
     }
 
     /**
-     * Set the field to be compared with the input
+     * Set the field to be compared with the input.
      *
      * @param $from
      */
@@ -69,9 +76,7 @@ class Different extends AbstractValidator
     }
 
     /**
-     * Get the field to be compared with the main input
-     *
-     * @return null
+     * Get the field to be compared with the main input.
      */
     public function getFom()
     {

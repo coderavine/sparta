@@ -1,38 +1,32 @@
 <?php
+
 namespace Sparta\Validators;
 
-    /**
-     * Validation Class
-     *
-     * @package Sparta
-     * @author  Mohammed Ashour <ashoms0a@gmail.com>
-     * @link    http://www.coderavine.com/
-     */
 /**
- * Class AbstractValidator
+ * Class AbstractValidator.
  *
- * @package Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 abstract class AbstractValidator implements ValidatorInterface
 {
     /**
-     * Validation error messages
+     * Validation error messages.
      *
      * @var array
      */
     protected $errors = [];
 
     /**
-     * Validation options
+     * Validation options.
      *
      * @var
      */
     protected $options;
 
     /**
-     * Custom error messages
+     * Custom error messages.
      *
      * @var
      */
@@ -63,7 +57,7 @@ abstract class AbstractValidator implements ValidatorInterface
     }
 
     /**
-     * Set your custom messages
+     * Set your custom messages.
      *
      * @param array $messages
      */
@@ -73,7 +67,7 @@ abstract class AbstractValidator implements ValidatorInterface
     }
 
     /**
-     * Get error message by key
+     * Get error message by key.
      *
      * @param string $key
      *
@@ -86,11 +80,12 @@ abstract class AbstractValidator implements ValidatorInterface
         } elseif (array_key_exists($key, $this->classMessage)) {
             return $this->classMessage[$key];
         }
+
         return '';
     }
 
     /**
-     * Create an array of arguments
+     * Create an array of arguments.
      *
      * @param string /array $options
      *

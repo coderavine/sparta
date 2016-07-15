@@ -33,7 +33,7 @@ class MakeValidatorCommandTest extends PHPUnit_Framework_TestCase
             'command' => $command->getName(),
             'name' => 'Foo',
 
-            '--with-unit-test' => true,
+            '--with-unit-.php_cs' => true,
 
         ]);
         $this->assertRegExp('/Foo/', $commandTester->getDisplay());

@@ -1,17 +1,18 @@
 <?php
+
 namespace Sparta;
 
 /**
- * Class Utility
+ * Class Utility.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class Utility
 {
     /**
-     * Get the provided string length
+     * Get the provided string length.
      *
      * @param string $value
      * @param string $encoding
@@ -25,6 +26,7 @@ class Utility
         } elseif (function_exists('mb_strlen')) {
             return mb_strlen($value, $encoding);
         }
+
         return strlen($value);
     }
 }

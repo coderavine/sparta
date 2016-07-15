@@ -1,19 +1,20 @@
 <?php
+
 namespace Sparta;
 
 use Countable;
 
 /**
- * Class RulesBag
+ * Class RulesBag.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class RulesBag implements Countable
 {
     /**
-     * Attributes list
+     * Attributes list.
      *
      * @var AttributeBag
      */
@@ -21,7 +22,6 @@ class RulesBag implements Countable
 
     /**
      * RulesBag constructor.
-     *
      */
     public function __construct()
     {
@@ -29,7 +29,7 @@ class RulesBag implements Countable
     }
 
     /**
-     * Add a new entry to our attribute bag
+     * Add a new entry to our attribute bag.
      *
      * @param $key
      * @param $value
@@ -42,9 +42,9 @@ class RulesBag implements Countable
     }
 
     /**
-     * Get total number of attributes
+     * Get total number of attributes.
      *
-     * @return integer
+     * @return int
      */
     public function count()
     {
@@ -52,7 +52,7 @@ class RulesBag implements Countable
     }
 
     /**
-     * Get all attributes from the bag
+     * Get all attributes from the bag.
      *
      * @return array
      */
@@ -62,7 +62,7 @@ class RulesBag implements Countable
     }
 
     /**
-     * Check if attributes bag has rules for a given attribute
+     * Check if attributes bag has rules for a given attribute.
      *
      * @param string $key attribute key
      *
@@ -73,11 +73,12 @@ class RulesBag implements Countable
         if ($this->attributes->has($key)) {
             return true;
         }
+
         return false;
     }
 
     /**
-     * An alias for "has" method to provide more readable syntax
+     * An alias for "has" method to provide more readable syntax.
      *
      * @param string $key attribute key
      *
@@ -89,7 +90,7 @@ class RulesBag implements Countable
     }
 
     /**
-     * Get attribute's validators from attributes bag
+     * Get attribute's validators from attributes bag.
      *
      * @param string $key attribute key
      *
@@ -101,7 +102,7 @@ class RulesBag implements Countable
     }
 
     /**
-     * An alias for the method "get" to provide more readable syntax
+     * An alias for the method "get" to provide more readable syntax.
      *
      * @param string $key attribute key
      *
@@ -113,11 +114,9 @@ class RulesBag implements Countable
     }
 
     /**
-     * Remove an attribute from the attributes bag
+     * Remove an attribute from the attributes bag.
      *
      * @param string $key attribute key
-     *
-     * @return void
      */
     public function remove($key)
     {
@@ -125,7 +124,7 @@ class RulesBag implements Countable
     }
 
     /**
-     * Get a list of all attributes names from the attribute bags
+     * Get a list of all attributes names from the attribute bags.
      *
      * @return array
      */
@@ -136,7 +135,7 @@ class RulesBag implements Countable
 
     /**
      * Determine if the attributes bag has at least attribute along with assigned
-     * rules to be processed by the Validation object
+     * rules to be processed by the Validation object.
      *
      * @return bool
      */

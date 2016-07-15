@@ -1,5 +1,6 @@
 <?php
 use Sparta\Validators\FloatNumber;
+
 /**
  * Validation Class
  *

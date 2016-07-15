@@ -1,4 +1,5 @@
 <?php
+
 namespace Sparta;
 
 use ReflectionClass;
@@ -7,40 +8,39 @@ use Sparta\Exceptions\InvalidValidatorException;
 use Sparta\Validators\ValidatorInterface;
 
 /**
- * Class ValidatorFactory
+ * Class ValidatorFactory.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class ValidatorFactory
 {
     /**
-     * Default namespace used for loading all validators classes
+     * Default namespace used for loading all validators classes.
      */
     const DEFAULT_NAMESPACE = 'Sparta\\Validators\\';
 
     /**
-     * Validators namespace
+     * Validators namespace.
      *
      * @var string
      */
     protected $namespace;
 
     /**
-     * Reflection Object Instance
+     * Reflection Object Instance.
      *
      * @var ReflectionClass
      */
     protected $reflection;
 
     /**
-     * An instance of application translator
+     * An instance of application translator.
      *
      * @var Translator
      */
     protected $translator;
-
 
     /**
      * ValidatorFactory constructor.
@@ -55,22 +55,22 @@ class ValidatorFactory
     }
 
     /**
-     * Create an instance of given validator
+     * Create an instance of given validator.
      *
      * @param string $validatorName
      * @param array  $arguments
      *
      * @return ValidatorInterface
+     *
      * @throws ClassNotFoundException
      * @throws InvalidValidatorException
-     * @throws MethodNotFoundException
      */
     public function createInstance($validatorName, $arguments)
     {
         $validatorClassName = $this->getFullClassName($validatorName);
         if (!$this->assertIfClassExists($validatorClassName)) {
             throw new ClassNotFoundException(
-                sprintf($this->translator->get('CLASS_NOT_FOUND'), $validatorName)
+                sprintf($this->translator->get('class_not_found'), $validatorName)
             );
         }
 
@@ -78,25 +78,28 @@ class ValidatorFactory
 
         if (!$instance instanceof ValidatorInterface) {
             throw new InvalidValidatorException(
-                sprintf($this->translator->get('INVALID_VALIDATOR'), $validatorName));
+                sprintf($this->translator->get('invalid_validator'), $validatorName));
         }
 
         $instance->setMessages($this->translator->get($validatorName));
+
         return $instance;
     }
 
     /**
+     * Get class full qualified name.
+     *
      * @param $class
      *
      * @return string
      */
     protected function getFullClassName($class)
     {
-        return $this->getNamespace() . ucfirst($class);
+        return $this->getNamespace().ucfirst($class);
     }
 
     /**
-     * Determine if a given class exists or not
+     * Determine if a given class exists or not.
      *
      * @param $class
      *
@@ -108,7 +111,7 @@ class ValidatorFactory
     }
 
     /**
-     * Set Translator instance
+     * Set Translator instance.
      *
      * @param Translator $translator
      */
@@ -118,7 +121,7 @@ class ValidatorFactory
     }
 
     /**
-     * Set Translator instance
+     * Set Translator instance.
      *
      * @return Translator
      */
@@ -128,7 +131,7 @@ class ValidatorFactory
     }
 
     /**
-     * Create a reflection class
+     * Create a reflection class.
      *
      * @param $className
      *
@@ -141,7 +144,7 @@ class ValidatorFactory
 
     /**
      * Create an instance of the given validator and feed the required
-     * information, such as options and messages, to it
+     * information, such as options and messages, to it.
      *
      * @param string $class
      * @param array  $arguments
@@ -161,7 +164,7 @@ class ValidatorFactory
     }
 
     /**
-     * Get namespace
+     * Get namespace.
      *
      * @return string
      */
@@ -171,15 +174,12 @@ class ValidatorFactory
     }
 
     /**
-     * Set namespace
+     * Set namespace.
      *
      * @param string $namespace
-     *
-     * @return void
      */
     public function setNamespace($namespace)
     {
         $this->namespace = $namespace;
     }
-
 }

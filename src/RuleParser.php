@@ -1,33 +1,38 @@
 <?php
+
 namespace Sparta;
 
 /**
- * Class RuleParser
+ * RuleParser Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class RuleParser extends RuleParsingSyntaxAware
 {
-
+    /**
+     * User input.
+     *
+     * @var array
+     */
     protected $data;
     /**
-     * Validators bag
+     * Validators bag.
      *
      * @var array
      */
     protected $attributeValidatorsBag;
 
     /**
-     * Rules Bag
+     * Rules Bag.
      *
      * @var RulesBag
      */
     private $rulesBag;
 
     /**
-     * Argument Parser
+     * Argument Parser.
      *
      * @var ArgumentParser
      */
@@ -42,18 +47,18 @@ class RuleParser extends RuleParsingSyntaxAware
     {
         $this->rulesBag = new RulesBag();
         $this->argumentParser = new ArgumentParser($data);
-        $this->argumentParser->setArgumentsDelimiter($this->getDefaultArgumentsDelimiter());
-        $this->argumentParser->setKeyValueDelimiter($this->getDefaultArgumentKeyValueDelimiter());
+        $this->argumentParser->setArgumentsDelimiter($this->getArgumentsDelimiter());
+        $this->argumentParser->setKeyValueDelimiter($this->getArgumentKeyValueDelimiter());
         $this->setData($data);
     }
 
     /**
-     * Parser the given validation rules and  generate the proper rules bag
+     * Parser the given validation rules and  generate the proper rules bag.
      *
      * @param array $rulesList
-     * @param bool $getRuleBags if set, an instance of RuleBag will be
+     * @param bool  $getRuleBags if set, an instance of RuleBag will be
      *                           returned to caller
-     * @param bool $getRuleBags if set, an instance of RuleBag will be returned to caller
+     * @param bool  $getRuleBags if set, an instance of RuleBag will be returned to caller
      *
      * @return bool|\Sparta\RulesBag
      */
@@ -61,7 +66,6 @@ class RuleParser extends RuleParsingSyntaxAware
     {
         $rulesList = $this->normalizeRulesFormat($rulesList);
         foreach ($rulesList as $attribute => $rules) {
-
             $this->clearAttributeValidatorsBag();
 
             foreach ($rules as $rule) {
@@ -78,11 +82,9 @@ class RuleParser extends RuleParsingSyntaxAware
     }
 
     /**
-     * Parse a given rule into a validator name and arguments list
+     * Parse a given rule into a validator name and arguments list.
      *
      * @param string $rule
-     *
-     * @return void
      */
     public function resolve($rule)
     {
@@ -91,7 +93,7 @@ class RuleParser extends RuleParsingSyntaxAware
         }
 
         $arguments = null;
-        $ruleSegments = explode($this->getDefaultValidatorArgumentsDelimiter(), $rule);
+        $ruleSegments = explode($this->getValidatorArgumentsDelimiter(), $rule);
         $validatorName = $ruleSegments[0];
         if (isset($ruleSegments[1])) {
             $arguments = $this->parseArguments($ruleSegments[1]);
@@ -100,7 +102,7 @@ class RuleParser extends RuleParsingSyntaxAware
     }
 
     /**
-     * Parse given argument input into a proper format
+     * Parse given argument input into a proper format.
      *
      * @param mixed $input
      *
@@ -114,6 +116,8 @@ class RuleParser extends RuleParsingSyntaxAware
     }
 
     /**
+     * Get rules bag.
+     *
      * @return \Sparta\RulesBag
      */
     public function getRulesBag()
@@ -122,10 +126,10 @@ class RuleParser extends RuleParsingSyntaxAware
     }
 
     /**
-     * Add a validator to validators bag
+     * Add a validator to validators bag.
      *
      * @param string $name
-     * @param mixed $arguments
+     * @param mixed  $arguments
      */
     protected function addValidatorToBag($name, $arguments = null)
     {
@@ -138,7 +142,7 @@ class RuleParser extends RuleParsingSyntaxAware
     }
 
     /**
-     * Get attribute's validator bag
+     * Get attribute's validator bag.
      *
      * @return array
      */
@@ -148,9 +152,7 @@ class RuleParser extends RuleParsingSyntaxAware
     }
 
     /**
-     * Clear current attribute's validators bag
-     *
-     * @return void
+     * Clear current attribute's validators bag.
      */
     public function clearAttributeValidatorsBag()
     {
@@ -170,7 +172,7 @@ class RuleParser extends RuleParsingSyntaxAware
 
         foreach ($rules as $attribute => $rulesString) {
             if (!is_array($rulesString)) {
-                $validatorsList = explode($this->getDefaultRulesDelimiter(), $rulesString);
+                $validatorsList = explode($this->getRulesDelimiter(), $rulesString);
             } else {
                 $validatorsList = $rulesString;
             }
@@ -181,7 +183,7 @@ class RuleParser extends RuleParsingSyntaxAware
     }
 
     /**
-     * Get validator class name
+     * Get validator class name.
      *
      * @param $name
      *
@@ -195,6 +197,8 @@ class RuleParser extends RuleParsingSyntaxAware
     }
 
     /**
+     * Get user data.
+     *
      * @return mixed
      */
     public function getData()
@@ -203,6 +207,8 @@ class RuleParser extends RuleParsingSyntaxAware
     }
 
     /**
+     * Set user data.
+     *
      * @param mixed $data
      */
     public function setData($data)

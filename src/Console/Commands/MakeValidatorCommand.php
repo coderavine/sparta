@@ -1,4 +1,5 @@
 <?php
+
 namespace Sparta\Console\Commands;
 
 use Sparta\Console\Generators\ValidatorGenerator;
@@ -9,17 +10,17 @@ use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
 
 /**
- * MakeValidatorCommand Class
+ * MakeValidatorCommand Class.
  *
- * @package Sparta
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 class MakeValidatorCommand extends Command
 {
     /**
      * The console command name.
-     * This command is used in order to create a new validator
+     * This command is used in order to create a new validator.
      *
      * @var string
      */
@@ -32,9 +33,8 @@ class MakeValidatorCommand extends Command
      */
     protected $description = 'Create a new Validator class';
 
-
     /**
-     * Command arguments list
+     * Command arguments list.
      *
      * @var array
      */
@@ -43,26 +43,24 @@ class MakeValidatorCommand extends Command
             'name' => 'name',
             'description' => 'Name of validator class to create',
             'mode' => InputArgument::REQUIRED,
-        ]
+        ],
     ];
 
     /**
-     * Command Options List
+     * Command Options List.
      *
      * @var array
      */
     protected $options = [
         [
-            'name' => 'with-unit-test',
+            'name' => 'with-unit-.php_cs',
             'description' => '',
             'mode' => InputOption::VALUE_NONE,
-        ]
+        ],
     ];
 
     /**
-     * generate:validator command configurations
-     *
-     * @return void
+     * generate:validator command configurations.
      */
     protected function configure()
     {
@@ -91,7 +89,7 @@ class MakeValidatorCommand extends Command
     }
 
     /**
-     * Execute the command
+     * Execute the command.
      *
      * @param InputInterface  $input
      * @param OutputInterface $output
@@ -105,14 +103,14 @@ class MakeValidatorCommand extends Command
             throw new \RuntimeException('The validator name must be provided.');
         }
         $name = $input->getArgument('name');
-        $option = $input->getOption('with-unit-test');
+        $option = $input->getOption('with-unit-.php_cs');
 
         // Create the validator generator object passing to it the name & option
         $generator = new ValidatorGenerator();
         $generator->generate($name, $option);
 
         // Show the result in the console 
-        $message = $name . ' has been created successfully';
-        $output->writeln('<info>' . $message . ' </info>');
+        $message = $name.' has been created successfully';
+        $output->writeln('<info>'.$message.' </info>');
     }
 }

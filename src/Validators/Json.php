@@ -1,25 +1,23 @@
 <?php
 /**
- * Class Json.php
+ * Class Json.php.
  *
- * @package Sparta\Validators
  * @author  Mohammed Ashour <ashoms0a@gmail.com>
+ *
  * @link    http://www.coderavine.com/
  */
 
 namespace Sparta\Validators;
 
-
 class Json extends AbstractValidator
 {
-
     /**
-     * Class error messages
+     * Class error messages.
      *
      * @var string
      */
     protected $classMessage = [
-        'INVALID_JSON' => '%s is not considered as a valid Json',
+        'invalid_data' => '%s is not considered as a valid Json',
     ];
 
     /**
@@ -27,12 +25,13 @@ class Json extends AbstractValidator
      *
      * @param mixed $input
      *
-     * @return boolean
+     * @return bool
      */
     public function isValid($input)
     {
         if (!is_string($input) || empty($input)) {
-            $this->errors[] = sprintf($this->message('INVALID_JSON'), $input);
+            $this->errors[] = sprintf($this->message('invalid_data'), $input);
+
             return false;
         }
 
@@ -40,9 +39,9 @@ class Json extends AbstractValidator
         if (json_last_error() === JSON_ERROR_NONE) {
             return true;
         } else {
-            $this->errors[] = sprintf($this->message('INVALID_JSON'), $input);
+            $this->errors[] = sprintf($this->message('invalid_data'), $input);
+
             return false;
         }
-
     }
 }
